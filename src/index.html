@@ -3,11 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <title>Filmoteka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="hero">
+          <div class="hero__wrapper">
+            <div class="hero__button--wrapper">
+              <button class="hero__btn btn-home">Home</button>
+              <button class="hero__btn btn_library">My Library</button>
+            </div>
+            <form class="hero__form">
+              <label class="hero__label">
+                <input
+                  type="text"
+                  class="hero__input"
+                  name="movie-search"
+                  placeholder="Movie Search"
+                  autocomplete="off"
+                />
+                <svg class="hero__input--icon" width="14" height="14">
+                  <use href="./images/icons.svg#icon-search"></use>
+                </svg>
+              </label>
+            </form>
+          </div>
+          <a href="./" class="logo-link">
+            <div class="logo">
+              <svg class="logo__icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-filmoteka"></use>
+              </svg>
+              <h1 class="logo__title">Filmoteka</h1>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- Main -->
+    <main></main>
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer-text copyright"
+        >&copy; 2023 | All Rights Reserved |&nbsp;</span
+      >
+      <span class="footer-text"
+        >Developed with
+        <svg class="footer-svg" width="14" height="14">
+          <use href="./images/icons.svg#icon-heart-group"></use>
+        </svg>
+        <span class="footer-text"
+          >by&nbsp;
+          <a
+            href="#"
+            class="footer-text footer-link underline"
+            id="js-team-modal"
+            rel="noreferrer noopener"
+            aria-label="Our Github"
+            title="Our Github"
+            >GoIT Students</a
+          >
+        </span>
+      </span>
+    </footer>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <!-- <include src="./partials/example.html"></include> -->
   </body>

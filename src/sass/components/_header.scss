@@ -1,0 +1,200 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+}
+
+.hero__btn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-transform: uppercase;
+
+  padding: 10px 26px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 8px;
+  }
+}
+
+.btn-home {
+  color: $bg-primary-color;
+  background-color: $title-color;
+  transition: all $transition-timing $timing-function;
+
+  &:hover {
+    background: $accent-color;
+    color: $title-color;
+  }
+}
+
+.btn_library {
+  color: $title-color;
+  background-color: $primary-title-color;
+  transition: all $transition-timing $timing-function;
+
+  &:hover {
+    background-color: $accent-color;
+    color: $bg-primary-color;
+  }
+}
+
+.hero__label {
+  position: relative;
+}
+
+.hero__input {
+  color: $title-color;
+  background-color: $primary-title-color;
+  font-size: 12px;
+  line-height: 1.16;
+
+  width: 100%;
+  border-radius: 100px;
+  border: none;
+  //   transition: border $transition-timing $timing-function;
+
+  padding: 10px 14px;
+  outline: transparent;
+
+  &::placeholder {
+    color: $title-color;
+    font-size: 12px;
+    line-height: 1.16;
+  }
+
+  //   &:focus {
+  //     border: 1px solid $accent-color;
+  //   }
+}
+
+.hero__input--icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  right: 14px;
+  top: 50%;
+
+  transform: translateY(-35%);
+  stroke: $title-color;
+  transition: stroke $transition-timing $timing-function;
+
+  .hero__input:focus + & {
+    stroke: $accent-color;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 8px;
+  }
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo__icon {
+  margin-right: 8px;
+}
+
+.logo__title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.19;
+  color: $primary-title-color;
+}
+
+// TABLET-STYLE
+@media screen and (min-width: 768px) {
+  .hero {
+    padding: 16px;
+  }
+
+  .hero__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .btn-home {
+    padding: 12px 24px;
+  }
+
+  .btn_library {
+    padding: 12px 20px;
+  }
+
+  .hero__form {
+    margin-right: 4px;
+  }
+
+  .hero__input {
+    width: 165px;
+    padding: 11px 16px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .logo__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo__title {
+    font-size: 40px;
+    line-height: 1.18;
+  }
+}
+
+// DESKTOP STYLE
+@media screen and (min-width: 1280px) {
+  .hero {
+    padding-top: 16px;
+    padding-left: 32px;
+    padding-bottom: 32px;
+  }
+
+  .btn-home {
+    padding: 14px 32px;
+    margin-right: 4px;
+  }
+
+  .btn_library {
+    padding: 14px 24px;
+  }
+
+  .hero__form {
+    margin-right: 8px;
+  }
+
+  .hero__input {
+    width: 187px;
+    padding: 13px 16px;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 1.14;
+    }
+  }
+
+  .logo__icon {
+    width: 59px;
+    height: 59px;
+  }
+
+  .logo__title {
+    font-size: 64px;
+  }
+}

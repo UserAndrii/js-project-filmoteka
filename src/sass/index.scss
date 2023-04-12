@@ -1,1 +1,9 @@
-@import './common';
+@import './utils/common';
+@import './utils/variables';
+@import './utils/base';
+
+@import './components/hero-bg-img';
+@import './components/header';
+
+
+@import './components/footer';
