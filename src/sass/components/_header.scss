@@ -91,10 +91,15 @@
 .logo {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 767px) {
     margin-bottom: 8px;
   }
+}
+
+.logo-link {
+  text-decoration: none;
 }
 
 .logo__icon {
