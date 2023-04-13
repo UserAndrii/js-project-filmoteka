@@ -2,12 +2,12 @@ import PopularMoviesApiServise from './fetch-popular-films';
 import genres from './genres';
 
 const moviesGallery = document.querySelector('.gallery');
-export const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
+const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
 
 const popularMoviesApiServise = new PopularMoviesApiServise();
 
 // функція видображ-я найпопулярніших фільмів
-async function getTopMovies() {
+export async function getTopMovies() {
   const moviesArray = await popularMoviesApiServise.fetchPopularFilms();
   //рендер галереї популярних фільмів
   const markup = moviesArray
@@ -39,7 +39,7 @@ async function getTopMovies() {
   moviesGallery.innerHTML = markup;
 }
 
-function getGenre(genre_ids) {
+export function getGenre(genre_ids) {
   let genresListArray = [];
   genre_ids.forEach(id => {
     genres.forEach(genre => {
@@ -50,3 +50,5 @@ function getGenre(genre_ids) {
   });
   return genresListArray.join(', ');
 }
+
+getTopMovies();
