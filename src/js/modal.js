@@ -28,9 +28,9 @@ function addModalMarcup(data) {
     <h2 class="modal__title">${data.data.title
     }</h2>
     <ul class="charact__list">
-      <li class="charact__item"><span>Vote / Votes</span>${data.data.vote_average
+      <li class="charact__item"><span>Vote / Votes</span>${Math.round10(data.data.vote_average, -1)
       }/${data.data.vote_count}</li>
-      <li class="charact__item"><span>Popularity</span>${data.data.popularity
+      <li class="charact__item"><span>Popularity</span>${Math.round10(data.data.popularity, -1)
       }</li>
       <li class="charact__item"><span>Original Title</span>${data.data.original_title
       }</li>
@@ -61,4 +61,42 @@ function addModalMarcup(data) {
 `;
 console.log(content);
 return refs.modalCont.insertAdjacentHTML("afterbegin", content);
+}
+
+// Округлення чисел
+
+function decimalAdjust(type, value, exp) {
+  if (typeof exp === 'undefined' || +exp === 0) {
+    return Math[type](value);
+  }
+  value = +value;
+  exp = +exp;
+  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+    return NaN;
+  }
+
+  value = value.toString().split('e');
+  value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+
+  value = value.toString().split('e');
+  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+}
+
+
+if (!Math.round10) {
+  Math.round10 = function(value, exp) {
+    return decimalAdjust('round', value, exp);
+  };
+}
+
+if (!Math.floor10) {
+  Math.floor10 = function(value, exp) {
+    return decimalAdjust('floor', value, exp);
+  };
+}
+
+if (!Math.ceil10) {
+  Math.ceil10 = function(value, exp) {
+    return decimalAdjust('ceil', value, exp);
+  };
 }
