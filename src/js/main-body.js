@@ -8,9 +8,9 @@ const popularMoviesApiServise = new PopularMoviesApiServise();
 
 // функція видображ-я найпопулярніших фільмів
 async function getTopMovies() {
-  const response = await popularMoviesApiServise.fetchPopularFilms();
+  const moviesArray = await popularMoviesApiServise.fetchPopularFilms();
   //рендер галереї популярних фільмів
-  const markup = response
+  const markup = moviesArray
     .map(
       ({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
         let genre = getGenre(genre_ids);
