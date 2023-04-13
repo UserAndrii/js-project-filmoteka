@@ -20,6 +20,12 @@ function handleFormSubmit(e) {
 }
 
 async function fetchBySearch() {
+  if (!movieSearchService.query) {
+    movieSearchService.emptyArray();
+    refs.form.reset();
+    return;
+  }
+
   try {
     const fetch = await movieSearchService.fetchMovieSearch();
     if (fetch.data.total_results === 0) {
