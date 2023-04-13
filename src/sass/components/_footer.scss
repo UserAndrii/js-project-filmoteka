@@ -70,3 +70,15 @@
   color: $footer-text-color;
 }
 
+.basicLightbox {
+  overflow: scroll;
+}
+
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: -20px;
+  width: 220px;
+}
+
