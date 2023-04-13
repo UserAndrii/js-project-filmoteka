@@ -1,95 +1,84 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Here you can find your favorite movie, watch the trailer. Also, the functionality allows you to put a queue of films for viewing and a list of watched ones." />
-  <title>Filmoteka</title>
-  <link rel="stylesheet" href="./sass/index.scss" />
-  <script type="module" src="./index.js"></script>
-</head>
-
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="hero">
-        <div class="hero__wrapper">
-          <include src="./partials/my_lib.html"></include>
-          <div class="library-header-buttons" id='library'>
-            <form class="hero__form">
-              <label class="hero__label">
-                <input type="text" class="hero__input" name="movie-search" placeholder="Movie Search"
-                  autocomplete="off" />
-              </label>
-              <button class="hero__submit">
-                <svg class="hero__btn--icon" width="14" height="14">
-                  <use href="./images/icons.svg#icon-search"></use>
-                </svg>
-              </button>
-            </form>
-            <div class="hero__button--wrapper">
-              <button class="hero__btn btn-home">Home</button>
-              <button class="hero__btn btn_library">My Library</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Here you can find your favorite movie, watch the trailer. Also, the functionality allows you to put a queue of films for viewing and a list of watched ones."
+    />
+    <title>Filmoteka</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container add-padding">
+        <div class="hero">
+          <div class="hero__wrapper">
+            <include src="./partials/my_lib.html"></include>
+            <div class="library-header-buttons" id="library">
+              <form class="hero__form js-form">
+                <label class="hero__label">
+                  <input
+                    type="text"
+                    class="hero__input"
+                    name="search"
+                    placeholder="Movie Search"
+                    autocomplete="off"
+                  />
+                </label>
+                <button class="hero__submit">
+                  <svg class="hero__btn--icon" width="14" height="14">
+                    <use href="./images/icons.svg#icon-search"></use>
+                  </svg>
+                </button>
+              </form>
+              <div class="hero__button--wrapper">
+                <button class="hero__btn btn-home">Home</button>
+                <button class="hero__btn btn_library">My Library</button>
+              </div>
             </div>
           </div>
+          <a href="./" class="logo-link">
+            <div class="logo">
+              <svg class="logo__icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-filmoteka"></use>
+              </svg>
+              <h1 class="logo__title">Filmoteka</h1>
+            </div>
+          </a>
         </div>
-        <div class="hero__button--wrapper">
-          <button class="hero__btn btn-home">Home</button>
-          <button class="hero__btn btn_library">My Library</button>
-          <!-- <button class="hero__btn btn_watched is-hidden">WATCHED</button> -->
-          <!-- <button class="hero__btn btn_queue is-hidden">QUEUE</button> -->
-        </div>
-        <form class="hero__form js-form">
-          <label class="hero__label">
-            <input type="text" class="hero__input" name="search" placeholder="Movie Search" autocomplete="off" />
-          </label>
-          <button type="submit" class="hero__submit">
-            <svg class="hero__btn--icon" width="14" height="14">
-              <use href="./images/icons.svg#icon-search"></use>
-            </svg>
-          </button>
-        </form>
       </div>
-      <a href="./" class="logo-link">
-        <div class="logo">
-          <svg class="logo__icon" width="32" height="32">
-            <use href="./images/icons.svg#icon-filmoteka"></use>
-          </svg>
-          <h1 class="logo__title">Filmoteka</h1>
+    </header>
+    <!--modal-hero-->
+    <include src="./partials/modal.html"></include>
+    <!-- Main -->
+    <main>
+      <div class="container">
+        <div class="gallery-wrap">
+          <ul class="gallery"></ul>
         </div>
-      </a>
-    </div>
-    </div>
-  </header>
-  <!--modal-hero-->
-  <include src="./partials/modal.html"></include>
-  <!-- Main -->
-  <main>
-    <div class="container">
-      <div class="gallery-wrap">
-        <ul class="gallery"></ul>
       </div>
-    </div>
-
-  </main>
-  <!-- Footer -->
-  <footer class="footer">
-    <span class="footer-text copyright">&copy; 2023 | All Rights Reserved |&nbsp;</span>
-    <span class="footer-text">Developed with
-      <svg class="footer-svg" width="14" height="14">
-        <use href="./images/icons.svg#icon-heart-group"></use>
-      </svg>
-      <button class="team-modal js-team-modal" type="button">
-        by GoIT Students
-      </button>
-    </span>
-  </footer>
-  <!-- ❗️❗️❗️ Add partials like so for every page -->
-  <!-- <include src="./partials/example.html"></include> -->
-  <script src="./js/library-header-buttons.js"></script>
-</body>
-
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer-text copyright"
+        >&copy; 2023 | All Rights Reserved |&nbsp;</span
+      >
+      <span class="footer-text"
+        >Developed with
+        <svg class="footer-svg" width="14" height="14">
+          <use href="./images/icons.svg#icon-heart-group"></use>
+        </svg>
+        <button class="team-modal js-team-modal" type="button">
+          by GoIT Students
+        </button>
+      </span>
+    </footer>
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <!-- <include src="./partials/example.html"></include> -->
+    <script src="./js/library-header-buttons.js"></script>
+  </body>
 </html>
