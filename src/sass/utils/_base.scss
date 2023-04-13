@@ -54,3 +54,20 @@ img {
   clip-path: inset(50%);
   margin: -1px;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
