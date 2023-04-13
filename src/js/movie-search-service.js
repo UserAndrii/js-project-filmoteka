@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 
@@ -36,3 +37,44 @@ export default class MovieSearchService {
     this.searchQuery = newQuery;
   }
 }
+
+Notiflix.Notify.init({
+  width: '180px',
+  position: 'left-top', // 'right-top' - 'right-bottom' - 'left-top' - 'left-bottom' - 'center-top' - 'center-bottom' - 'center-center'
+  distance: '',
+  opacity: 1,
+  borderRadius: '5px',
+  rtl: false,
+  timeout: 50000,
+  messageMaxLength: 110,
+  backOverlay: false,
+  backOverlayColor: 'rgba(0,0,0,0.5)',
+  plainText: true,
+  showOnlyTheLastOne: true,
+  clickToClose: false,
+  pauseOnHover: true,
+
+  ID: 'NotiflixNotify',
+  className: 'notiflix-notify',
+  zindex: 4001,
+  fontFamily: 'Roboto',
+  fontSize: '10px',
+  cssAnimation: true,
+  cssAnimationDuration: 400,
+  cssAnimationStyle: 'zoom', // 'fade' - 'zoom' - 'from-right' - 'from-top' - 'from-bottom' - 'from-left'
+  closeButton: false,
+  useIcon: false,
+  useFontAwesome: false,
+  fontAwesomeIconStyle: 'basic', // 'basic' - 'shadow'
+  fontAwesomeIconSize: '34px',
+
+  failure: {
+    background: 'none',
+    textColor: '#FFFFFF;',
+    childClassName: 'notiflix-notify-failure',
+    notiflixIconColor: 'rgba(0,0,0,0.2)',
+    fontAwesomeClassName: 'fas fa-times-circle',
+    fontAwesomeIconColor: 'rgba(0,0,0,0.2)',
+    backOverlayColor: 'rgba(255,85,73,0.2)',
+  },
+});
