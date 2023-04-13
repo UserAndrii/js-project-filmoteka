@@ -55,11 +55,30 @@
   transition: $transition-timing $timing-function;
 }
 
-.underline {
-  text-decoration: underline;
-}
 
 .footer-svg {
   margin-right: 10px;
   margin-left: 10px;
 }
+
+.team-modal {
+  border: none;
+  background: initial;
+  cursor: pointer;
+
+  text-decoration: underline;
+  color: $footer-text-color;
+}
+
+.basicLightbox {
+  overflow: scroll;
+}
+
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: -20px;
+  width: 220px;
+}
+
