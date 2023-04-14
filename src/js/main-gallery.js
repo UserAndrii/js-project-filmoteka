@@ -1,35 +1,48 @@
-import PopularMoviesApiServise from './fetch-popular-films';
 import genres from './genres';
+import MovieSearchService from './movie-search-service';
 
-const moviesGallery = document.querySelector('.gallery');
 const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
 
-const popularMoviesApiServise = new PopularMoviesApiServise();
+const moviesGallery = document.querySelector('.gallery');
+const alternativePoster = 'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
 
-// функція видображ-я найпопулярніших фільмів
-export async function getTopMovies() {
-  const moviesArray = await popularMoviesApiServise.fetchPopularFilms();
-  //рендер галереї популярних фільмів
-  const markup = moviesArray
+const movieSearchService = new MovieSearchService();
+
+
+// функція видображення фільмів
+export async function getTopMovies(data) {
+  // очищує контейнер
+  moviesGallery.innerHTML = '';
+  //рендер галереї фільмів
+  const markup = data
     .map(
       ({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
         let genre = getGenre(genre_ids);
         let year = release_date.substring(0, 4);
 
         if (title) {
-          return `  <li class="movie-card"  ID=${id}>
-                          <img class="movie-card__image" src="${API_URL_IMG}${poster_path}"
-                          alt="${title}"
-                          width="300" ID=${id}>
-                          <h2 class="movie-card__name" ID=${id}>${title}</h2>
-                          <p class="movie-card__text" ID=${id}>${genre} | ${year}
-                            <span class="movie-card__box">
-                              <span class="movie-card__average">${vote_average.toFixed(
-                                1
-                              )}</span>
-                            </span>
-                          </p>
-                      </li>`;
+          return `
+          <li class="movie-card" id="${id}">
+            <img
+              class="movie-card__image"
+              src="${
+                poster_path ? API_URL_IMG + poster_path : alternativePoster
+              }"
+              alt="${title}"
+              width="300"
+              id="${id}"
+            />
+            <h2 class="movie-card__name" id="${id}">${title}</h2>
+            <p class="movie-card__text" id="${id}">
+              ${genre} | ${year}
+              <span class="movie-card__box">
+                <span class="movie-card__average">${vote_average.toFixed(
+                  1
+                )}</span>
+              </span>
+            </p>
+          </li>
+          `;
         }
       }
     )
@@ -37,6 +50,8 @@ export async function getTopMovies() {
 
   // додає фільми у галерею
   moviesGallery.innerHTML = markup;
+  // відключає loader
+  setTimeout(movieSearchService.disableLoader, 300);
 }
 
 export function getGenre(genre_ids) {
@@ -50,5 +65,3 @@ export function getGenre(genre_ids) {
   });
   return genresListArray.slice(0, 3).join(', ');
 }
-
-getTopMovies();
