@@ -48,7 +48,7 @@ export function getGenre(genre_ids) {
       }
     });
   });
-  return genresListArray.join(', ');
+  return genresListArray.slice(0, 3).join(', ');
 }
 
 getTopMovies();
