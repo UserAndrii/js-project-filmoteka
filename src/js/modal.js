@@ -11,7 +11,7 @@ async function getFilmData() {
   const url = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${API_KEY}`;
   try {
     const response = await axios.get(url);
-    console.log(response);
+    // console.log(response);
     return addModalMarcup(response);
   } catch (error) {
     console.error(error);
@@ -63,7 +63,7 @@ function addModalMarcup(data) {
     </div>
   </div>
 `;
-  console.log(content);
+  // console.log(content);
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 
