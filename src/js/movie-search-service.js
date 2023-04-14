@@ -5,6 +5,11 @@ const container = document.querySelector('.notiflix-position');
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 
+const refs = {
+  loader: document.querySelector('.loader'),
+  heroSubmit: document.querySelector('.hero__submit'),
+};
+
 export default class MovieSearchService {
   constructor() {
     this.searchQuery = '';
@@ -28,7 +33,16 @@ export default class MovieSearchService {
       'Search result not successful. Enter the correct movie name.'
     );
     container.append(document.querySelector('#NotiflixNotifyWrap'));
+  }
 
+  enableLoader() {
+    refs.heroSubmit.style.display = 'none';
+    refs.loader.style.display = 'flex';
+  }
+
+  disableLoader() {
+    refs.loader.style.display = 'none';
+    refs.heroSubmit.style.display = 'block';
   }
 
   get query() {
