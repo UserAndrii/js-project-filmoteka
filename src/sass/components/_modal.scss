@@ -40,39 +40,6 @@ $animation-time: 500ms;
   pointer-events: none;
 }
 
-.modal {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-  transform: translate(-50%, -50%) scale(1);
-  width: calc(100vw - 10px);
-  max-width: 806px;
-  min-height: 609px;
-  padding: 40px 12px;
-  background-color: #ffffff;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
-    0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  -webkit-transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
-}
-
-.backdrop .is-hidden .modal {
-  -webkit-transform: translate(-50%, -50%) scale(0.9);
-  transform: translate(-50%, -50%) scale(0.9);
-}
-
 // Кнопка закриття вікна
 
 .close-btn {
@@ -96,33 +63,91 @@ $animation-time: 500ms;
   transition: fill $animation-time $timing-function;
 }
 
-.modal__container {
+.modal {
+  position: absolute;
   display: flex;
-  // padding: 0 12px 40px 12px;
-  // justify-content: space-around;
-  // align-items: center;
-  // background-color: green;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: calc(100vw - 10px);
+  background-color: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (max-width: 479px) {
+    max-width: 280px;
+    padding: 48px 20px 40px 20px;
+    max-height: calc(100vh - 20px);
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+    padding: 40px 36px 64px 36px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 806px;
+    padding: 40px 12px;
+  }
+}
+
+.backdrop .is-hidden .modal {
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.modal__container {
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 }
 .modal__img {
   display: block;
-  width: 375px;
-  margin-right: 16px;
   border-radius: 5px;
+  height: fit-content;
+  @media screen and (max-width: 479px) {
+    width: 240px;
+    margin-bottom: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 264px;
+    margin-right: 68px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 375px;
+    margin-right: 16px;
+  }
 }
 
 .modal__title {
   text-transform: uppercase;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.16;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 1279px) {
+    font-size: 20px;
+    line-height: 1.16;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
 }
+// .characteristics {
+//   display: flex;
+//   justify-content: space-between;
+// }
 .charact__list {
   display: inline-block;
   margin-bottom: 20px;
 
   &:first-child {
-    margin-right: 85px;
+    @media screen and (max-width: 1279px) {
+      margin-right: 40px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-right: 85px;
+    }
   }
 }
 .charact__name {
@@ -133,6 +158,8 @@ $animation-time: 500ms;
 }
 
 .charact__value {
+  display: block;
+  max-width: 200px;
   font-size: 12px;
   line-height: 1.33;
   margin-bottom: 8px;
@@ -140,12 +167,13 @@ $animation-time: 500ms;
 .charact__value > span {
   display: inline-block;
   padding: 1px 4px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-radius: 5px;
 }
 .charact__value > .acsent {
-  background-color: #B92F2C;
+  background-color: #b92f2c;
   padding: 1px 10px;
+  color: #ffffff;
 }
 .modal__about > p {
   font-size: 12px;
@@ -155,6 +183,34 @@ $animation-time: 500ms;
 .modal__about > .about {
   font-size: 12px;
   line-height: 1.66;
-  font-weight: 500;
   margin-bottom: 20px;
+}
+.modal__button {
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 100px;
+  border: 1px solid #000000;
+  color: #b92f2c;
+  &:hover,
+  &:focus {
+    border: 1px solid #b92f2c;
+    background-color: #b92f2c;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 10px 12px;
+    margin-right: 4px;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 12px 18px;
+    margin-right: 8px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 14px 32px;
+    margin-right: 8px;
+  }
 }
