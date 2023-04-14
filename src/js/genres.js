@@ -1,4 +1,4 @@
-export default genres = [
+const genres = [
   { id: 28, name: 'Action' },
   { id: 12, name: 'Adventure' },
   { id: 16, name: 'Animation' },
@@ -19,3 +19,5 @@ export default genres = [
   { id: 10752, name: 'War' },
   { id: 37, name: 'Western' },
 ];
+
+export default genres;
