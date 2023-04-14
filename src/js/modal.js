@@ -95,6 +95,7 @@ data.data.title
   </div>
 </div>
 `;
+  // console.log(content);
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 

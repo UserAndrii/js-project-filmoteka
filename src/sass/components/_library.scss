@@ -1,0 +1,43 @@
+// Library header buttons  Стилі для кнопок (O)
+
+.library-header-buttons {
+    display: flex;
+}
+
+.hero__btn-mylib {
+    display: none;
+    padding-right: 16px;
+}
+
+.btn-watched {
+    color: $accent-color;
+    background-color: $bg-primary-color;
+    transition: all $transition-timing $timing-function;
+
+    padding: 14px 32px;
+    margin-right: 8px;
+
+    &:hover {
+        color: $bg-primary-color;
+        background: $accent-color;
+    }
+}
+
+.btn-queue {
+    color: $bg-primary-color;
+    background-color: $accent-color;
+    transition: all $transition-timing $timing-function;
+
+    padding: 14px 24px;
+
+    &:hover {
+        color: $title-color;
+        background: $bg-primary-color;
+    }
+}
+
+// Додав клас is-hidden (O)
+
+.is-hidden {
+ display: none;
+}

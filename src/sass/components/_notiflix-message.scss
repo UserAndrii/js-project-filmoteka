@@ -2,16 +2,19 @@
   position: absolute;
 
   @media screen and (max-width: 320px) {
+   width: 180px;
     top: 115px;
     left: 36px;
   }
 
   @media screen and (min-width: 321px)  {
+    width: 170px;
     top: 85px;
     left: 53px;
   }
 
   @media screen and (min-width: 1280px) {
+    width: 180px;
     top: 90px;
     left: 70px;
   }
