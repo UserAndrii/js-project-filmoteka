@@ -75,6 +75,9 @@
   color: #000000;
   font-weight: 500;
   font-size: 12px;
+  white-space: nowrap; /* текст не переноситься */
+  overflow: hidden; /* обрізає все за межами блоку  */
+  text-overflow: ellipsis; /* додає три крапки */
 
   @media screen and (min-width: 768px) {
     margin-top: 8px;
