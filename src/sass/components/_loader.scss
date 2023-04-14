@@ -12,12 +12,17 @@
 }
 
 /* Variables */
-$loader-size: 100px;
+$loader-size: 20px;
 
 /* Loading Icon */
 .loading {
+  position: absolute;
   width: $loader-size;
   height: $loader-size;
+
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
 
   &__ring {
     position: absolute;
@@ -38,7 +43,7 @@ $loader-size: 100px;
 
     svg {
       animation: rotate 1s linear infinite;
-      fill: rgba(185, 47, 44, 0.2);
+      fill: rgba(185, 47, 44, 0.6);
     }
   }
 }
