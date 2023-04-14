@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-
+const container = document.querySelector('.notiflix-position');
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 
@@ -27,6 +27,8 @@ export default class MovieSearchService {
     Notiflix.Notify.failure(
       'Search result not successful. Enter the correct movie name.'
     );
+    container.append(document.querySelector('#NotiflixNotifyWrap'));
+
   }
 
   get query() {
@@ -39,13 +41,13 @@ export default class MovieSearchService {
 }
 
 Notiflix.Notify.init({
-  width: '180px',
+  width: ' ',
   position: 'left-top', // 'right-top' - 'right-bottom' - 'left-top' - 'left-bottom' - 'center-top' - 'center-bottom' - 'center-center'
   distance: '',
   opacity: 1,
   borderRadius: '5px',
   rtl: false,
-  timeout: 50000,
+  timeout: 3000,
   messageMaxLength: 110,
   backOverlay: false,
   backOverlayColor: 'rgba(0,0,0,0.5)',
