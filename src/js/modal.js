@@ -34,6 +34,7 @@ async function getFilmData(filmId) {
   clearMarcup(refs.modalCont);
   try {
     const response = await axios.get(url);
+    // console.log(response);
     return addModalMarcup(response);
   } catch (error) {
     console.error(error);
@@ -84,6 +85,7 @@ function addModalMarcup(data) {
     </div>
   </div>
 `;
+  // console.log(content);
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 
