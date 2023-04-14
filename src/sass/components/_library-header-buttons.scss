@@ -1,0 +1,35 @@
+.library-header-buttons {
+  display: flex;
+}
+
+.hero__btn-mylib {
+  display: none;
+  padding-right: 16px;
+}
+
+.hero__btn-watched {
+  color: $accent-color;
+  background-color: $bg-primary-color;
+  transition: all $transition-timing $timing-function;
+
+  padding: 14px 32px;
+  margin-right: 8px;
+
+  &:hover {
+    color: $bg-primary-color;
+    background: $accent-color;
+  }
+}
+
+.hero__btn-queue {
+  color: $bg-primary-color;
+  background-color: $accent-color;
+  transition: all $transition-timing $timing-function;
+
+  padding: 14px 24px;
+
+  &:hover {
+    color: $title-color;
+    background: $bg-primary-color;
+  }
+}

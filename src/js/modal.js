@@ -21,25 +21,29 @@ getFilmData();
 
 function addModalMarcup(data) {
   const content = `<div class="modal__img">
-    <img src="https://image.tmdb.org/t/p/w500/${data.data.poster_path}" alt="${data.data.title
-    }" width="500px"/>
+    <img src="https://image.tmdb.org/t/p/w500/${data.data.poster_path}" alt="${
+    data.data.title
+  }" width="500px"/>
   </div>
   <div class="modal__content">
-    <h2 class="modal__title">${data.data.title
-    }</h2>
+    <h2 class="modal__title">${data.data.title}</h2>
     <ul class="charact__list">
-      <li class="charact__item"><span>Vote / Votes</span>${Math.round10(data.data.vote_average, -1)
-      }/${data.data.vote_count}</li>
-      <li class="charact__item"><span>Popularity</span>${Math.round10(data.data.popularity, -1)
-      }</li>
-      <li class="charact__item"><span>Original Title</span>${data.data.original_title
+      <li class="charact__item"><span>Vote / Votes</span>${Math.round10(
+        data.data.vote_average,
+        -1
+      )}/${data.data.vote_count}</li>
+      <li class="charact__item"><span>Popularity</span>${Math.round10(
+        data.data.popularity,
+        -1
+      )}</li>
+      <li class="charact__item"><span>Original Title</span>${
+        data.data.original_title
       }</li>
       <li class="charact__item"><span>Genre</span>${data.data.title}</li>
     </ul>
     <div class="modal__about">
       <p>ABOUT</p>
-      <p class="about">${data.data.overview
-      }</p>
+      <p class="about">${data.data.overview}</p>
     </div>
     <div class="modal__buttons">
       <button
@@ -59,8 +63,8 @@ function addModalMarcup(data) {
     </div>
   </div>
 `;
-console.log(content);
-return refs.modalCont.insertAdjacentHTML("afterbegin", content);
+  console.log(content);
+  return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 
 // Округлення чисел
@@ -76,27 +80,26 @@ function decimalAdjust(type, value, exp) {
   }
 
   value = value.toString().split('e');
-  value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+  value = Math[type](+(value[0] + 'e' + (value[1] ? +value[1] - exp : -exp)));
 
   value = value.toString().split('e');
-  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+  return +(value[0] + 'e' + (value[1] ? +value[1] + exp : exp));
 }
 
-
 if (!Math.round10) {
-  Math.round10 = function(value, exp) {
+  Math.round10 = function (value, exp) {
     return decimalAdjust('round', value, exp);
   };
 }
 
 if (!Math.floor10) {
-  Math.floor10 = function(value, exp) {
+  Math.floor10 = function (value, exp) {
     return decimalAdjust('floor', value, exp);
   };
 }
 
 if (!Math.ceil10) {
-  Math.ceil10 = function(value, exp) {
+  Math.ceil10 = function (value, exp) {
     return decimalAdjust('ceil', value, exp);
   };
 }
@@ -106,11 +109,24 @@ if (!Math.ceil10) {
 //   document.getElementById('modal').classList.add('is-visible');
 // });
 
-document.getElementById('close-btn').addEventListener('click', function() {
+document.getElementById('close-btn').addEventListener('click', function () {
   document.getElementById('backdrop').classList.remove('is-visible');
   document.getElementById('modal').classList.remove('is-visible');
 });
-document.getElementById('backdrop').addEventListener('click', function() {
+document.getElementById('backdrop').addEventListener('click', function () {
   document.getElementById('backdrop').classList.remove('is-visible');
   document.getElementById('modal').classList.remove('is-visible');
+});
+
+document.getElementById('btn-modal').addEventListener('click', function () {
+  document.getElementById('overlay').classList.add('is-visible');
+  document.getElementById('modal').classList.add('is-visible');
+});
+
+document.getElementById('close-btn').addEventListener('click', function () {
+  document.getElementById('overlay').classList.remove('is-visible');
+  document.getElementById('modal').classList.remove('is-visible');
+});
+document.getElementById('overlay').addEventListener('click', function () {
+  document.getElementById('overlay').classList.remove('is-visible');
 });
