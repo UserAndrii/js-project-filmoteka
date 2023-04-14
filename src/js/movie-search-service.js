@@ -75,6 +75,7 @@ Notiflix.Notify.init({
   zindex: 4001,
   fontFamily: 'Roboto',
   fontSize: '10px',
+  lineHeight: '12px',
   cssAnimation: true,
   cssAnimationDuration: 400,
   cssAnimationStyle: 'zoom', // 'fade' - 'zoom' - 'from-right' - 'from-top' - 'from-bottom' - 'from-left'

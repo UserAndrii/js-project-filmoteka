@@ -1,43 +1,87 @@
 // Library header buttons  Стилі для кнопок (O)
+.hero__btn-library {
+  display: none;
+  text-align: center;
 
-.library-header-buttons {
-    display: flex;
-}
+  @media screen and (max-width: 767px) {
+    margin-top: 16px;
+    margin-bottom: 10px;
+  }
 
-.hero__btn-mylib {
-    display: none;
-    padding-right: 16px;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 32px;
+  }
 }
 
 .btn-watched {
-    color: $accent-color;
-    background-color: $bg-primary-color;
-    transition: all $transition-timing $timing-function;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-transform: uppercase;
 
+  padding: 10px 23px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+
+  color: $accent-color;
+  background-color: $bg-primary-color;
+  transition: all $transition-timing $timing-function;
+
+  margin-right: 4px;
+
+  &:hover {
+    color: $bg-primary-color;
+    background: $accent-color;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 23px;
+  }
+
+  @media screen and (min-width: 1280px) {
     padding: 14px 32px;
-    margin-right: 8px;
-
-    &:hover {
-        color: $bg-primary-color;
-        background: $accent-color;
-    }
+  }
 }
 
 .btn-queue {
-    color: $bg-primary-color;
-    background-color: $accent-color;
-    transition: all $transition-timing $timing-function;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-transform: uppercase;
 
+  padding: 10px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+
+  color: $bg-primary-color;
+  background-color: $accent-color;
+  transition: all $transition-timing $timing-function;
+
+  &:hover {
+    color: $title-color;
+    background: $bg-primary-color;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
     padding: 14px 24px;
-
-    &:hover {
-        color: $title-color;
-        background: $bg-primary-color;
-    }
+  }
 }
 
 // Додав клас is-hidden (O)
 
 .is-hidden {
- display: none;
+  display: none;
 }

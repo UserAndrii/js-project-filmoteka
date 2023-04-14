@@ -13,21 +13,30 @@ const libRefs = {
   watchBtn: document.querySelector('.btn-watched'),
   queueBtn: document.querySelector('.btn-queue'),
   // для позиціонування кнопок watched та queue  (O)
-  heroWrapper: document.querySelector('.hero__wrapper'), 
+  heroWrapper: document.querySelector('.hero__wrapper'),
+  heroBtnLibrary: document.querySelector('.hero__btn-library'),
+  homeBtn: document.querySelector('.btn-home'),
 };
 
 // Автоматично створюється клас is hidden (O)
-libRefs.watchBtn.classList.add('is-hidden');
-libRefs.queueBtn.classList.add('is-hidden');
+// libRefs.watchBtn.classList.add('is-hidden');
+// libRefs.queueBtn.classList.add('is-hidden');
 
 libRefs.libraryBtn.addEventListener('click', onLibraryBtnClick);
 
 function onLibraryBtnClick() {
-  libRefs.watchBtn.classList.remove('is-hidden');
-  libRefs.queueBtn.classList.remove('is-hidden');
+  // libRefs.watchBtn.classList.remove('is-hidden');
+  // libRefs.queueBtn.classList.remove('is-hidden');
+
+  libRefs.heroBtnLibrary.style.display = 'block'
+  libRefs.libraryBtn.style.backgroundColor = '#000';
+  libRefs.libraryBtn.style.color = '#fff';
+
+  libRefs.homeBtn.style.backgroundColor = '#fff';
+  libRefs.homeBtn.style.color = '#000';
 
   // для позиціонування кнопок watched та queue  (O)
-  libRefs.heroWrapper.style.justifyContent = 'space-between';
+  // libRefs.heroWrapper.style.justifyContent = 'space-between';
 
   // якщо немає доданих фільмів, то має з’явитися інформація про це:
   // <h2>YOUR WATCHED-LIST OR QUEUE-LIST IS EMPTY...</h2>
