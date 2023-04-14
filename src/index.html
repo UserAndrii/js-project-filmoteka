@@ -17,8 +17,11 @@
       <div class="container add-padding">
         <div class="hero">
           <div class="hero__wrapper">
-            <include src="./partials/my_lib.html"></include>
-            <div class="library-header-buttons" id="library">
+            <div class="hero__btn-library">
+              <button class="hero__btn btn-watched">watched</button>
+              <button class="hero__btn btn-queue">queue</button>
+            </div>
+            <div class="library-header-buttons">
               <form class="hero__form js-form">
                 <label class="hero__label">
                   <input
@@ -77,5 +80,7 @@
         </button>
       </span>
     </footer>
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <!-- <include src="./partials/example.html"></include> -->
   </body>
 </html>
