@@ -10,15 +10,24 @@ const libRefs = {
   // назва класу gallery--library може бути змінена
   library: document.querySelector('.gallery--library'),
   // кнопки watchBtn та queueBtn додані та закоментовані в index.html
-  watchBtn: document.querySelector('.btn_watched'),
-  queueBtn: document.querySelector('.btn_queue'),
+  watchBtn: document.querySelector('.btn-watched'),
+  queueBtn: document.querySelector('.btn-queue'),
+  // для позиціонування кнопок watched та queue  (O)
+  heroWrapper: document.querySelector('.hero__wrapper'), 
 };
+
+// Автоматично створюється клас is hidden (O)
+libRefs.watchBtn.classList.add('is-hidden');
+libRefs.queueBtn.classList.add('is-hidden');
 
 libRefs.libraryBtn.addEventListener('click', onLibraryBtnClick);
 
 function onLibraryBtnClick() {
   libRefs.watchBtn.classList.remove('is-hidden');
   libRefs.queueBtn.classList.remove('is-hidden');
+
+  // для позиціонування кнопок watched та queue  (O)
+  libRefs.heroWrapper.style.justifyContent = 'space-between';
 
   // якщо немає доданих фільмів, то має з’явитися інформація про це:
   // <h2>YOUR WATCHED-LIST OR QUEUE-LIST IS EMPTY...</h2>

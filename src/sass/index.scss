@@ -1,14 +1,15 @@
 @import './utils/common';
-@import './utils/fonts';
 @import './utils/variables';
 @import './utils/base';
 
 @import './components/hero-bg-img';
 @import './components/header';
-@import './components/library-header-buttons';
+@import './components/library';
 @import './components/main-gallery';
-@import './components/_hero-modal';
+@import './components/hero-modal';
 
 @import './components/footer';
 
+@import './components/modal';
 @import './components/notiflix-message';
+
