@@ -1,23 +1,44 @@
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
 
-const filmId = 76341;
 
 const refs = {
   modalCont: document.querySelector('.modal__container'),
+  galleryEl: document.querySelector('.gallery'),
+  btnModalClose: document.querySelector('.close-btn'),
+  modalBackdrop: document.querySelector('.backdrop'),
+  modal: document.querySelector('.modal'),
 };
 
-async function getFilmData() {
+refs.galleryEl.addEventListener('click', onModalOpen);
+
+refs.btnModalClose.addEventListener('click', function () {
+  classTogle(refs.modalBackdrop);
+  classTogle(refs.modal);
+});
+// refs.modalBackdrop.addEventListener('click', function () {
+//   classTogle(refs.modalBackdrop);
+//   classTogle(refs.modal);
+// });
+
+function classTogle(element) {
+  if (element.classList.contains('is-hidden')) {
+    element.classList.remove('is-hidden');
+  } else {
+    element.classList.add('is-hidden');
+  }
+}
+
+async function getFilmData(filmId) {
   const url = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${API_KEY}`;
+  clearMarcup(refs.modalCont);
   try {
     const response = await axios.get(url);
-    console.log(response);
     return addModalMarcup(response);
   } catch (error) {
     console.error(error);
   }
 }
-getFilmData();
 
 function addModalMarcup(data) {
   const content = `<div class="modal__img">
@@ -63,10 +84,19 @@ function addModalMarcup(data) {
     </div>
   </div>
 `;
-  console.log(content);
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 
+function clearMarcup(element) {
+  element.innerHTML = '';
+}
+
+function onModalOpen(event) {
+  let filmId = event.target.id;
+  getFilmData(filmId);
+  classTogle(refs.modalBackdrop);
+  classTogle(refs.modal);
+}
 // Округлення чисел
 
 function decimalAdjust(type, value, exp) {
@@ -103,30 +133,3 @@ if (!Math.ceil10) {
     return decimalAdjust('ceil', value, exp);
   };
 }
-
-// document.getElementById('btn-modal').addEventListener('click', function() {
-//   document.getElementById('backdrop').classList.add('is-visible');
-//   document.getElementById('modal').classList.add('is-visible');
-// });
-
-document.getElementById('close-btn').addEventListener('click', function () {
-  document.getElementById('backdrop').classList.remove('is-visible');
-  document.getElementById('modal').classList.remove('is-visible');
-});
-document.getElementById('backdrop').addEventListener('click', function () {
-  document.getElementById('backdrop').classList.remove('is-visible');
-  document.getElementById('modal').classList.remove('is-visible');
-});
-
-document.getElementById('btn-modal').addEventListener('click', function () {
-  document.getElementById('overlay').classList.add('is-visible');
-  document.getElementById('modal').classList.add('is-visible');
-});
-
-document.getElementById('close-btn').addEventListener('click', function () {
-  document.getElementById('overlay').classList.remove('is-visible');
-  document.getElementById('modal').classList.remove('is-visible');
-});
-document.getElementById('overlay').addEventListener('click', function () {
-  document.getElementById('overlay').classList.remove('is-visible');
-});
