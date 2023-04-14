@@ -34,6 +34,7 @@ async function getFilmData(filmId) {
   clearMarcup(refs.modalCont);
   try {
     const response = await axios.get(url);
+    console.log(response);
     return addModalMarcup(response);
   } catch (error) {
     console.error(error);
@@ -41,48 +42,58 @@ async function getFilmData(filmId) {
 }
 
 function addModalMarcup(data) {
-  const content = `<div class="modal__img">
-    <img src="https://image.tmdb.org/t/p/w500/${data.data.poster_path}" alt="${
-    data.data.title
-  }" width="500px"/>
-  </div>
-  <div class="modal__content">
-    <h2 class="modal__title">${data.data.title}</h2>
+  const content = `
+  <img
+  class="modal__img"
+  src="https://image.tmdb.org/t/p/w500/${data.data.poster_path}"
+  alt="${
+data.data.title
+}"
+  width="375px"
+/>
+<div class="modal__content">
+  <h2 class="modal__title">${data.data.title}</h2>
+  <div class="characteristics">
     <ul class="charact__list">
-      <li class="charact__item"><span>Vote / Votes</span>${Math.round10(
-        data.data.vote_average,
-        -1
-      )}/${data.data.vote_count}</li>
-      <li class="charact__item"><span>Popularity</span>${Math.round10(
-        data.data.popularity,
-        -1
-      )}</li>
-      <li class="charact__item"><span>Original Title</span>${
-        data.data.original_title
-      }</li>
-      <li class="charact__item"><span>Genre</span>${data.data.title}</li>
+      <li class="charact__name">Vote / Votes</li>
+      <li class="charact__name">Popularity</li>
+      <li class="charact__name">Original Title</li>
+      <li class="charact__name">Genre</li>
     </ul>
-    <div class="modal__about">
-      <p>ABOUT</p>
-      <p class="about">${data.data.overview}</p>
-    </div>
-    <div class="modal__buttons">
-      <button
-        class="modal__button"
-        type="button"
-        data-modal-button="add-to-watched"
-      >
-        add to Watched
-      </button>
-      <button
-        class="modal__button"
-        type="button"
-        data-modal-button="add-to-queue"
-      >
-        add to queue
-      </button>
-    </div>
+    <ul class="charact__list">
+      <li class="charact__value">
+        <span class="acsent">${Math.round10( data.data.vote_average, -1 )}</span> / <span
+          >${data.data.vote_count}</span
+        >
+      </li>
+      <li class="charact__value">
+        ${Math.round10( data.data.popularity, -1 )}
+      </li>
+      <li class="charact__value">${ data.data.original_title }</li>
+      <li class="charact__value">${data.data.title}</li>
+    </ul>
   </div>
+  <div class="modal__about">
+    <p>ABOUT</p>
+    <p class="about">${data.data.overview}</p>
+  </div>
+  <div class="modal__buttons">
+    <button
+      class="modal__button"
+      type="button"
+      data-modal-button="add-to-watched"
+    >
+      add to Watched
+    </button>
+    <button
+      class="modal__button"
+      type="button"
+      data-modal-button="add-to-queue"
+    >
+      add to queue
+    </button>
+  </div>
+</div>
 `;
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }

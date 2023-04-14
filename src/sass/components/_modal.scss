@@ -1,5 +1,5 @@
 $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-$animation-time: 250ms;
+$animation-time: 500ms;
 
 .is-hidden {
   position: absolute;
@@ -56,13 +56,13 @@ $animation-time: 250ms;
   width: calc(100vw - 10px);
   max-width: 806px;
   min-height: 609px;
-  padding: 40px;
+  padding: 40px 12px;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 5px;
   -webkit-transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -71,9 +71,6 @@ $animation-time: 250ms;
 .backdrop .is-hidden .modal {
   -webkit-transform: translate(-50%, -50%) scale(0.9);
   transform: translate(-50%, -50%) scale(0.9);
-}
-.modal__img {
-  width: 250px;
 }
 
 // Кнопка закриття вікна
@@ -99,8 +96,65 @@ $animation-time: 250ms;
   transition: fill $animation-time $timing-function;
 }
 
-// .modal__container {
-//   display: flex;
-//   align-items: center;
-//   background-color: green;
-// }
+.modal__container {
+  display: flex;
+  // padding: 0 12px 40px 12px;
+  // justify-content: space-around;
+  // align-items: center;
+  // background-color: green;
+}
+.modal__img {
+  display: block;
+  width: 375px;
+  margin-right: 16px;
+  border-radius: 5px;
+}
+
+.modal__title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+  margin-bottom: 20px;
+}
+.charact__list {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  &:first-child {
+    margin-right: 85px;
+  }
+}
+.charact__name {
+  color: #8c8c8c;
+  font-size: 12px;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+
+.charact__value {
+  font-size: 12px;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+.charact__value > span {
+  display: inline-block;
+  padding: 1px 4px;
+  background-color: #F7F7F7;
+  border-radius: 5px;
+}
+.charact__value > .acsent {
+  background-color: #B92F2C;
+  padding: 1px 10px;
+}
+.modal__about > p {
+  font-size: 12px;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+.modal__about > .about {
+  font-size: 12px;
+  line-height: 1.66;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
