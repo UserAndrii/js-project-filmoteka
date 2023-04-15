@@ -7,6 +7,7 @@ import './js/theme-switcher';
 import './js/modal';
 
 import './js/team-modal';
+import './js/movie-carousel';
 import './js/main-gallery';
 
 import './js/library';
