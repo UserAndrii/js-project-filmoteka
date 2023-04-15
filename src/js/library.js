@@ -31,23 +31,9 @@ function onLibraryBtnClick() {
   // Коли пуста бібліотека
 
   libRefs.library.innerHTML = '';
-
-  // const markUpETC = `<div class='x'>
-  // </div>`
-
-  // // document.createElement('img');
-  // // img.src = '../images/hero-img/desktop-hero-img@1x-min.jpg';  
-
-  // console.log(libRefs.library.style);
-
-  // libRefs.library.insertAdjacentHTML('afterbegin', markUpETC);
   
-  // const x = document.querySelector('.x');
-  // x.style.margin = '100px auto';
-  // x.style.width = '100px';
-  // x.style.height = '100px';
-  // x.style.backgroundImage = 'url(../images/hero-img/desktop-hero-img@1x-min.jpg)';
-
+  console.log(document.querySelector('.empty-page'));
+  document.querySelector('.empty-page').style.display = 'block';
 
   libRefs.heroBtnLibrary.style.display = 'block'
   libRefs.libraryBtn.style.backgroundColor = '#000';
