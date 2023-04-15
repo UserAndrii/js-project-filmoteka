@@ -51,15 +51,16 @@ $animation-time: 500ms;
   cursor: pointer;
   border: none;
   background-color: transparent;
+  stroke: #000000;
 
   &:hover,
   &:focus .btn-close__icon {
-    fill: getColor('brand-color-first');
+    stroke: getColor('brand-color-first');
   }
 }
 
 .close-btn__icon {
-  fill: getColor('font-colot-hed');
+  stroke: getColor('font-colot-hed');
   transition: fill $animation-time $timing-function;
 }
 
@@ -75,7 +76,7 @@ $animation-time: 500ms;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (max-width: 479px) {
     max-width: 280px;
@@ -193,6 +194,8 @@ $animation-time: 500ms;
   border-radius: 100px;
   border: 1px solid #000000;
   color: #b92f2c;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
     border: 1px solid #b92f2c;

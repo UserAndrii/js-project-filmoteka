@@ -130,6 +130,12 @@
   color: $primary-title-color;
 }
 
+@media screen and (max-width: 767px) {
+  .btn-theme {
+    display: none;
+  }
+}
+
 // TABLET-STYLE
 @media screen and (min-width: 768px) {
   .hero {
@@ -184,6 +190,34 @@
     font-size: 40px;
     line-height: 1.18;
   }
+
+  .btn-theme {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .change_theme {
+    fill: #fff;
+    stroke: #fff;
+    cursor: pointer;
+    background-color: #0000;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 1px 4px 6px #ffffff29;
+    transition: all $transition-timing $timing-function;
+
+    &:hover,
+    &:focus {
+      stroke: $accent-color;
+      fill: $accent-color;
+      border-color: $accent-color;
+    }
+  }
+
+  .change_theme[data-theme='onLight'] {
+    display: none;
+  }
 }
 
 // DESKTOP STYLE
@@ -224,5 +258,10 @@
 
   .logo__title {
     font-size: 64px;
+  }
+
+  .btn-theme {
+    bottom: 32px;
+    right: 32px;
   }
 }
