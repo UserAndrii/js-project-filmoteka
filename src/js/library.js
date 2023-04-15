@@ -32,7 +32,6 @@ function onLibraryBtnClick() {
 
   libRefs.library.innerHTML = '';
   
-  console.log(document.querySelector('.empty-page'));
   document.querySelector('.empty-page').style.display = 'block';
 
   libRefs.heroBtnLibrary.style.display = 'block'
@@ -48,6 +47,12 @@ function onLibraryBtnClick() {
 
 // const themoviedbAPI = new ThemoviedbAPI();
 
+libRefs.homeBtn.addEventListener('click', clearMyLibMarUp);
+
+function clearMyLibMarUp() {
+  return document.querySelector('.empty-page').style.display= 'none';
+}
+
 libRefs.watchBtn.addEventListener('click', () => {
   //   класс 'is-active' може буте змінений відповідно до загального css
   libRefs.queueBtn.classList.remove('is-active');
@@ -55,11 +60,11 @@ libRefs.watchBtn.addEventListener('click', () => {
   renderWatchedMovies();
 
   // Зміна стилів кнопок
-  libRefs.watchBtn.style.color = '#ffffff';
-  libRefs.watchBtn.style.backgroundColor = '#b92f2c';
+  // libRefs.watchBtn.style.color = '#ffffff';
+  // libRefs.watchBtn.style.backgroundColor = '#b92f2c';
 
-  libRefs.queueBtn.style.color = '#b92f2c'; // червоний
-  libRefs.queueBtn.style.backgroundColor = '#ffffff'; // білий
+  // libRefs.queueBtn.style.color = '#b92f2c'; // червоний
+  // libRefs.queueBtn.style.backgroundColor = '#ffffff'; // білий
 });
 
 libRefs.queueBtn.addEventListener('click', () => {
@@ -69,11 +74,11 @@ libRefs.queueBtn.addEventListener('click', () => {
   renderQueueMovies();
 
   // Зміна стилів кнопок
-  libRefs.queueBtn.style.color = '#ffffff';
-  libRefs.queueBtn.style.backgroundColor = '#b92f2c';
+  // libRefs.queueBtn.style.color = '#ffffff';
+  // libRefs.queueBtn.style.backgroundColor = '#b92f2c';
 
-  libRefs.watchBtn.style.color = '#b92f2c'; // червоний
-  libRefs.watchBtn.style.backgroundColor = '#ffffff'; // білий
+  // libRefs.watchBtn.style.color = '#b92f2c'; // червоний
+  // libRefs.watchBtn.style.backgroundColor = '#ffffff'; // білий
 });
 
 function renderWatchedMovies() {
