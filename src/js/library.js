@@ -8,7 +8,7 @@ const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const libRefs = {
   libraryBtn: document.querySelector('.btn_library'),
   // назва класу gallery--library може бути змінена
-  library: document.querySelector('.gallery--library'),
+  library: document.querySelector('.gallery'),    // -- > клас gallery--library був змінений на gallery
   // кнопки watchBtn та queueBtn додані та закоментовані в index.html
   watchBtn: document.querySelector('.btn-watched'),
   queueBtn: document.querySelector('.btn-queue'),
@@ -28,15 +28,33 @@ function onLibraryBtnClick() {
   // libRefs.watchBtn.classList.remove('is-hidden');
   // libRefs.queueBtn.classList.remove('is-hidden');
 
+  // Коли пуста бібліотека
+
+  libRefs.library.innerHTML = '';
+
+  // const markUpETC = `<div class='x'>
+  // </div>`
+
+  // // document.createElement('img');
+  // // img.src = '../images/hero-img/desktop-hero-img@1x-min.jpg';  
+
+  // console.log(libRefs.library.style);
+
+  // libRefs.library.insertAdjacentHTML('afterbegin', markUpETC);
+  
+  // const x = document.querySelector('.x');
+  // x.style.margin = '100px auto';
+  // x.style.width = '100px';
+  // x.style.height = '100px';
+  // x.style.backgroundImage = 'url(../images/hero-img/desktop-hero-img@1x-min.jpg)';
+
+
   libRefs.heroBtnLibrary.style.display = 'block'
   libRefs.libraryBtn.style.backgroundColor = '#000';
   libRefs.libraryBtn.style.color = '#fff';
 
   libRefs.homeBtn.style.backgroundColor = '#fff';
   libRefs.homeBtn.style.color = '#000';
-
-  // для позиціонування кнопок watched та queue  (O)
-  // libRefs.heroWrapper.style.justifyContent = 'space-between';
 
   // якщо немає доданих фільмів, то має з’явитися інформація про це:
   // <h2>YOUR WATCHED-LIST OR QUEUE-LIST IS EMPTY...</h2>
@@ -49,6 +67,13 @@ libRefs.watchBtn.addEventListener('click', () => {
   libRefs.queueBtn.classList.remove('is-active');
   libRefs.watchBtn.classList.add('is-active');
   renderWatchedMovies();
+
+  // Зміна стилів кнопок
+  libRefs.watchBtn.style.color = '#ffffff';
+  libRefs.watchBtn.style.backgroundColor = '#b92f2c';
+
+  libRefs.queueBtn.style.color = '#b92f2c'; // червоний
+  libRefs.queueBtn.style.backgroundColor = '#ffffff'; // білий
 });
 
 libRefs.queueBtn.addEventListener('click', () => {
@@ -56,6 +81,13 @@ libRefs.queueBtn.addEventListener('click', () => {
   libRefs.watchBtn.classList.remove('is-active');
   libRefs.queueBtn.classList.add('is-active');
   renderQueueMovies();
+
+  // Зміна стилів кнопок
+  libRefs.queueBtn.style.color = '#ffffff';
+  libRefs.queueBtn.style.backgroundColor = '#b92f2c';
+
+  libRefs.watchBtn.style.color = '#b92f2c'; // червоний
+  libRefs.watchBtn.style.backgroundColor = '#ffffff'; // білий
 });
 
 function renderWatchedMovies() {

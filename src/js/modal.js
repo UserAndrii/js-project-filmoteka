@@ -15,6 +15,7 @@ refs.btnModalClose.addEventListener('click', function () {
   classTogle(refs.modalBackdrop);
   classTogle(refs.modal);
 });
+
 // refs.modalBackdrop.addEventListener('click', function () {
 //   classTogle(refs.modalBackdrop);
 //   classTogle(refs.modal);

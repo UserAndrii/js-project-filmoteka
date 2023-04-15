@@ -62,14 +62,14 @@
   border: none;
   cursor: pointer;
 
-  color: $bg-primary-color;
-  background-color: $accent-color;
-  transition: all $transition-timing $timing-function;
-
-  &:hover {
-    color: $title-color;
-    background: $bg-primary-color;
-  }
+    color: $accent-color;
+    background-color: $bg-primary-color;
+    transition: all $transition-timing $timing-function;
+  
+    &:hover {
+      color: $bg-primary-color;
+      background: $accent-color;
+    }
 
   @media screen and (min-width: 768px) {
     padding: 12px 24px;
@@ -85,3 +85,4 @@
 .is-hidden {
   display: none;
 }
+
