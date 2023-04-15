@@ -1,3 +1,5 @@
+import { addToWatchedToLocalStorage, addToQueueToLocalStorage } from './library';
+
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
 
@@ -8,6 +10,8 @@ const refs = {
   modalBackdrop: document.querySelector('.backdrop'),
   modal: document.querySelector('.modal'),
 };
+
+let responseAdd = '';
 
 refs.galleryEl.addEventListener('click', onModalOpen);
 
@@ -34,13 +38,14 @@ async function getFilmData(filmId) {
   clearMarcup(refs.modalCont);
   try {
     const response = await axios.get(url);
+    responseAdd = response;
     return addModalMarcup(response);
   } catch (error) {
     console.error(error);
   }
 }
 
-function addModalMarcup(data) {
+export function addModalMarcup(data) {
   const content = `
   <img
   class="modal__img"
@@ -79,14 +84,14 @@ function addModalMarcup(data) {
   </div>
   <div class="modal__buttons">
     <button
-      class="modal__button"
+      class="modal__button watched-button"
       type="button"
       data-modal-button="add-to-watched"
     >
       add to Watched
     </button>
     <button
-      class="modal__button"
+      class="modal__button queue-button"
       type="button"
       data-modal-button="add-to-queue"
     >
@@ -96,8 +101,41 @@ function addModalMarcup(data) {
 </div>
 `;
   // console.log(content);
+  setTimeout(addListener, 300);
+  // setTimeout(removeListener, 300);
+
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
+
+function addListener() {
+  const addToWatchedBtn = document.querySelector('.watched-button');
+  const addToQuequeBtn = document.querySelector('.queue-button');
+  
+  addToWatchedBtn.addEventListener('click', event => {
+    event.currentTarget.textContent = 'Remove watched';
+    event.currentTarget.disabled = true;
+    addToWatchedToLocalStorage(responseAdd)});
+
+  addToQuequeBtn.addEventListener('click', event => {
+    event.currentTarget.textContent = 'Remove queue';
+    event.currentTarget.disabled = true;
+    addToQueueToLocalStorage(responseAdd)});
+}
+
+// function removeListener() {
+//   const removeFromWatchedBtn = document.querySelector('.watched-button');
+//   const removeFromQuequeBtn = document.querySelector('.queue-button');
+  
+//   removeFromWatchedBtn.addEventListener('click', event => {
+//     event.currentTarget.textContent = 'Added to watched';
+//     event.currentTarget.disabled = true;
+//     removeFromWatchedFromToLocalStorage()});
+
+//   removeFromQuequeBtn.addEventListener('click', event => {
+//     event.currentTarget.textContent = 'Added to queue';
+//     event.currentTarget.disabled = true;
+//     removeFromQueueFromLocalStorage()});
+// }
 
 function clearMarcup(element) {
   element.innerHTML = '';
