@@ -70,41 +70,32 @@
   color: $footer-text-color;
 }
 
-// .basicLightbox {
-//   overflow: scroll;
-// }
-
-// .team-wrapper {
-//   display: none; 
-//   position: fixed;
-//   z-index: 1;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   overflow: auto;
-//   background-color: rgba(0, 0, 0, 0.4);
-// }
-
-// .team-card{
-//   background-color: $footer-bg-color;
-//   margin: 15% auto;
-//   padding: 20px;
-//   border: 1px solid #888;
-//   width: 80%;
-// }
 
 .basicLightbox {
+  
   overflow: scroll;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn ease 0.9s;
+
+  @keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 }
 
 .team-wrapper {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 50px;
 
-  margin: -20px;
-
-  @media screen and (max-width: (780px - 1px)) {
+  @media screen and (max-width: (768px - 1px)) {
     margin-top: 70px;
   }
 
@@ -114,19 +105,20 @@
   border-radius: 15px;
 
   @media screen and (min-width: 1260px) {
-    width: 600px;
+    width: 800px;
 
     border-radius: 25px;
   }
 
-  @media screen and (min-width: 780px) {
-    margin: -30px;
+  @media screen and (min-width: 768px) {
+    margin-top: 45px;
 
     width: 800px;
   }
 }
 
 .team-card {
+
   position: relative;
 
   display: flex;
@@ -137,14 +129,14 @@
 
   width: calc((100% - 80px) / 2);
 
-  @media screen and (min-width: 780px) {
-    width: calc((100% - 160px) / 4);
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 200px) / 5);
   }
 
-  @media screen and (min-width: 780px) {
+  @media screen and (min-width: 768px) {
     margin: 30px;
 
-    width: calc((100% - 240px) / 4);
+    width: calc((100% - 300px) / 5); 
   }
 }
 
@@ -152,53 +144,47 @@
   margin-bottom: 10px;
 
   width: 100%;
-
-  border-radius: 50%;
+  height: auto;
+  border-radius: 10%;
   box-shadow: 5px 5px 11px -2px $footer-text-color;
+
+  transition: 1s;
+
+  &:hover,
+  &:focus{
+      transform: scale(1.2); 
+}
 }
 
 .team-name {
   margin-bottom: 5px;
-
+  text-align: center;
   font-family: $title-color;
   font-weight: 700;
 }
 
 .team-role {
   font-family: '@font-face';
-
-  // @media screen and (max-width:780px- 1px) {
-  //   font-size: 14px;
-  // }
-
+  
   color:  #000000;
+  text-align: center;
 }
 
-.team-git {
-  position: absolute;
+.logo__icon-footer{
+  margin-right: 10px;
+  margin-top: 10px;
 
-  top: 65px;
-  right: -10px;
-
-  @media screen and (min-width: 780px) {
-    top: 100px;
-  }
-
-  @media screen and (min-width: 1260px) {
-    top: 120px;
-  }
-
-  transform: scale(1);
-  // transition(transform);
-
-  &:hover,
-  &:focus {
-    transform: scale(1.5);
-  }
 }
+
 
 .team-modal {
   text-decoration: underline;
 
   cursor: pointer;
 }
+
+.team-linkd:hover,
+.team-linkd:focus {
+      transform: scale(1.2); 
+}
+
