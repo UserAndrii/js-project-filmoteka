@@ -1,0 +1,49 @@
+/* Demo */
+.loader {
+    display: none;
+    justify-content: center;
+}
+
+/* Animation */
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Variables */
+$loader-size: 20px;
+
+/* Loading Icon */
+.loading {
+  position: absolute;
+  width: $loader-size;
+  height: $loader-size;
+
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &__ring {
+    position: absolute;
+    width: $loader-size;
+    height: $loader-size;
+    
+    &:first-child {
+      transform: skew(30deg,20deg);
+    }
+
+    &:last-child {
+      transform: skew(-30deg,-20deg) scale(-1, 1);
+
+      svg {
+        animation-delay: -0.5s;
+      }
+    }
+
+    svg {
+      animation: rotate 1s linear infinite;
+      fill: rgba(185, 47, 44, 0.6);
+    }
+  }
+}

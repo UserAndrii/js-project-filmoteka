@@ -3,6 +3,27 @@ body {
   color: $title-color;
 
   font-family: $primary-font;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 15px rgba(185, 47, 44, 0.1);
+
+    &:hover {
+      -webkit-box-shadow: inset 0 0 15px rgba(185, 47, 44, 0.6);
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #f7d0cf;
+
+    &:hover {
+      background: #b92f2c;
+    }
+  }
 }
 
 h1,
@@ -23,7 +44,7 @@ img {
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  padding: 0 20px;
 
   //   Mobile
   @media screen and (min-width: 320px) {
@@ -33,13 +54,27 @@ img {
   // Tablet
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding: 32px;
+    padding: 0 32px;
   }
 
   // Desktop
   @media screen and (min-width: 1280px) {
     width: 1280px;
   }
+}
+
+.add-padding {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.notiflix-position {
+  position: relative;
 }
 
 .visually-hidden {
@@ -53,4 +88,21 @@ img {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   margin: -1px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
 }

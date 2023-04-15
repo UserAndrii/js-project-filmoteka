@@ -1,0 +1,133 @@
+// Library header buttons  Стилі для кнопок (O)
+.hero__btn-library {
+  display: none;
+  text-align: center;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 16px;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 32px;
+  }
+}
+
+.btn-watched {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-transform: uppercase;
+
+  padding: 10px 23px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+
+  color: $accent-color;
+  background-color: $bg-primary-color;
+  transition: all $transition-timing $timing-function;
+
+  margin-right: 4px;
+
+  &:hover {
+    color: $bg-primary-color;
+    background: $accent-color;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 23px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 14px 32px;
+  }
+}
+
+.btn-queue {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-transform: uppercase;
+
+  padding: 10px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+
+    color: $accent-color;
+    background-color: $bg-primary-color;
+    transition: all $transition-timing $timing-function;
+  
+    &:hover {
+      color: $bg-primary-color;
+      background: $accent-color;
+    }
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 14px 24px;
+  }
+}
+
+// Додав клас is-hidden (O)
+
+.is-hidden {
+  display: none;
+}
+
+// My-Library-page
+
+.empty-page {
+  display: none;
+}
+
+.empty-page__popcorn {
+  width: 230px;
+  height: 120px;
+  
+  margin: auto;
+  
+  border-radius: 15px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+
+  @media screen and (min-width: 768px) {
+    width: 550px;
+    height: 320px;
+  }
+
+  @media screen and (min-width: 1280px) {
+      width: 688px;
+      height: 380px;
+    }
+}
+
+.empty-page__text {
+  margin-top: 10px;
+  
+  text-align: center;
+
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.16;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+  font-size: 20px;
+    }
+
+  @media screen and (min-width: 1280px) {
+  font-size: 25px;
+    }
+}
+

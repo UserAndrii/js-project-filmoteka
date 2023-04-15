@@ -1,0 +1,29 @@
+#NotiflixNotifyWrap {
+  position: absolute;
+
+  @media screen and (max-width: 284px) {
+   width: 180px;
+    top: 150px;
+    left: 36px;
+  }
+
+  @media screen and (min-width: 285px) {
+   width: 193px;
+    top: 103px;
+    left: 36px;
+  }
+
+  @media screen and (min-width: 768px) {
+   width: 180px;
+    top: 81px;
+    left: 52px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 193px;
+    top: 85px;
+    left: 69px;
+  }
+
+  
+}

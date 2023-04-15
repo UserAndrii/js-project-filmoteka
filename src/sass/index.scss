@@ -1,10 +1,17 @@
 @import './utils/common';
-@import './utils/fonts';
 @import './utils/variables';
 @import './utils/base';
 
 @import './components/hero-bg-img';
 @import './components/header';
-@import './components/_hero-modal';
+@import './components/library';
+@import './components/main-gallery';
+@import './components/movie-carousel';
 
 @import './components/footer';
+
+@import './components/modal';
+@import './components/notiflix-message';
+@import './components/loader';
+
+@import './components/btn-to-top'

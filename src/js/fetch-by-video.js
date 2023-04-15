@@ -14,7 +14,7 @@ async function fetchTrailer() {
     const youtubeTrailer = trailers.find(trailer => trailer.site === 'YouTube');
 
     if (!youtubeTrailer) {
-      throw Notiflix.Notify.failure('Trailer not found') ;
+      throw Notiflix.Notify.failure('Trailer not found');
     }
 
     const youtubeLink = `https://www.youtube.com/watch?v=${youtubeTrailer.key}`;
@@ -25,7 +25,6 @@ async function fetchTrailer() {
     throw new Error('Failed to fetch trailer');
   }
 }
-
 
 async function initPlayer() {
   const API_KEY = 'AIzaSyBWjasHUQ-evzof4liEduGpmLNQv1Y-kOE';
@@ -46,9 +45,9 @@ async function initPlayer() {
       showinfo: 0,
     },
     events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+    },
   });
 
   function onPlayerReady(event) {

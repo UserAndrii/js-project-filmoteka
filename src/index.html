@@ -8,25 +8,32 @@
       content="Here you can find your favorite movie, watch the trailer. Also, the functionality allows you to put a queue of films for viewing and a list of watched ones."
     />
     <title>Filmoteka</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link
+      rel="stylesheet"
+      title="theme"
+      href="./sass/components/_dark-theme.scss"
+      disabled
+    />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
     <!-- Header -->
     <header>
-      <div class="container">
+      <div class="container add-padding notiflix-position">
         <div class="hero">
           <div class="hero__wrapper">
             <div class="hero__button--wrapper">
               <button class="hero__btn btn-home">Home</button>
               <button class="hero__btn btn_library">My Library</button>
             </div>
-            <form class="hero__form">
+            <form class="hero__form js-form">
               <label class="hero__label">
                 <input
                   type="text"
                   class="hero__input"
-                  name="movie-search"
+                  name="search"
                   placeholder="Movie Search"
                   autocomplete="off"
                 />
@@ -36,48 +43,92 @@
                   <use href="./images/icons.svg#icon-search"></use>
                 </svg>
               </button>
+              <include src="./partials/loader.html"></include>
             </form>
           </div>
-          <a href="./" class="logo-link">
-            <div class="logo">
-              <svg class="logo__icon" width="32" height="32">
-                <use href="./images/icons.svg#icon-filmoteka"></use>
-              </svg>
-              <h1 class="logo__title">Filmoteka</h1>
+          <div>
+            <a href="./" class="logo-link">
+              <div class="logo">
+                <svg class="logo__icon" width="32" height="32">
+                  <use href="./images/icons.svg#icon-filmoteka"></use>
+                </svg>
+                <h1 class="logo__title">Filmoteka</h1>
+              </div>
+            </a>
+            <div class="btn-theme">
+              <button
+                class="change_theme"
+                data-theme="onLight"
+                aria-label="light theme button"
+              >
+                <svg class="moon-icon" width="24" height="24">
+                  <use href="/src/images/icons.svg#icon-Sun"></use>
+                </svg>
+              </button>
+
+              <button
+                class="change_theme"
+                data-theme="onDark"
+                aria-label="dark theme button"
+              >
+                <svg class="moon-icon" width="24" height="24">
+                  <use href="/src/images/icons.svg#icon-moon"></use>
+                </svg>
+              </button>
             </div>
-          </a>
+            <div class="hero__btn-library">
+              <button class="hero__btn btn-watched">watched</button>
+              <button class="hero__btn btn-queue">queue</button>
+            </div>
+
+            <div class="hero__btn-library">
+              <button class="hero__btn btn-watched">watched</button>
+              <button class="hero__btn btn-queue">queue</button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
     <!--modal-hero-->
-    <include src="./modal.html"></include>
+
     <!-- Main -->
-    <main></main>
-    <!-- Footer -->
+    <main>
+      <div class="container">
+        <include src="./partials/movie-carousel.html"></include>
+
+        <!-- <include src="./partials/loader.html"></include> -->
+        <div class="gallery-wrap">
+                <h2 hidden>Best films of the day</h2>
+          <include src="./partials/library.html"></include>
+          <ul class="gallery">
+          </ul>
+        </div>
+
+      </div>
+    </main>
     <footer class="footer">
+      <!-- <div id="player-container"></div>
+      <script src="https://www.youtube.com/player_api"></script> -->
       <span class="footer-text copyright"
         >&copy; 2023 | All Rights Reserved |&nbsp;</span
       >
       <span class="footer-text"
         >Developed with
         <svg class="footer-svg" width="14" height="14">
-          <use href="./images/icons.svg#icon-heart-group"></use>
-        </svg>
-        <span class="footer-text"
-          >by&nbsp;
-          <a
-            href="#"
-            class="footer-text footer-link underline"
-            id="js-team-modal"
-            rel="noreferrer noopener"
-            aria-label="Our Github"
-            title="Our Github"
-            >GoIT Students</a
-          >
-        </span>
+          <use href="./images/icons.svg#icon-heart-group"></use></svg
+        >by&nbsp;
+        <button class="team-modal js-team-modal" type="button">
+          GoIT Students
+        </button>
       </span>
     </footer>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <!-- <include src="./partials/example.html"></include> -->
+
+    <div class="btn-to-top">
+      <svg class="icon-to-top">
+        <use href="./images/icons.svg#icon-circle-up"></use>
+      </svg>
+    </div>
+
+    <include src="./partials/modal.html"></include>
   </body>
 </html>
