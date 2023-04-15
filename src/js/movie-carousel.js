@@ -60,10 +60,10 @@ const renderMarkupSlider = movies => {
   const markup = movies
     .map(({ id, title, poster_path }) => {
       return `<li class="swiper-slide">
-        <a class="swiper-link" href="#" data-id="${id}"><img src="${
+<img src="${
         poster_path ? API_URL_IMG + poster_path : alternativePoster
-      }" alt="${title}" />
-        </a>
+      }" alt="${title}"  />
+
       </li>`;
     })
     .join('');
