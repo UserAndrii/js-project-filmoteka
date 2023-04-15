@@ -34,6 +34,18 @@
     }
   }
 }
+
+.swiper {
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  list-style: none;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute;
