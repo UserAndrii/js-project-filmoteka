@@ -4,7 +4,7 @@ import './js/fetch-popular-films';
 import './js/fetch-by-search';
 import './js/theme-switcher';
 
-import './js/modal';
+// import './js/modal';
 
 import './js/team-modal';
 import './js/movie-carousel';

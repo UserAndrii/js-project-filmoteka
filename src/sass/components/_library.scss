@@ -62,14 +62,14 @@
   border: none;
   cursor: pointer;
 
-  color: $bg-primary-color;
-  background-color: $accent-color;
-  transition: all $transition-timing $timing-function;
-
-  &:hover {
-    color: $title-color;
-    background: $bg-primary-color;
-  }
+    color: $accent-color;
+    background-color: $bg-primary-color;
+    transition: all $transition-timing $timing-function;
+  
+    &:hover {
+      color: $bg-primary-color;
+      background: $accent-color;
+    }
 
   @media screen and (min-width: 768px) {
     padding: 12px 24px;
@@ -85,3 +85,49 @@
 .is-hidden {
   display: none;
 }
+
+// My-Library-page
+
+.empty-page {
+  display: none;
+}
+
+.empty-page__popcorn {
+  width: 230px;
+  height: 120px;
+  
+  margin: auto;
+  
+  border-radius: 15px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+
+  @media screen and (min-width: 768px) {
+    width: 550px;
+    height: 320px;
+  }
+
+  @media screen and (min-width: 1280px) {
+      width: 688px;
+      height: 380px;
+    }
+}
+
+.empty-page__text {
+  margin-top: 10px;
+  
+  text-align: center;
+
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.16;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+  font-size: 20px;
+    }
+
+  @media screen and (min-width: 1280px) {
+  font-size: 25px;
+    }
+}
+
