@@ -9,6 +9,8 @@ const DEBOUNCE_DELAY = 300;
 const refs = {
   form: document.querySelector('.js-form'),
   home: document.querySelector('.btn-home'),
+  heroBtnLibrary: document.querySelector('.hero__btn-library'),
+  libraryBtn: document.querySelector('.btn_library'),
 };
 
 refs.home.addEventListener(
@@ -23,6 +25,14 @@ refs.form.addEventListener(
 
 function pressButtonToHome(e) {
   e.preventDefault();
+  refs.heroBtnLibrary.style.display = 'none';
+
+  refs.libraryBtn.style.backgroundColor = '#fff';
+  refs.libraryBtn.style.color = '#000';
+
+  refs.home.style.backgroundColor = '';
+  refs.home.style.color = '';
+
   movieSearchService.enableLoader();
   fetchPopularFilms();
   refs.form.reset();
