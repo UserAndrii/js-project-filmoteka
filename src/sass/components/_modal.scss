@@ -1,46 +1,27 @@
-$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$timing-function: cubic-bezier(0, 0, 0.02, 1.1);
 $animation-time: 500ms;
 
-.is-hidden {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  margin: -1px;
+* {
+  box-sizing: border-box;
 }
 .backdrop {
   position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;
-  -webkit-transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity $animation-time $timing-function;
 }
 
-.backdrop .is-hidden {
+.backdrop_is-hidden {
   opacity: 0;
   pointer-events: none;
+  & .modal{
+  transform:translate(-50%, -50%) scaleX(0.1) scaleY(0.1);
 }
-
-// Кнопка закриття вікна
+}
 
 .close-btn {
   position: absolute;
@@ -54,33 +35,36 @@ $animation-time: 500ms;
 
   &:hover,
   &:focus .btn-close__icon {
-    fill: getColor('brand-color-first');
+    fill: #b92f2c;
   }
 }
 
 .close-btn__icon {
-  fill: getColor('font-colot-hed');
+  fill: #000000;
   transition: fill $animation-time $timing-function;
 }
 
 .modal {
   position: absolute;
-  display: flex;
-  flex-direction: column;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform:translate(-50%, -50%) scaleX(1) scaleY(1);
   width: calc(100vw - 10px);
   background-color: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all $animation-time $timing-function;
+  z-index: 1;
 
   @media screen and (max-width: 479px) {
     max-width: 280px;
     padding: 48px 20px 40px 20px;
-    max-height: calc(100vh - 20px);
+    overflow-y: scroll;
+  }
+  @media screen and (min-width: 480px) {
+    max-width: 460px;
+    padding: 48px 20px 40px 20px;
   }
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -92,11 +76,6 @@ $animation-time: 500ms;
   }
 }
 
-.backdrop .is-hidden .modal {
-  -webkit-transform: translate(-50%, -50%) scale(0.9);
-  transform: translate(-50%, -50%) scale(0.9);
-}
-
 .modal__container {
   @media screen and (min-width: 768px) {
     display: flex;
@@ -105,17 +84,21 @@ $animation-time: 500ms;
 .modal__img {
   display: block;
   border-radius: 5px;
-  height: fit-content;
-  @media screen and (max-width: 479px) {
-    width: 240px;
+  object-fit: cover;
+  @media screen and (max-width: 767px) {
+    min-width: 240px;
+    height: 357px;
     margin-bottom: 20px;
   }
+
   @media screen and (min-width: 768px) {
     width: 264px;
+    height: 374px;
     margin-right: 68px;
   }
   @media screen and (min-width: 1280px) {
     width: 375px;
+    height: 478px;
     margin-right: 16px;
   }
 }
@@ -133,10 +116,7 @@ $animation-time: 500ms;
     line-height: 1.16;
   }
 }
-// .characteristics {
-//   display: flex;
-//   justify-content: space-between;
-// }
+
 .charact__list {
   display: inline-block;
   margin-bottom: 20px;
@@ -187,7 +167,7 @@ $animation-time: 500ms;
 }
 .modal__button {
   font-size: 12px;
-  line-height: 1.33;
+  line-height: 1.16;
   text-transform: uppercase;
   background-color: transparent;
   border-radius: 100px;
@@ -203,14 +183,21 @@ $animation-time: 500ms;
 
   @media screen and (max-width: 479px) {
     padding: 10px 12px;
-    margin-right: 4px;
+    font-size: 10px;
+    &:first-child {
+      margin-right: 4px;
+    }
   }
   @media screen and (min-width: 768px) {
     padding: 12px 18px;
-    margin-right: 8px;
+    &:first-child {
+      margin-right: 8px;
+    }
   }
   @media screen and (min-width: 1280px) {
     padding: 14px 32px;
-    margin-right: 8px;
+    &:first-child {
+      margin-right: 8px;
+    }
   }
 }
