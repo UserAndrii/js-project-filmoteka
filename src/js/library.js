@@ -37,12 +37,7 @@ function onLibraryBtnClick() {
 
   libRefs.homeBtn.style.backgroundColor = '#fff';
   libRefs.homeBtn.style.color = '#000';
-
-  // якщо немає доданих фільмів, то має з’явитися інформація про це:
-  // <h2>YOUR WATCHED-LIST OR QUEUE-LIST IS EMPTY...</h2>
 }
-
-// const themoviedbAPI = new ThemoviedbAPI();
 
 libRefs.homeBtn.addEventListener('click', clearMyLibMarUp);
 
