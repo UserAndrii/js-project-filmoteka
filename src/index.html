@@ -10,6 +10,12 @@
     <title>Filmoteka</title>
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link
+      rel="stylesheet"
+      title="theme"
+      href="./sass/components/_dark-theme.scss"
+      disabled
+    />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
@@ -49,28 +55,57 @@
                 <h1 class="logo__title">Filmoteka</h1>
               </div>
             </a>
+            <div class="btn-theme">
+              <button
+                class="change_theme"
+                data-theme="onLight"
+                aria-label="light theme button"
+              >
+                <svg class="moon-icon" width="24" height="24">
+                  <use href="/src/images/icons.svg#icon-Sun"></use>
+                </svg>
+              </button>
+
+              <button
+                class="change_theme"
+                data-theme="onDark"
+                aria-label="dark theme button"
+              >
+                <svg class="moon-icon" width="24" height="24">
+                  <use href="/src/images/icons.svg#icon-moon"></use>
+                </svg>
+              </button>
+            </div>
             <div class="hero__btn-library">
               <button class="hero__btn btn-watched">watched</button>
               <button class="hero__btn btn-queue">queue</button>
+
             </div>
+          </a>
+          <div class="hero__btn-library">
+            <button class="hero__btn btn-watched">watched</button>
+            <button class="hero__btn btn-queue">queue</button>
           </div>
         </div>
       </div>
-    </header>
-    <!--modal-hero-->
+    </div>
+  </header>
+  <!--modal-hero-->
 
-    <!-- Main -->
-    <main>
-      <div class="container">
-        <!-- <include src="./partials/loader.html"></include> -->
-        <div class="gallery-wrap">
-          <ul class="gallery"></ul>
-        </div>
+  <!-- Main -->
+  <main>
+    <div class="container">
+      <include src="./partials/movie-carousel.html"></include>
+
+      <!-- <include src="./partials/loader.html"></include> -->
+      <div class="gallery-wrap">
+        <ul class="gallery"></ul>
       </div>
-    </main>
-    <!-- Footer -->
-    <footer class="footer">
-      <!-- <div id="player-container"></div>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- <div id="player-container"></div>
       <script src="https://www.youtube.com/player_api"></script> -->
       <span class="footer-text copyright"
         >&copy; 2023 | All Rights Reserved |&nbsp;</span
@@ -78,10 +113,10 @@
       <span class="footer-text"
         >Developed with
         <svg class="footer-svg" width="14" height="14">
-          <use href="./images/icons.svg#icon-heart-group"></use>
-        </svg>
+          <use href="./images/icons.svg#icon-heart-group"></use></svg
+        >by&nbsp;
         <button class="team-modal js-team-modal" type="button">
-          by GoIT Students
+          GoIT Students
         </button>
       </span>
     </footer>
@@ -89,10 +124,22 @@
     <div class="btn-to-top">
       <svg class="icon-to-top">
         <use href="./images/icons.svg#icon-circle-up"></use>
+
       </svg>
-    </div>
+      <button class="team-modal js-team-modal" type="button">
+        by GoIT Students
+      </button>
+    </span>
+  </footer>
+
+  <div class="btn-to-top">
+    <svg class="icon-to-top">
+      <use href="./images/icons.svg#icon-circle-up"></use>
+    </svg>
+  </div>
+
 
     <include src="./partials/modal.html"></include>
-
   </body>
 </html>
+

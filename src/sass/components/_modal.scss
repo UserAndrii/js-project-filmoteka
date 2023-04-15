@@ -32,22 +32,17 @@ $animation-time: 300ms;
   cursor: pointer;
   border: none;
   background-color: transparent;
+  stroke: #000000;
 
   &:hover,
-  &:focus {
-    border: 1px solid #b92f2c;
-    border-radius: 20px;
-    transition: border $animation-time $timing-function;
+  &:focus .btn-close__icon {
+    fill: getColor('brand-color-first');
   }
 }
 
 .close-btn__icon {
-  fill: #000000;
-  // transition: fill $animation-time $timing-function;
-  // &:hover,
-  // &:focus {
-  //   fill: #b92f2c;
-  // }
+  fill: getColor('font-colot-hed');
+  transition: fill $animation-time $timing-function;
 }
 
 .modal {
@@ -60,8 +55,7 @@ $animation-time: 300ms;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  transition: all $animation-time $timing-function;
-  z-index: 1;
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (max-width: 479px) {
     max-width: 280px;
