@@ -1,11 +1,30 @@
-$timing-function: cubic-bezier(0, 0, 0.02, 1.1);
-$animation-time: 300ms;
+$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-time: 500ms;
 
-* {
-  box-sizing: border-box;
+.is-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 .backdrop {
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -18,7 +37,6 @@ $animation-time: 300ms;
   -webkit-transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
-
 }
 
 .backdrop_is-hidden {
@@ -53,8 +71,13 @@ $animation-time: 300ms;
 
 .modal {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: 50%;
   left: 50%;
+  // transform: translate(-50%, -50%) scale(1);
+  // top: 50%;
+  // left: 50%;
   transform: translate(-50%, -50%) scaleX(1) scaleY(1);
   width: calc(100vw - 10px);
   background-color: #ffffff;
@@ -66,6 +89,8 @@ $animation-time: 300ms;
   @media screen and (max-width: 479px) {
     max-width: 280px;
     padding: 48px 20px 40px 20px;
+    max-height: calc(100vh - 20px);
+
     overflow-y: scroll;
   }
   @media screen and (min-width: 480px) {
@@ -82,6 +107,11 @@ $animation-time: 300ms;
   }
 }
 
+.backdrop .is-hidden .modal {
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
 .modal__container {
   @media screen and (min-width: 768px) {
     display: flex;
@@ -90,122 +120,159 @@ $animation-time: 300ms;
 .modal__img {
   display: block;
   border-radius: 5px;
-  object-fit: cover;
-  @media screen and (max-width: 767px) {
-    min-width: 240px;
-    height: 357px;
+
+  height: fit-content;
+  @media screen and (max-width: 479px) {
+    width: 240px;
     margin-bottom: 20px;
   }
-
   @media screen and (min-width: 768px) {
     width: 264px;
-    height: 374px;
-    margin-right: 68px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 375px;
-    height: 478px;
-    margin-right: 16px;
-  }
-}
+    object-fit: cover;
+    @media screen and (max-width: 767px) {
+      min-width: 240px;
+      height: 357px;
+      margin-bottom: 20px;
+    }
 
-.modal__title {
-  text-transform: uppercase;
-  margin-bottom: 20px;
-
-  @media screen and (max-width: 1279px) {
-    font-size: 20px;
-    line-height: 1.16;
-  }
-  @media screen and (min-width: 1280px) {
-    font-size: 30px;
-    line-height: 1.16;
-  }
-}
-
-.charact__list {
-  display: inline-block;
-  margin-bottom: 20px;
-
-  &:first-child {
-    @media screen and (max-width: 1279px) {
-      margin-right: 40px;
+    @media screen and (min-width: 768px) {
+      width: 264px;
+      height: 374px;
+      margin-right: 68px;
     }
     @media screen and (min-width: 1280px) {
-      margin-right: 85px;
+      width: 375px;
+      height: 478px;
+      margin-right: 16px;
     }
   }
-}
-.charact__name {
-  color: #8c8c8c;
-  font-size: 12px;
-  line-height: 1.33;
-  margin-bottom: 8px;
-}
 
-.charact__value {
-  display: block;
-  max-width: 200px;
-  font-size: 12px;
-  line-height: 1.33;
-  margin-bottom: 8px;
-}
-.charact__value > span {
-  display: inline-block;
-  padding: 1px 4px;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-}
-.charact__value > .acsent {
-  background-color: #b92f2c;
-  padding: 1px 10px;
-  color: #ffffff;
-}
-.modal__about > p {
-  font-size: 12px;
-  line-height: 1.33;
-  margin-bottom: 8px;
-}
-.modal__about > .about {
-  font-size: 12px;
-  line-height: 1.66;
-  margin-bottom: 20px;
-}
-.modal__button {
-  font-size: 12px;
-  line-height: 1.16;
-  text-transform: uppercase;
-  background-color: transparent;
-  border-radius: 100px;
-  border: 1px solid #000000;
-  color: #b92f2c;
-  transition: color $animation-time $timing-function;
-  transition: background-color $animation-time $timing-function;
-  &:hover,
-  &:focus {
-    border: 1px solid #b92f2c;
-    background-color: #b92f2c;
-    color: #ffffff;
-    cursor: pointer;
+  .modal__title {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 1279px) {
+      font-size: 20px;
+      line-height: 1.16;
+    }
+    @media screen and (min-width: 1280px) {
+      font-size: 30px;
+      line-height: 1.16;
+    }
   }
 
-  @media screen and (max-width: 479px) {
-    padding: 10px 12px;
-    font-size: 10px;
+  // .characteristics {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
+
+  .charact__list {
+    display: inline-block;
+    margin-bottom: 20px;
+
     &:first-child {
+      @media screen and (max-width: 1279px) {
+        margin-right: 40px;
+      }
+      @media screen and (min-width: 1280px) {
+        margin-right: 85px;
+      }
+    }
+  }
+  .charact__name {
+    color: #8c8c8c;
+    font-size: 12px;
+    line-height: 1.33;
+    margin-bottom: 8px;
+  }
+
+  .charact__value {
+    display: block;
+    max-width: 200px;
+    font-size: 12px;
+    line-height: 1.33;
+    margin-bottom: 8px;
+  }
+  .charact__value > span {
+    display: inline-block;
+    padding: 1px 4px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+  }
+  .charact__value > .acsent {
+    background-color: #b92f2c;
+    padding: 1px 10px;
+    color: #ffffff;
+  }
+  .modal__about > p {
+    font-size: 12px;
+    line-height: 1.33;
+    margin-bottom: 8px;
+  }
+  .modal__about > .about {
+    font-size: 12px;
+    line-height: 1.66;
+    margin-bottom: 10px;
+  }
+  // .modal__button {
+  //   font-size: 12px;
+  //   line-height: 1.33;
+  //   margin-bottom: 20px;
+  // }
+  .modal__button {
+    font-size: 12px;
+    line-height: 1.16;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-radius: 100px;
+    border: 1px solid #000000;
+    color: #b92f2c;
+    transition: color $animation-time $timing-function;
+    transition: background-color $animation-time $timing-function;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #b92f2c;
+      background-color: #b92f2c;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 479px) {
+      padding: 10px 12px;
       margin-right: 4px;
     }
-  }
-  @media screen and (min-width: 768px) {
-    padding: 12px 18px;
-    &:first-child {
+    @media screen and (min-width: 768px) {
+      padding: 12px 18px;
+      margin-right: 8px;
+    }
+    @media screen and (min-width: 1280px) {
+      padding: 14px 32px;
       margin-right: 8px;
     }
   }
-  @media screen and (min-width: 1280px) {
-    padding: 14px 32px;
-    &:first-child {
-      margin-right: 8px;
-    }
+
+  #player-container {
+    margin-top: -180px;
+    margin-left: auto;
+    margin-right: 50px;
   }
+
+  //     font-size: 10px;
+  //     &:first-child {
+  //       margin-right: 4px;
+  //     }
+  //   }
+  //   @media screen and (min-width: 768px) {
+  //     padding: 12px 18px;
+  //     &:first-child {
+  //       margin-right: 8px;
+  //     }
+  //   }
+  //   @media screen and (min-width: 1280px) {
+  //     padding: 14px 32px;
+  //     &:first-child {
+  //       margin-right: 8px;
+  //     }
+  //   }
 }

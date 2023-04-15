@@ -1,4 +1,7 @@
-import { addToWatchedToLocalStorage, addToQueueToLocalStorage } from './library';
+import {
+  addToWatchedToLocalStorage,
+  addToQueueToLocalStorage,
+} from './library';
 
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
@@ -27,6 +30,22 @@ refs.modalBackdrop.addEventListener('click', function (evt) {
   }
 });
 
+document.getElementById('close-btn').addEventListener('click', function () {
+  document.getElementById('overlay').classList.remove('is-visible');
+  document.getElementById('modal').classList.remove('is-visible');
+});
+
+document.getElementById('overlay').addEventListener('click', function () {
+  document.getElementById('overlay').classList.remove('is-visible');
+  document.getElementById('modal').classList.remove('is-visible');
+});
+
+// function classTogle(element) {
+//   if (element.classList.contains('is-hidden')) {
+//     element.classList.remove('is-hidden');
+//   } else {
+//     element.classList.add('is-hidden');
+
 // refs.modalBackdrop.addEventListener('click', function () {
 //   classTogle(refs.modalBackdrop);
 //   classTogle(refs.modal);
@@ -54,58 +73,63 @@ async function getFilmData(filmId) {
 
 export function addModalMarcup(data) {
   const content = `
-  <img
-  class="modal__img"
-  src="https://image.tmdb.org/t/p/w400/${data.data.poster_path}"
-  alt="${data.data.title}"
-  width="375px"
-/>
-<div class="modal__content">
-  <h2 class="modal__title">${data.data.title}</h2>
-  <div class="characteristics">
-    <ul class="charact__list">
-      <li class="charact__name">Vote / Votes</li>
-      <li class="charact__name">Popularity</li>
-      <li class="charact__name">Original Title</li>
-      <li class="charact__name">Genre</li>
-    </ul>
-    <ul class="charact__list">
-      <li class="charact__value">
-        <span class="acsent">${Math.round10(
-          data.data.vote_average,
-          -1
-        )}</span> / <span
-          >${data.data.vote_count}</span
+    <img
+      class="modal__img"
+      src="https://image.tmdb.org/t/p/w400/${data.data.poster_path}"
+      alt="${data.data.title}"
+      width="375px"
+    />
+    <div class="modal__content">
+      <h2 class="modal__title">${data.data.title}</h2>
+      <div class="characteristics">
+        <ul class="charact__list">
+          <li class="charact__name">Vote / Votes</li>
+          <li class="charact__name">Popularity</li>
+          <li class="charact__name">Original Title</li>
+          <li class="charact__name">Genre</li>
+        </ul>
+        <ul class="charact__list">
+          <li class="charact__value">
+            <span class="acsent"
+              >${Math.round10(data.data.vote_average, -1)}</span
+            >
+            / <span>${data.data.vote_count}</span>
+          </li>
+          <li class="charact__value">
+            ${Math.round10(data.data.popularity, -1)}
+          </li>
+          <li class="charact__value">
+            ${trimString(data.data.original_title)}
+          </li>
+          <li class="charact__value">
+            ${trimString(getGenres(data.data.genres))}
+          </li>
+        </ul>
+      </div>
+      <div class="modal__about">
+        <p>ABOUT</p>
+        <p class="about">${data.data.overview}</p>
+      </div>
+      <div class="modal__buttons">
+        <button
+          class="modal__button watched-button"
+          type="button"
+          data-modal-button="add-to-watched"
         >
-      </li>
-      <li class="charact__value">
-        ${Math.round10(data.data.popularity, -1)}
-      </li>
-      <li class="charact__value">${trimString(data.data.original_title)}</li>
-      <li class="charact__value">${trimString(getGenres(data.data.genres))}</li>
-    </ul>
-  </div>
-  <div class="modal__about">
-    <p>ABOUT</p>
-    <p class="about">${data.data.overview}</p>
-  </div>
-  <div class="modal__buttons">
-    <button
-      class="modal__button watched-button"
-      type="button"
-      data-modal-button="add-to-watched"
-    >
-      add to Watched
-    </button>
-    <button
-      class="modal__button queue-button"
-      type="button"
-      data-modal-button="add-to-queue"
-    >
-      add to queue
-    </button>
-  </div>
-</div>
+          add to Watched
+        </button>
+        <button
+          class="modal__button queue-button"
+          type="button"
+          data-modal-button="add-to-queue"
+        >
+          add to queue
+        </button>
+      </div>
+
+      <div id="player-container"></div>
+      <script src="https://www.youtube.com/player_api"></script>
+    </div>
 `;
 
   // console.log(content);
@@ -118,22 +142,24 @@ export function addModalMarcup(data) {
 function addListener() {
   const addToWatchedBtn = document.querySelector('.watched-button');
   const addToQuequeBtn = document.querySelector('.queue-button');
-  
+
   addToWatchedBtn.addEventListener('click', event => {
     event.currentTarget.textContent = 'Remove watched';
     event.currentTarget.disabled = true;
-    addToWatchedToLocalStorage(responseAdd)});
+    addToWatchedToLocalStorage(responseAdd);
+  });
 
   addToQuequeBtn.addEventListener('click', event => {
     event.currentTarget.textContent = 'Remove queue';
     event.currentTarget.disabled = true;
-    addToQueueToLocalStorage(responseAdd)});
+    addToQueueToLocalStorage(responseAdd);
+  });
 }
 
 // function removeListener() {
 //   const removeFromWatchedBtn = document.querySelector('.watched-button');
 //   const removeFromQuequeBtn = document.querySelector('.queue-button');
-  
+
 //   removeFromWatchedBtn.addEventListener('click', event => {
 //     event.currentTarget.textContent = 'Added to watched';
 //     event.currentTarget.disabled = true;
@@ -150,6 +176,11 @@ function clearMarcup(element) {
 }
 
 function onModalOpen(event) {
+  // let filmId = event.target.id;
+  // getFilmData(filmId);
+  // classTogle(refs.modalBackdrop);
+  // classTogle(refs.modal);
+
   // console.log('click galery');
   filmId = event.target.id;
   if (filmId) {
@@ -205,6 +236,18 @@ function getGenres(genres) {
 
 function trimString(string) {
   const width = window.innerWidth;
+
+  // if ((string.length > 35) & (width >= 1280)) {
+  //   return `${string.slice(0, 34)}...`;
+  // }
+  // if ((string.length > 25) & (width >= 768)) {
+  //   return `${string.slice(0, 24)}...`;
+  // }
+  // if ((string.length > 20) & (width >= 320)) {
+  //   return `${string.slice(0, 19)}...`;
+  // }
+  // return string;
+
   if ((string.length > 40) & (width >= 1280)) {
     return `${string.slice(0, 39)}...`;
   }
