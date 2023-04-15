@@ -1,98 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Here you can find your favorite movie, watch the trailer. Also, the functionality allows you to put a queue of films for viewing and a list of watched ones."
-    />
-    <title>Filmoteka</title>
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="container add-padding notiflix-position">
-        <div class="hero">
-          <div class="hero__wrapper">
-            <div class="hero__button--wrapper">
-              <button class="hero__btn btn-home">Home</button>
-              <button class="hero__btn btn_library">My Library</button>
-            </div>
-            <form class="hero__form js-form">
-              <label class="hero__label">
-                <input
-                  type="text"
-                  class="hero__input"
-                  name="search"
-                  placeholder="Movie Search"
-                  autocomplete="off"
-                />
-              </label>
-              <button class="hero__submit">
-                <svg class="hero__btn--icon" width="14" height="14">
-                  <use href="./images/icons.svg#icon-search"></use>
-                </svg>
-              </button>
-              <include src="./partials/loader.html"></include>
-            </form>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Here you can find your favorite movie, watch the trailer. Also, the functionality allows you to put a queue of films for viewing and a list of watched ones." />
+  <title>Filmoteka</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="./sass/index.scss" />
+  <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container add-padding notiflix-position">
+      <div class="hero">
+        <div class="hero__wrapper">
+          <div class="hero__button--wrapper">
+            <button class="hero__btn btn-home">Home</button>
+            <button class="hero__btn btn_library">My Library</button>
           </div>
-          <div>
-            <a href="./" class="logo-link">
-              <div class="logo">
-                <svg class="logo__icon" width="32" height="32">
-                  <use href="./images/icons.svg#icon-filmoteka"></use>
-                </svg>
-                <h1 class="logo__title">Filmoteka</h1>
-              </div>
-            </a>
-            <div class="hero__btn-library">
-              <button class="hero__btn btn-watched">watched</button>
-              <button class="hero__btn btn-queue">queue</button>
+          <form class="hero__form js-form">
+            <label class="hero__label">
+              <input type="text" class="hero__input" name="search" placeholder="Movie Search" autocomplete="off" />
+            </label>
+            <button class="hero__submit">
+              <svg class="hero__btn--icon" width="14" height="14">
+                <use href="./images/icons.svg#icon-search"></use>
+              </svg>
+            </button>
+            <include src="./partials/loader.html"></include>
+          </form>
+        </div>
+        <div>
+          <a href="./" class="logo-link">
+            <div class="logo">
+              <svg class="logo__icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-filmoteka"></use>
+              </svg>
+              <h1 class="logo__title">Filmoteka</h1>
             </div>
+          </a>
+          <div class="hero__btn-library">
+            <button class="hero__btn btn-watched">watched</button>
+            <button class="hero__btn btn-queue">queue</button>
           </div>
         </div>
       </div>
-    </header>
-    <!--modal-hero-->
-
-    <!-- Main -->
-    <main>
-      <div class="container">
-        <!-- <include src="./partials/loader.html"></include> -->
-        <div class="gallery-wrap">
-          <ul class="gallery"></ul>
-        </div>
-      </div>
-    </main>
-    <!-- Footer -->
-    <footer class="footer">
-      <!-- <div id="player-container"></div>
-      <script src="https://www.youtube.com/player_api"></script> -->
-      <span class="footer-text copyright"
-        >&copy; 2023 | All Rights Reserved |&nbsp;</span
-      >
-      <span class="footer-text"
-        >Developed with
-        <svg class="footer-svg" width="14" height="14">
-          <use href="./images/icons.svg#icon-heart-group"></use>
-        </svg>
-        <button class="team-modal js-team-modal" type="button">
-          by GoIT Students
-        </button>
-      </span>
-    </footer>
-
-    <div class="btn-to-top">
-      <svg class="icon-to-top">
-        <use href="./images/icons.svg#icon-circle-up"></use>
-      </svg>
     </div>
+  </header>
+  <!--modal-hero-->
 
-    <include src="./partials/modal.html"></include>
+  <!-- Main -->
+  <main>
+    <div class="container">
+      <include src="./partials/movie-carousel.html"></include>
 
-  </body>
+      <!-- <include src="./partials/loader.html"></include> -->
+      <div class="gallery-wrap">
+        <ul class="gallery"></ul>
+      </div>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- <div id="player-container"></div>
+      <script src="https://www.youtube.com/player_api"></script> -->
+    <span class="footer-text copyright">&copy; 2023 | All Rights Reserved |&nbsp;</span>
+    <span class="footer-text">Developed with
+      <svg class="footer-svg" width="14" height="14">
+        <use href="./images/icons.svg#icon-heart-group"></use>
+      </svg>
+      <button class="team-modal js-team-modal" type="button">
+        by GoIT Students
+      </button>
+    </span>
+  </footer>
+
+  <div class="btn-to-top">
+    <svg class="icon-to-top">
+      <use href="./images/icons.svg#icon-circle-up"></use>
+    </svg>
+  </div>
+
+  <include src="./partials/modal.html"></include>
+
+</body>
+
 </html>
