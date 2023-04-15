@@ -56,14 +56,15 @@
 .movie-card__image {
   border-radius: 10px;
   min-width: 280px;
-  min-height: 402px;
+  height: 402px;
+  object-fit: cover;
 
   @media screen and (min-width: 768px) {
-    min-height: 455px;
+    height: 455px;
   }
 
   @media screen and (min-width: 1280px) {
-    min-height: 574px;
+    height: 574px;
   }
 }
 
