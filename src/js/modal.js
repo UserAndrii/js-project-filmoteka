@@ -2,6 +2,7 @@ import { addToWatchedToLocalStorage, addToQueueToLocalStorage } from './library'
 
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
+let filmId;
 
 const refs = {
   modalCont: document.querySelector('.modal__container'),
@@ -17,7 +18,13 @@ refs.galleryEl.addEventListener('click', onModalOpen);
 
 refs.btnModalClose.addEventListener('click', function () {
   classTogle(refs.modalBackdrop);
-  classTogle(refs.modal);
+  // console.log('click btn');
+});
+refs.modalBackdrop.addEventListener('click', function (evt) {
+  if (evt.target === refs.modalBackdrop) {
+    classTogle(refs.modalBackdrop);
+    // console.log('click backdrop');
+  }
 });
 
 // refs.modalBackdrop.addEventListener('click', function () {
@@ -26,10 +33,10 @@ refs.btnModalClose.addEventListener('click', function () {
 // });
 
 function classTogle(element) {
-  if (element.classList.contains('is-hidden')) {
-    element.classList.remove('is-hidden');
+  if (element.classList.contains('backdrop_is-hidden')) {
+    element.classList.remove('backdrop_is-hidden');
   } else {
-    element.classList.add('is-hidden');
+    element.classList.add('backdrop_is-hidden');
   }
 }
 
@@ -49,7 +56,7 @@ export function addModalMarcup(data) {
   const content = `
   <img
   class="modal__img"
-  src="https://image.tmdb.org/t/p/w500/${data.data.poster_path}"
+  src="https://image.tmdb.org/t/p/w400/${data.data.poster_path}"
   alt="${data.data.title}"
   width="375px"
 />
@@ -100,6 +107,7 @@ export function addModalMarcup(data) {
   </div>
 </div>
 `;
+
   // console.log(content);
   setTimeout(addListener, 300);
   // setTimeout(removeListener, 300);
@@ -142,10 +150,13 @@ function clearMarcup(element) {
 }
 
 function onModalOpen(event) {
-  let filmId = event.target.id;
-  getFilmData(filmId);
-  classTogle(refs.modalBackdrop);
-  classTogle(refs.modal);
+  // console.log('click galery');
+  filmId = event.target.id;
+  if (filmId) {
+    getFilmData(filmId);
+    classTogle(refs.modalBackdrop);
+    document.addEventListener('keydown', escEvt);
+  }
 }
 // Округлення чисел
 
@@ -194,14 +205,23 @@ function getGenres(genres) {
 
 function trimString(string) {
   const width = window.innerWidth;
-  if ((string.length > 35) & (width >= 1280)) {
-    return `${string.slice(0, 34)}...`;
+  if ((string.length > 40) & (width >= 1280)) {
+    return `${string.slice(0, 39)}...`;
   }
-  if ((string.length > 25) & (width >= 768)) {
-    return `${string.slice(0, 24)}...`;
+  if ((string.length > 30) & (width >= 768)) {
+    return `${string.slice(0, 29)}...`;
   }
   if ((string.length > 20) & (width >= 320)) {
-    return `${string.slice(0, 19)}...`;
+    return `${string.slice(0, 17)}...`;
   }
   return string;
+}
+
+function escEvt(evt) {
+  evt.preventDefault();
+  if (evt.keyCode == 27 && refs.modal != null) {
+    classTogle(refs.modalBackdrop);
+    // console.log('Esc');
+  }
+  document.removeEventListener('keydown', escEvt);
 }
