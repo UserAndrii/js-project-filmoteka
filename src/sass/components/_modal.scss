@@ -1,5 +1,5 @@
 $timing-function: cubic-bezier(0, 0, 0.02, 1.1);
-$animation-time: 500ms;
+$animation-time: 300ms;
 
 * {
   box-sizing: border-box;
@@ -18,9 +18,9 @@ $animation-time: 500ms;
 .backdrop_is-hidden {
   opacity: 0;
   pointer-events: none;
-  & .modal{
-  transform:translate(-50%, -50%) scaleX(0.1) scaleY(0.1);
-}
+  & .modal {
+    transform: translate(-50%, -50%) scaleX(0.1) scaleY(0.1);
+  }
 }
 
 .close-btn {
@@ -34,21 +34,27 @@ $animation-time: 500ms;
   background-color: transparent;
 
   &:hover,
-  &:focus .btn-close__icon {
-    fill: #b92f2c;
+  &:focus {
+    border: 1px solid #b92f2c;
+    border-radius: 20px;
+    transition: border $animation-time $timing-function;
   }
 }
 
 .close-btn__icon {
   fill: #000000;
-  transition: fill $animation-time $timing-function;
+  // transition: fill $animation-time $timing-function;
+  // &:hover,
+  // &:focus {
+  //   fill: #b92f2c;
+  // }
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform:translate(-50%, -50%) scaleX(1) scaleY(1);
+  transform: translate(-50%, -50%) scaleX(1) scaleY(1);
   width: calc(100vw - 10px);
   background-color: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -173,6 +179,8 @@ $animation-time: 500ms;
   border-radius: 100px;
   border: 1px solid #000000;
   color: #b92f2c;
+  transition: color $animation-time $timing-function;
+  transition: background-color $animation-time $timing-function;
   &:hover,
   &:focus {
     border: 1px solid #b92f2c;

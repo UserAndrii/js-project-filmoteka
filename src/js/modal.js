@@ -14,12 +14,13 @@ refs.galleryEl.addEventListener('click', onModalOpen);
 
 refs.btnModalClose.addEventListener('click', function () {
   classTogle(refs.modalBackdrop);
+  // console.log('click btn');
 });
 refs.modalBackdrop.addEventListener('click', function (evt) {
   if (evt.target === refs.modalBackdrop) {
     classTogle(refs.modalBackdrop);
+    // console.log('click backdrop');
   }
-
 });
 
 function classTogle(element) {
@@ -104,11 +105,12 @@ function clearMarcup(element) {
 }
 
 function onModalOpen(event) {
+  // console.log('click galery');
   filmId = event.target.id;
   if (filmId) {
     getFilmData(filmId);
     classTogle(refs.modalBackdrop);
-    document.addEventListener("keydown", escEvt);
+    document.addEventListener('keydown', escEvt);
   }
 }
 // Округлення чисел
@@ -174,9 +176,7 @@ function escEvt(evt) {
   evt.preventDefault();
   if (evt.keyCode == 27 && refs.modal != null) {
     classTogle(refs.modalBackdrop);
-    classTogle(refs.modal);
-    console.log("Esc");
+    // console.log('Esc');
   }
-  document.removeEventListener("keydown", escEvt);
+  document.removeEventListener('keydown', escEvt);
 }
-
