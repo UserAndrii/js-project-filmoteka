@@ -1,10 +1,10 @@
 import genres from './genres';
 import MovieSearchService from './movie-search-service';
 
-const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
+export const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
 
 const moviesGallery = document.querySelector('.gallery');
-const alternativePoster = 'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
+export const alternativePoster = 'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
 
 const movieSearchService = new MovieSearchService();
 
