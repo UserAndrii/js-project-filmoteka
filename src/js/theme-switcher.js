@@ -1,4 +1,4 @@
-import { saveLocal, loadLocal, removeLocal } from './localStorage';
+import { saveLocal, loadLocal } from './localStorage';
 
 const themeSwither = document.querySelectorAll(`.change_theme`);
 const changeThemeCssLink = document.querySelector(`[title= "theme"]`);
