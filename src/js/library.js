@@ -39,7 +39,7 @@ function onLibraryBtnClick() {
   libRefs.homeBtn.style.color = '#000';
 }
 
-libRefs.homeBtn.addEventListener('click', clearMyLibMarUp);
+libRefs.homeBtn.addEventListener('click', clearMyLibMarUp); // допрацювати кнопки watched та queue при натисканні на home btn (O)
 
 function clearMyLibMarUp() {
   return document.querySelector('.empty-page').style.display= 'none';
@@ -52,6 +52,9 @@ libRefs.watchBtn.addEventListener('click', () => {
   renderWatchedMovies();
 
   // Зміна стилів кнопок
+
+  libRefs.watchBtn.classList.add('btn-watched--active');
+  libRefs.queueBtn.classList.remove('btn-queue--active');
   // libRefs.watchBtn.style.color = '#ffffff';
   // libRefs.watchBtn.style.backgroundColor = '#b92f2c';
 
@@ -66,6 +69,9 @@ libRefs.queueBtn.addEventListener('click', () => {
   renderQueueMovies();
 
   // Зміна стилів кнопок
+
+  libRefs.watchBtn.classList.remove('btn-watched--active');
+  libRefs.queueBtn.classList.add('btn-queue--active');
   // libRefs.queueBtn.style.color = '#ffffff';
   // libRefs.queueBtn.style.backgroundColor = '#b92f2c';
 

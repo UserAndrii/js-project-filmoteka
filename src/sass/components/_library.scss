@@ -80,6 +80,16 @@
   }
 }
 
+.btn-watched--active {
+  color: $bg-primary-color;
+  background-color: $accent-color;
+}
+
+.btn-queue--active {
+  color: $bg-primary-color;
+  background-color: $accent-color;
+}
+
 // Додав клас is-hidden (O)
 
 .is-hidden {
