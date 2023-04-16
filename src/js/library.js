@@ -22,29 +22,33 @@ const libRefs = {
 libRefs.libraryBtn.addEventListener('click', onLibraryBtnClick);
 
 function onLibraryBtnClick() {
+  libRefs.library.innerHTML = '';
   // libRefs.watchBtn.classList.remove('is-hidden');
   // libRefs.queueBtn.classList.remove('is-hidden');
 
-  // Коли пуста бібліотека
-  libRefs.library.innerHTML = '';
+  // Робить кнопку home білою
+  libRefs.homeBtn.style.backgroundColor = '#fff';
+  libRefs.homeBtn.style.color = '#000';
 
-  if (localStorage.getItem("watched")) {
-    console.log('Є таке: ', localStorage.getItem('watched'));
-  } else {
-    document.querySelector('.empty-page').style.display = 'block';
-}
-  
-  libRefs.watchBtn.classList.add('btn-watched--active');
-  libRefs.queueBtn.classList.remove('btn-queue--active');
-
-  // ------------------
-
-  libRefs.heroBtnLibrary.style.display = 'block'
+  // Робить кнопку library чорною
   libRefs.libraryBtn.style.backgroundColor = '#000';
   libRefs.libraryBtn.style.color = '#fff';
 
-  libRefs.homeBtn.style.backgroundColor = '#fff';
-  libRefs.homeBtn.style.color = '#000';
+  // Реалізує появу кнопок watched та queue 
+  libRefs.heroBtnLibrary.style.display = 'block'
+
+  // Надає кнопкам watched та queue стилі
+  libRefs.watchBtn.classList.add('btn-watched--active');
+  libRefs.queueBtn.classList.remove('btn-queue--active');
+
+  // Перевірка на наявність доданих фільмів
+
+  if (localStorage.getItem("watched")) {
+    // console.log('Список наповнений у watched');
+    renderWatchedMovies();
+  } else {
+    document.querySelector('.empty-page').style.display = 'block';
+  };
 }
 
 libRefs.homeBtn.addEventListener('click', clearMyLibMarUp); // допрацювати кнопки watched та queue при натисканні на home btn (O)
@@ -70,6 +74,15 @@ libRefs.queueBtn.addEventListener('click', () => {
   libRefs.watchBtn.classList.remove('is-active');
   libRefs.queueBtn.classList.add('is-active');
   renderQueueMovies();
+
+  // Перевірка на наявність доданих фільмів
+
+  if (localStorage.getItem("queue")) {
+    // console.log('Список наповнений у queue');
+    renderQueueMovies();
+  } else {
+    document.querySelector('.empty-page').style.display = 'block';
+  };
 
   // Зміна стилів кнопок
 
@@ -148,13 +161,16 @@ export function addToWatchedToLocalStorage(data) {
   // if (localStorageItem.find(watched => watched.id === id)) return;
   localStorageItem.push(data.data);
   saveLocal('watched', localStorageItem);
+  // renderWatchedMovies();
 }
 
 export function addToQueueToLocalStorage(data) {
+
   let localStorageItem = loadLocal('queue') || [];
   // if (localStorageItem.find(queue => queue.id === id)) return;
   localStorageItem.push(data.data);
   saveLocal('queue', localStorageItem);
+  // renderQueueMovies();
 }
 
 
