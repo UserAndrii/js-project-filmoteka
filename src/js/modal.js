@@ -30,27 +30,6 @@ refs.modalBackdrop.addEventListener('click', function (evt) {
   }
 });
 
-document.getElementById('close-btn').addEventListener('click', function () {
-  document.getElementById('overlay').classList.remove('is-visible');
-  document.getElementById('modal').classList.remove('is-visible');
-});
-
-document.getElementById('overlay').addEventListener('click', function () {
-  document.getElementById('overlay').classList.remove('is-visible');
-  document.getElementById('modal').classList.remove('is-visible');
-});
-
-// function classTogle(element) {
-//   if (element.classList.contains('is-hidden')) {
-//     element.classList.remove('is-hidden');
-//   } else {
-//     element.classList.add('is-hidden');
-
-// refs.modalBackdrop.addEventListener('click', function () {
-//   classTogle(refs.modalBackdrop);
-//   classTogle(refs.modal);
-// });
-
 function classTogle(element) {
   if (element.classList.contains('backdrop_is-hidden')) {
     element.classList.remove('backdrop_is-hidden');
@@ -131,8 +110,6 @@ export function addModalMarcup(data) {
       <script src="https://www.youtube.com/player_api"></script>
     </div>
 `;
-
-  // console.log(content);
   setTimeout(addListener, 300);
   // setTimeout(removeListener, 300);
 
@@ -176,11 +153,6 @@ function clearMarcup(element) {
 }
 
 function onModalOpen(event) {
-  // let filmId = event.target.id;
-  // getFilmData(filmId);
-  // classTogle(refs.modalBackdrop);
-  // classTogle(refs.modal);
-
   // console.log('click galery');
   filmId = event.target.id;
   if (filmId) {
@@ -236,26 +208,14 @@ function getGenres(genres) {
 
 function trimString(string) {
   const width = window.innerWidth;
-
-  // if ((string.length > 35) & (width >= 1280)) {
-  //   return `${string.slice(0, 34)}...`;
-  // }
-  // if ((string.length > 25) & (width >= 768)) {
-  //   return `${string.slice(0, 24)}...`;
-  // }
-  // if ((string.length > 20) & (width >= 320)) {
-  //   return `${string.slice(0, 19)}...`;
-  // }
-  // return string;
-
   if ((string.length > 40) & (width >= 1280)) {
     return `${string.slice(0, 39)}...`;
   }
   if ((string.length > 30) & (width >= 768)) {
     return `${string.slice(0, 29)}...`;
   }
-  if ((string.length > 20) & (width >= 320)) {
-    return `${string.slice(0, 17)}...`;
+  if ((string.length > 17) & (width >= 320)) {
+    return `${string.slice(0, 16)}...`;
   }
   return string;
 }
