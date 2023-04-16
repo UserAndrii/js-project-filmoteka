@@ -85,7 +85,9 @@ $animation-time: 500ms;
 .modal__img {
   display: block;
   border-radius: 5px;
+  box-shadow: 5px -3px 15px 1px rgba(100, 92, 92, 0.75);
   object-fit: cover;
+
 
   @media screen and (max-width: 479px) {
     width: 240px;
