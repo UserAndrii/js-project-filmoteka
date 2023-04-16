@@ -22,24 +22,36 @@ const libRefs = {
 libRefs.libraryBtn.addEventListener('click', onLibraryBtnClick);
 
 function onLibraryBtnClick() {
+  libRefs.library.innerHTML = '';
   // libRefs.watchBtn.classList.remove('is-hidden');
   // libRefs.queueBtn.classList.remove('is-hidden');
 
-  // Коли пуста бібліотека
+  // Робить кнопку home білою
+  libRefs.homeBtn.style.backgroundColor = '#fff';
+  libRefs.homeBtn.style.color = '#000';
 
-  libRefs.library.innerHTML = '';
-  
-  document.querySelector('.empty-page').style.display = 'block';
-
-  libRefs.heroBtnLibrary.style.display = 'block'
+  // Робить кнопку library чорною
   libRefs.libraryBtn.style.backgroundColor = '#000';
   libRefs.libraryBtn.style.color = '#fff';
 
-  libRefs.homeBtn.style.backgroundColor = '#fff';
-  libRefs.homeBtn.style.color = '#000';
+  // Реалізує появу кнопок watched та queue 
+  libRefs.heroBtnLibrary.style.display = 'block'
+
+  // Надає кнопкам watched та queue стилі
+  libRefs.watchBtn.classList.add('btn-watched--active');
+  libRefs.queueBtn.classList.remove('btn-queue--active');
+
+  // Перевірка на наявність доданих фільмів
+
+  if (localStorage.getItem("watched")) {
+    // console.log('Список наповнений у watched');
+    renderWatchedMovies();
+  } else {
+    document.querySelector('.empty-page').style.display = 'block';
+  };
 }
 
-libRefs.homeBtn.addEventListener('click', clearMyLibMarUp);
+libRefs.homeBtn.addEventListener('click', clearMyLibMarUp); // допрацювати кнопки watched та queue при натисканні на home btn (O)
 
 function clearMyLibMarUp() {
   return document.querySelector('.empty-page').style.display= 'none';
@@ -52,11 +64,9 @@ libRefs.watchBtn.addEventListener('click', () => {
   renderWatchedMovies();
 
   // Зміна стилів кнопок
-  // libRefs.watchBtn.style.color = '#ffffff';
-  // libRefs.watchBtn.style.backgroundColor = '#b92f2c';
 
-  // libRefs.queueBtn.style.color = '#b92f2c'; // червоний
-  // libRefs.queueBtn.style.backgroundColor = '#ffffff'; // білий
+  libRefs.watchBtn.classList.add('btn-watched--active');
+  libRefs.queueBtn.classList.remove('btn-queue--active');
 });
 
 libRefs.queueBtn.addEventListener('click', () => {
@@ -65,12 +75,19 @@ libRefs.queueBtn.addEventListener('click', () => {
   libRefs.queueBtn.classList.add('is-active');
   renderQueueMovies();
 
-  // Зміна стилів кнопок
-  // libRefs.queueBtn.style.color = '#ffffff';
-  // libRefs.queueBtn.style.backgroundColor = '#b92f2c';
+  // Перевірка на наявність доданих фільмів
 
-  // libRefs.watchBtn.style.color = '#b92f2c'; // червоний
-  // libRefs.watchBtn.style.backgroundColor = '#ffffff'; // білий
+  if (localStorage.getItem("queue")) {
+    // console.log('Список наповнений у queue');
+    renderQueueMovies();
+  } else {
+    document.querySelector('.empty-page').style.display = 'block';
+  };
+
+  // Зміна стилів кнопок
+
+  libRefs.watchBtn.classList.remove('btn-watched--active');
+  libRefs.queueBtn.classList.add('btn-queue--active');
 });
 
 function renderWatchedMovies() {
@@ -144,13 +161,16 @@ export function addToWatchedToLocalStorage(data) {
   // if (localStorageItem.find(watched => watched.id === id)) return;
   localStorageItem.push(data.data);
   saveLocal('watched', localStorageItem);
+  // renderWatchedMovies();
 }
 
 export function addToQueueToLocalStorage(data) {
+
   let localStorageItem = loadLocal('queue') || [];
   // if (localStorageItem.find(queue => queue.id === id)) return;
   localStorageItem.push(data.data);
   saveLocal('queue', localStorageItem);
+  // renderQueueMovies();
 }
 
 

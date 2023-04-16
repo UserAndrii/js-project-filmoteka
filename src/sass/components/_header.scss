@@ -28,7 +28,7 @@
       5px 8px 12px rgba(0, 0, 0, 0.16);
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     margin-bottom: 8px;
   }
 }
@@ -116,6 +116,8 @@
 }
 
 .logo-link {
+  display: block;
+  width: 350px;
   text-decoration: none;
 }
 

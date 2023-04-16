@@ -144,71 +144,71 @@ body {
   color: #fff;
 }
 
-// .movie__info .movie__title {
-//   color: white;
-// }
+.movie__info .movie__title {
+  color: white;
+}
 
-// .tui-page-btn {
-//   color: white;
-// }
+.tui-page-btn {
+  color: white;
+}
 
-// .loader.loader-black {
-//   background-color: #222222;
-// }
+.loader.loader-black {
+  background-color: #222222;
+}
 
-// /*Модальне вікно фільмів при dark theme*/
-// .modal__container {
-//   background-color: #1a1818;
-//   .image {
-//     box-shadow: 1px -1px 15px -3px #f8ececbf;
-//   }
-//   .film__title {
-//     color: #ff6b08;
-//   }
-//   .film__details {
-//     color: #ffffff;
-//   }
-//   .film__rating--orange {
-//     color: #000000;
-//     font-weight: 900;
-//   }
-//   .film__info--uper,
-//   .film__about__title,
-//   .film__about__text,
-//   .film__info {
-//     color: #8c8c8c;
-//   }
-//   .film__details ~ p {
-//     color: #8c8c8c;
-//   }
-//   .modal__close-btn {
-//     fill: #8c8c8c;
-//     background-color: #1a1818;
-//     border-color: #8c8c8c;
-//     &:hover,
-//     &:focus {
-//       fill: #ff6b08;
-//       border-color: #ff6b08;
-//     }
-//   }
-//   .closeModal::before,
-//   .closeModal::after {
-//     background-color: #ffffff;
-//   }
-// }
+/*Модальне вікно фільмів при dark theme*/
+.modal__container {
+  background-color: #1a1818;
+  .image {
+    box-shadow: 1px -1px 15px -3px #f8ececbf;
+  }
+  .film__title {
+    color: #ff6b08;
+  }
+  .film__details {
+    color: #ffffff;
+  }
+  .film__rating--orange {
+    color: #000000;
+    font-weight: 900;
+  }
+  .film__info--uper,
+  .film__about__title,
+  .film__about__text,
+  .film__info {
+    color: #8c8c8c;
+  }
+  .film__details ~ p {
+    color: #8c8c8c;
+  }
+  .modal__close-btn {
+    fill: #8c8c8c;
+    background-color: #1a1818;
+    border-color: #8c8c8c;
+    &:hover,
+    &:focus {
+      fill: #ff6b08;
+      border-color: #ff6b08;
+    }
+  }
+  .closeModal::before,
+  .closeModal::after {
+    background-color: #ffffff;
+  }
+}
 
-// .footer__modal {
-//   background-color: #1a1818;
-//   color: #8c8c8c;
-// }
+.footer__modal {
+  background-color: #1a1818;
+  color: #8c8c8c;
+}
 
-// .line {
-//   background-color: #8c8c8c;
-// }
+.line {
+  background-color: #8c8c8c;
+}
 
-// .info-message {
-//   color: #8c8c8c;
-// }
+.info-message {
+  color: #8c8c8c;
+}
 
 // Стилі для пагінації
 
