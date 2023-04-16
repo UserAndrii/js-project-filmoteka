@@ -1,29 +1,32 @@
 import { saveLocal, loadLocal } from './localStorage';
 
-const themeSwither = document.querySelectorAll(`.change_theme`);
-const changeThemeCssLink = document.querySelector(`[title= "theme"]`);
+const refs = {
+  theme: document.querySelectorAll(`.change_theme`),
+  link: document.querySelector(`[title= "theme"]`),
+};
+
 const Theme = {
   dark: 'onDark',
   light: 'onLight',
 };
 
-themeSwither.forEach(swither => swither.addEventListener(`click`, changeTheme));
+refs.theme.forEach(swither => swither.addEventListener(`click`, changeTheme));
 
 function changeTheme() {
   saveLocal('theme', this.dataset.theme);
 
   if (this.dataset.theme === Theme.dark) {
-    changeThemeCssLink.disabled = false;
+    refs.link.disabled = false;
   }
   if (this.dataset.theme === Theme.light) {
-    changeThemeCssLink.disabled = true;
+    refs.link.disabled = true;
   }
 }
 
 let activeTheme = loadLocal('theme');
 
 if (activeTheme === null || activeTheme === Theme.light) {
-  changeThemeCssLink.disabled = true;
+  refs.link.disabled = true;
 } else {
-  changeThemeCssLink.disabled = false;
+  refs.link.disabled = false;
 }
