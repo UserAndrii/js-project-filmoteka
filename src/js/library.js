@@ -26,10 +26,18 @@ function onLibraryBtnClick() {
   // libRefs.queueBtn.classList.remove('is-hidden');
 
   // Коли пуста бібліотека
-
   libRefs.library.innerHTML = '';
+
+  if (localStorage.getItem("watched")) {
+    console.log('Є таке: ', localStorage.getItem('watched'));
+  } else {
+    document.querySelector('.empty-page').style.display = 'block';
+}
   
-  document.querySelector('.empty-page').style.display = 'block';
+  libRefs.watchBtn.classList.add('btn-watched--active');
+  libRefs.queueBtn.classList.remove('btn-queue--active');
+
+  // ------------------
 
   libRefs.heroBtnLibrary.style.display = 'block'
   libRefs.libraryBtn.style.backgroundColor = '#000';
@@ -55,11 +63,6 @@ libRefs.watchBtn.addEventListener('click', () => {
 
   libRefs.watchBtn.classList.add('btn-watched--active');
   libRefs.queueBtn.classList.remove('btn-queue--active');
-  // libRefs.watchBtn.style.color = '#ffffff';
-  // libRefs.watchBtn.style.backgroundColor = '#b92f2c';
-
-  // libRefs.queueBtn.style.color = '#b92f2c'; // червоний
-  // libRefs.queueBtn.style.backgroundColor = '#ffffff'; // білий
 });
 
 libRefs.queueBtn.addEventListener('click', () => {
@@ -72,11 +75,6 @@ libRefs.queueBtn.addEventListener('click', () => {
 
   libRefs.watchBtn.classList.remove('btn-watched--active');
   libRefs.queueBtn.classList.add('btn-queue--active');
-  // libRefs.queueBtn.style.color = '#ffffff';
-  // libRefs.queueBtn.style.backgroundColor = '#b92f2c';
-
-  // libRefs.watchBtn.style.color = '#b92f2c'; // червоний
-  // libRefs.watchBtn.style.backgroundColor = '#ffffff'; // білий
 });
 
 function renderWatchedMovies() {
