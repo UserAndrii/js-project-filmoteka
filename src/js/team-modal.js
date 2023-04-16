@@ -6,14 +6,16 @@ import Yuriy from '../images/team/yuriy.jpg';
 import Galyna from '../images/team/galyna.jpg';
 import Maryna from '../images/team/maryna.jpg';
 import Yura from '../images/team/yura.jpg';
-import Natalia from '../images/team/andrii.jpg';
+import Natalia from '../images/team/natalia.jpg';
 import Slava from '../images/team/slava.jpg';
 import Oleksandr from '../images/team/oleksandr.jpg';
-import Andriy from '../images/team/andrii.jpg';
+import Andriy from '../images/team/andriy.jpg';
 import svgGit from '../images/gitsvg.svg';
 import svgLinkd from '../images/linkedin.svg';
 
-const markup = `<div class="team-wrapper"><div class="team-card">
+
+const markup = `<div class="team-wrapper">
+<div class="team-card">
     <img src="${Nataliia}" alt="Nataliia" class="team-image">
     <p class="team-name">Nataliia</p>
     <p class="team-name">Valko</p>
@@ -97,9 +99,9 @@ const markup = `<div class="team-wrapper"><div class="team-card">
     </p>
 </div>
 <div class="team-card">
-    <img src="${Natalia}" alt="" class="team-image">
-    <p class="team-name"> </p>
-    <p class="team-name"> </p>
+    <img src="${Natalia}" alt="Natalia" class="team-image">
+    <p class="team-name">Natalia</p>
+    <p class="team-name">Kuksa</p>
     <p class="team-role">Developer</p>
     <p class="logo__icon-footer">
     <a href="https://github.com/" target="_blank" class="team-git"><svg width="24" height="24">
@@ -139,7 +141,7 @@ const markup = `<div class="team-wrapper"><div class="team-card">
     </p>
 </div>
 <div class="team-card">
-    <img src="${Andriy}" alt="" class="team-image">
+    <img src="${Andriy}" alt="Andriy" class="team-image">
     <p class="team-name">Andriy</p>
     <p class="team-name">Hanzel</p>
     <p class="team-role">Developer</p>
@@ -156,26 +158,35 @@ const markup = `<div class="team-wrapper"><div class="team-card">
 
 const teamButton = document.querySelector('.js-team-modal');
 
+const body = document.body;
+const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+let originalOverflow = '';
+let originalMarginRight = '';
 
 teamButton.addEventListener('click', openModal);
 
 const modal = basicLightbox.create(markup);
-// document.modal.style.backgroundImage = url('/src/images/team/-32298.mp4');
+
 function openModal(e) {
+  originalOverflow = body.style.overflow;
+  originalMarginRight = body.style.marginRight;
+
+  body.style.overflow = 'hidden';
+  body.style.marginRight = `${scrollBarWidth}px`;
+
   modal.show();
-  // if (e) {
-  //   document.body.style.overflow = "hidden";
-
-  // }
-
 
   window.addEventListener('keydown', closeModalHandler);
+}
 
-  function closeModalHandler(e) {
-    if (e.code === 'Escape') {
-      modal.close();
-      window.removeEventListener('keydown', closeModalHandler);
-    }
+function closeModalHandler(e) {
+  if (e.code === 'Escape') {
+    modal.close();
+    window.removeEventListener('keydown', closeModalHandler);
 
+    body.style.overflow = originalOverflow;
+    body.style.marginRight = originalMarginRight;
   }
 }
+
