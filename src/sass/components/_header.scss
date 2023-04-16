@@ -15,10 +15,6 @@
   border-radius: 100px;
   border: none;
   cursor: pointer;
-
-  @media screen and (max-width: 767px) {
-    margin-bottom: 8px;
-  }
 }
 
 .btn-home {
@@ -26,9 +22,14 @@
   background-color: $title-color;
   transition: all $transition-timing $timing-function;
 
-  &:hover {
-    background: $accent-color;
-    color: $title-color;
+  &:hover,
+  &:focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12), 0px 8px 8px rgba(0, 0, 0, 0.06),
+      5px 8px 12px rgba(0, 0, 0, 0.16);
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 8px;
   }
 }
 
@@ -37,14 +38,21 @@
   background-color: $primary-title-color;
   transition: all $transition-timing $timing-function;
 
-  &:hover {
-    background-color: $accent-color;
-    color: $bg-primary-color;
+  &:hover,
+  &:focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12), 0px 8px 8px rgba(0, 0, 0, 0.06),
+      5px 8px 12px rgba(0, 0, 0, 0.16);
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 8px;
   }
 }
 
 .hero__form {
   position: relative;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .hero__input {
@@ -122,10 +130,17 @@
   color: $primary-title-color;
 }
 
+@media screen and (max-width: 767px) {
+  .btn-theme {
+    display: none;
+  }
+}
+
 // TABLET-STYLE
 @media screen and (min-width: 768px) {
   .hero {
     padding: 16px;
+    position: relative;
   }
 
   .hero__wrapper {
@@ -175,6 +190,34 @@
     font-size: 40px;
     line-height: 1.18;
   }
+
+  .btn-theme {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .change_theme {
+    fill: #fff;
+    stroke: #fff;
+    cursor: pointer;
+    background-color: #0000;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 1px 4px 6px #ffffff29;
+    transition: all $transition-timing $timing-function;
+
+    &:hover,
+    &:focus {
+      stroke: $accent-color;
+      fill: $accent-color;
+      border-color: $accent-color;
+    }
+  }
+
+  .change_theme[data-theme='onLight'] {
+    display: none;
+  }
 }
 
 // DESKTOP STYLE
@@ -215,5 +258,10 @@
 
   .logo__title {
     font-size: 64px;
+  }
+
+  .btn-theme {
+    bottom: 32px;
+    right: 32px;
   }
 }

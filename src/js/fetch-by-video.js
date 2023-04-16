@@ -14,7 +14,7 @@ async function fetchTrailer() {
     const youtubeTrailer = trailers.find(trailer => trailer.site === 'YouTube');
 
     if (!youtubeTrailer) {
-      throw Notiflix.Notify.failure('Trailer not found') ;
+      throw Notiflix.Notify.failure('Trailer not found');
     }
 
     const youtubeLink = `https://www.youtube.com/watch?v=${youtubeTrailer.key}`;
@@ -26,7 +26,6 @@ async function fetchTrailer() {
   }
 }
 
-
 async function initPlayer() {
   const API_KEY = 'AIzaSyBWjasHUQ-evzof4liEduGpmLNQv1Y-kOE';
 
@@ -35,20 +34,20 @@ async function initPlayer() {
   const container = document.querySelector('#player-container');
 
   const player = new YT.Player(container, {
-    height: '360',
-    width: '640',
+    height: '180',
+    width: '330',
     videoId: trailerLink.match(/[^v=]+$/)[0],
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
       controls: 1,
       modestbranding: 1,
       rel: 0,
       showinfo: 0,
     },
     events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+    },
   });
 
   function onPlayerReady(event) {

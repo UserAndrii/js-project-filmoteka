@@ -1,21 +1,29 @@
 #NotiflixNotifyWrap {
   position: absolute;
 
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 284px) {
    width: 180px;
-    top: 115px;
+    top: 150px;
     left: 36px;
   }
 
-  @media screen and (min-width: 321px)  {
-    width: 170px;
-    top: 85px;
-    left: 53px;
+  @media screen and (min-width: 285px) {
+   width: 193px;
+    top: 103px;
+    left: 36px;
+  }
+
+  @media screen and (min-width: 768px) {
+   width: 180px;
+    top: 81px;
+    left: 52px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 180px;
-    top: 90px;
-    left: 70px;
+    width: 193px;
+    top: 85px;
+    left: 69px;
   }
+
+  
 }
