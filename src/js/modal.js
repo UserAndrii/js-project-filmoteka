@@ -140,6 +140,14 @@ export function addModalMarcup(data) {
     </div>
   `;
 
+ setTimeout(() => {
+    isWatchedMovieExists(data);
+  }, 300);
+
+  setTimeout(() => {
+    isQueueMovieExists(data);
+  }, 300);
+
   refs.modalCont.insertAdjacentHTML('afterbegin', content);
 
   const watchTrailerButton = document.querySelector('[data-modal-button="watch-trailer"]');
@@ -147,20 +155,6 @@ export function addModalMarcup(data) {
     const trailer = await fetchTrailerById(data.data.id);
     addTrailerToModal(trailer);
   });
-}
-
-
-function addListener() {
-
-  setTimeout(() => {
-    isWatchedMovieExists(data);
-  }, 300);
-
-  setTimeout(() => {
-    isQueueMovieExists(data);
-  }, 300);
- 
-  return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 
 function isWatchedMovieExists(data) {
