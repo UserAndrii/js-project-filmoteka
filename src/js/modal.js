@@ -1,8 +1,12 @@
 import {
   addToWatchedToLocalStorage,
   addToQueueToLocalStorage,
+  removeFromWatchedFromLocalStorage,
+  removeFromQueueFromLocalStorage,
 } from './library';
+import { loadLocal } from './localStorage';
 
+import {alternativePoster} from '../js/main-gallery';
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
 let filmId;
@@ -14,8 +18,6 @@ const refs = {
   modalBackdrop: document.querySelector('.backdrop'),
   modal: document.querySelector('.modal'),
 };
-
-let responseAdd = '';
 
 refs.galleryEl.addEventListener('click', onModalOpen);
 
@@ -45,7 +47,6 @@ async function getFilmData(filmId) {
   clearMarcup(refs.modalCont);
   try {
     const response = await axios.get(url);
-    responseAdd = response;
     return addModalMarcup(response);
   } catch (error) {
     console.error(error);
@@ -71,7 +72,7 @@ export function addModalMarcup(data) {
   const content = `
     <img
       class="modal__img"
-      src="https://image.tmdb.org/t/p/w400/${data.data.poster_path}"
+      src="https://image.tmdb.org/t/p/w400/${data.data.poster_path||alternativePoster}"
       alt="${data.data.title}"
       width="375px"
     />
@@ -150,36 +151,81 @@ export function addModalMarcup(data) {
 
 
 function addListener() {
+
+  setTimeout(() => {
+    isWatchedMovieExists(data);
+  }, 300);
+
+  setTimeout(() => {
+    isQueueMovieExists(data);
+  }, 300);
+ 
+  return refs.modalCont.insertAdjacentHTML('afterbegin', content);
+}
+
+function isWatchedMovieExists(data) {
+  const addToWatchedButton = document.querySelector('.watched-button');
+  const watchedMovies = loadLocal('watched') || [];
+  const isMovieWatched = watchedMovies.some(movie => movie.id === data.data.id);
+  addToWatchedButton.textContent = isMovieWatched ? 'Remove watched' : 'Add to watched';
+  if(isMovieWatched) {
+    removeListener(data);
+  }
+  if(!isMovieWatched) {
+    addListener(data);
+  } 
+}
+
+function isQueueMovieExists(data) {
+  const addToQueueButton = document.querySelector('.queue-button');
+  const queueMovies = loadLocal('queue') || [];
+  const isMovieQueue = queueMovies.some(movie => movie.id === data.data.id);
+  addToQueueButton.textContent = isMovieQueue ? 'Remove queue' : 'Add to queue';
+  if(isMovieQueue) {
+    removeListener(data);
+  }
+  if(!isMovieQueue) {
+    addListener(data);
+  } 
+};
+
+function addListener(data) {
   const addToWatchedBtn = document.querySelector('.watched-button');
-  const addToQuequeBtn = document.querySelector('.queue-button');
+  const addToQueueBtn = document.querySelector('.queue-button');
 
   addToWatchedBtn.addEventListener('click', event => {
     event.currentTarget.textContent = 'Remove watched';
-    event.currentTarget.disabled = true;
-    addToWatchedToLocalStorage(responseAdd);
+    // event.currentTarget.disabled = true;
+    addToWatchedToLocalStorage(data);
+    removeListener(data);
   });
 
-  addToQuequeBtn.addEventListener('click', event => {
+  addToQueueBtn.addEventListener('click', event => {
     event.currentTarget.textContent = 'Remove queue';
-    event.currentTarget.disabled = true;
-    addToQueueToLocalStorage(responseAdd);
+    // event.currentTarget.disabled = true;
+    addToQueueToLocalStorage(data);
+    removeListener(data);
   });
 }
 
-// function removeListener() {
-//   const removeFromWatchedBtn = document.querySelector('.watched-button');
-//   const removeFromQuequeBtn = document.querySelector('.queue-button');
+function removeListener(data) {
+  const removeFromWatchedBtn = document.querySelector('.watched-button');
+  const removeFromQueueBtn = document.querySelector('.queue-button');
 
-//   removeFromWatchedBtn.addEventListener('click', event => {
-//     event.currentTarget.textContent = 'Added to watched';
-//     event.currentTarget.disabled = true;
-//     removeFromWatchedFromToLocalStorage()});
+  removeFromWatchedBtn.addEventListener('click', event => {
+    event.currentTarget.textContent = 'Add to watched';
+    // event.currentTarget.disabled = true;
+    removeFromWatchedFromLocalStorage(data);
+    addListener(data);
+  });
 
-//   removeFromQuequeBtn.addEventListener('click', event => {
-//     event.currentTarget.textContent = 'Added to queue';
-//     event.currentTarget.disabled = true;
-//     removeFromQueueFromLocalStorage()});
-// }
+  removeFromQueueBtn.addEventListener('click', event => {
+    event.currentTarget.textContent = 'Add to queue';
+    // event.currentTarget.disabled = true;
+    removeFromQueueFromLocalStorage(data);
+    addListener(data);
+  });
+}
 
 function clearMarcup(element) {
   element.innerHTML = '';

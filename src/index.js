@@ -2,7 +2,7 @@ import './js/fetch-popular-films';
 import './js/fetch-by-search';
 import './js/fetch-by-video';
 
-import './js/theme-switcher';
+// import './js/theme-swit';
 import './js/movie-carousel';
 import './js/video-trailer';
 import './js/hide-carousel';
@@ -13,6 +13,6 @@ import './js/library';
 import './js/scroll-to-top';
 
 import './js/modal';
-import './js/team-modal';
+// import './js/team-modal';
 
 import './js/pagination-main-page';

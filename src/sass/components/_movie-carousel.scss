@@ -63,7 +63,15 @@ swiper-container {
 
 .swiper-slide,
 swiper-slide {
-  width: 100%;
+  max-width: 92px;
+  @media screen and (min-width: 768px) {
+    max-width: 141px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 145px;
+  }
+
   height: 100%;
   flex-shrink: 0;
   transition-property: transform;
@@ -95,15 +103,6 @@ swiper-slide {
 }
 
 @media screen and (max-width: 768px) {
-  .end-btn,
-  .start-btn,
-  .next-dots,
-  .prev-dots {
-    display: none;
-  }
-  .pagination {
-    margin-top: 40px;
-  }
   .swiper-button-next-icon,
   .swiper-button-prev-icon {
     width: 25px;
