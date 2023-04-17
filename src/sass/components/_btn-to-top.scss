@@ -4,18 +4,19 @@
   bottom: 50px;
   right: 10px;
   opacity: 0;
-  cursor: pointer;
+  
   transition: opacity 500ms $timing-function;
 }
 .btn-to-top--visible {
   opacity: 1;
+  cursor: pointer;
 }
 
 .btn-to-top:hover .icon-to-top {
-  fill: $accent-color;
+  fill: #8c8c8c;
 }
 .icon-to-top {
-  fill: $title-color;
+  fill: $accent-color;
   transition: fill 250ms $timing-function;
   width: 40px;
   height: 40px;
