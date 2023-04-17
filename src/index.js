@@ -1,11 +1,10 @@
-const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
-
 import './js/fetch-popular-films';
 import './js/fetch-by-search';
-import './js/fetch-by-video';
+// import './js/fetch-by-video';
 
-import './js/theme-switcher';
+import './js/theme-swit';
 import './js/movie-carousel';
+import './js/video-trailer';
 import './js/hide-carousel';
 
 import './js/main-gallery';

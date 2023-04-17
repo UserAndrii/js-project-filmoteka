@@ -1,7 +1,8 @@
 import throttle from 'lodash.throttle';
 import MovieSearchService from './movie-search-service';
 import { getTopMovies } from './main-gallery';
-import { fetchPopularFilms } from './fetch-popular-films'
+import { fetchPopularFilms } from './fetch-popular-films';
+import { renderSearchFilmsPagination } from './pagination-main-page';
 
 const movieSearchService = new MovieSearchService();
 
@@ -11,6 +12,7 @@ const refs = {
   home: document.querySelector('.btn-home'),
   heroBtnLibrary: document.querySelector('.hero__btn-library'),
   libraryBtn: document.querySelector('.btn_library'),
+  pagination: document.querySelector('#pagination'),
 };
 
 refs.home.addEventListener(
@@ -34,8 +36,9 @@ function pressButtonToHome(e) {
   refs.home.style.color = '';
 
   movieSearchService.enableLoader();
-  fetchPopularFilms();
+  fetchPopularFilms(1);
   refs.form.reset();
+  pagination.style.display = 'block';
 }
 
 function handleFormSubmit(e) {
@@ -45,7 +48,7 @@ function handleFormSubmit(e) {
   fetchBySearch();
 }
 
-async function fetchBySearch() {
+function fetchBySearch() {
   if (!movieSearchService.query) {
     movieSearchService.emptyArray();
     refs.form.reset();
@@ -55,18 +58,20 @@ async function fetchBySearch() {
   }
 
   try {
-    const fetch = await movieSearchService.fetchMovieSearch();
-    if (fetch.data.total_results === 0) {
-      movieSearchService.emptyArray();
-      // відключає loader
-      setTimeout(movieSearchService.disableLoader, 300);
-      return;
-    }
-
-    // console.log(fetch.data.results);
-    getTopMovies(fetch.data.results);
-    // returns an array of movies according to the keyword
+    backendDataToRenderedPage(1);
   } catch (error) {
     console.error(error);
   }
+}
+
+export async function backendDataToRenderedPage(currentPage) {
+  const fetch = await movieSearchService.fetchMovieSearch(currentPage);
+  if (fetch.data.total_results === 0) {
+    movieSearchService.emptyArray();
+    // відключає loader
+    setTimeout(movieSearchService.disableLoader, 300);
+    return;
+  }
+  getTopMovies(fetch.data.results);
+  renderSearchFilmsPagination(fetch.data.total_results, currentPage);
 }

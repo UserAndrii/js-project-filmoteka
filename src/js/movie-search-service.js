@@ -15,13 +15,14 @@ export default class MovieSearchService {
     this.searchQuery = '';
   }
 
-  fetchMovieSearch() {
+  fetchMovieSearch(page) {
     const searchParams = new URLSearchParams({
       api_key: API_KEY,
       language: 'en-US',
       page: 1,
       include_adult: false,
       query: this.searchQuery,
+      page: page,
     });
 
     const fetch = axios.get(`${BASE_URL}?${searchParams}`);

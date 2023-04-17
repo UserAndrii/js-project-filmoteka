@@ -1,8 +1,10 @@
 import Swiper, { Navigation, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 import axios from 'axios';
+import sprite from '../images/sprite.svg';
 
 const sliderEl = document.querySelector('.swiper-wrapper');
+
 const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
 const alternativePoster =
   'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
@@ -60,11 +62,18 @@ const renderMarkupSlider = movies => {
   const markup = movies
     .map(({ id, title, poster_path }) => {
       return `<li class="swiper-slide">
-        <a class="swiper-link" href="#" data-id="${id}"><img src="${
-        poster_path ? API_URL_IMG + poster_path : alternativePoster
-      }" alt="${title}" />
-        </a>
-      </li>`;
+                <a class="swiper-link" href="#" data-id="${id}">
+                  <img src="${
+                    poster_path ? API_URL_IMG + poster_path : alternativePoster
+                  }" alt="${title}" />
+                  <div class="trailer" id="film-id" type="button">
+                    <svg class="trailer-icon">
+                      <use href="${sprite}#icon-film"></use>
+                    </svg>
+                  </div>
+                </a>
+              </li>
+              `;
     })
     .join('');
   sliderEl.insertAdjacentHTML('beforeend', markup);

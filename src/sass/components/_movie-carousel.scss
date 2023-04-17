@@ -63,7 +63,15 @@ swiper-container {
 
 .swiper-slide,
 swiper-slide {
-  width: 100%;
+  max-width: 92px;
+  @media screen and (min-width: 768px) {
+    max-width: 141px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 145px;
+  }
+
   height: 100%;
   flex-shrink: 0;
   transition-property: transform;
@@ -95,15 +103,6 @@ swiper-slide {
 }
 
 @media screen and (max-width: 768px) {
-  .end-btn,
-  .start-btn,
-  .next-dots,
-  .prev-dots {
-    display: none;
-  }
-  .pagination {
-    margin-top: 40px;
-  }
   .swiper-button-next-icon,
   .swiper-button-prev-icon {
     width: 25px;
@@ -115,4 +114,36 @@ swiper-slide {
   .swiper-button-next {
     right: 4px;
   }
+}
+
+.trailer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swiper-link:hover .trailer {
+  opacity: 1;
+}
+
+.trailer-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 50px;
+  fill: #fff;
+  opacity: 0;
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swiper-link:hover .trailer-icon {
+  opacity: 1;
 }
