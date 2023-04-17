@@ -32,9 +32,11 @@ refs.modalBackdrop.addEventListener('click', function (evt) {
 
 export function classTogle(element) {
   if (element.classList.contains('backdrop_is-hidden')) {
+    document.body.classList.add('modal-open');
     element.classList.remove('backdrop_is-hidden');
   } else {
     element.classList.add('backdrop_is-hidden');
+    document.body.classList.remove('modal-open');
   }
 }
 

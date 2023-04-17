@@ -5,9 +5,6 @@ body {
   font-family: $primary-font;
 
   &.modal-open {
-    position: fixed;
-    left: 0;
-    right: 0;
     overflow: hidden;
   }
 
