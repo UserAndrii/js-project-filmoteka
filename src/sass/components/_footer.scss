@@ -61,52 +61,53 @@
   margin-left: 10px;
 }
 
-.intro{
-  max-height: 100vh;
-  overflow: hidden;
-  position: relative;
+// .intro{
+//   max-height: 100vh;
+//   overflow: hidden;
+//   position: relative;
 
-  background: url("/src/images/team/scrin-video.jpg")
-  center no-repeat;
-  background-size: cover;
-}
+//   background: url("/src/images/team/scrin-video.jpg")
+//   center no-repeat;
+//   background-size: cover;
+// }
 
-.intro::after{
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
+// .intro::after{
+//   content: "";
+//   display: block;
+//   width: 100%;
+//   height: 100%;
 
-  background-color: rgba(0, 0een, 0, 0.5);
+//   background-color: rgba(0, 0, 0, 0.5);
 
-  position: absolute;
-  top: 0;
-  left: 0; 
-  z-index: 2;
-}
-.intro__content{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
+//   position: absolute;
+//   top: 0;
+//   left: 0; 
+//   z-index: 2;
+// }
 
-  width: 100%;
-  height: 100%;
-}
-.video{
-  position: relative;
-  z-index: 1;
-  padding-bottom: 56.25%;
-}
+// .intro__content{
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 3;
 
-.video__media{
-  width: 100%;
-  height: auto;
+//   width: 100%;
+//   height: 100%;
+// }
+// .video{
+//   position: relative;
+//   z-index: 1;
+//   padding-bottom: 56.25%;
+// }
 
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+// .video__media{
+//   width: 100%;
+//   height: auto;
+
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }
 
 .team-modal {
   border: none;
