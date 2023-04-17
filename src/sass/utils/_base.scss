@@ -4,6 +4,9 @@ body {
 
   font-family: $primary-font;
 
+  &.modal-open {
+    overflow: hidden;
+  }
 
   &::-webkit-scrollbar {
     width: 8px;

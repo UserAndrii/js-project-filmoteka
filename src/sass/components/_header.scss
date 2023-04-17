@@ -116,8 +116,6 @@
 }
 
 .logo-link {
-  display: block;
-  width: 350px;
   text-decoration: none;
 }
 
@@ -132,10 +130,35 @@
   color: $primary-title-color;
 }
 
-@media screen and (max-width: 767px) {
-  .btn-theme {
-    display: none;
+.btn-theme {
+  position: absolute;
+
+  @media screen and (max-width: 767px) {
+    top: 130px;
+    right: 34px;
   }
+}
+
+.change_theme {
+  fill: #fff;
+  stroke: #fff;
+  cursor: pointer;
+  background-color: #0000;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  box-shadow: 1px 4px 6px #ffffff29;
+  transition: all $transition-timing $timing-function;
+
+  &:hover,
+  &:focus {
+    stroke: $accent-color;
+    fill: $accent-color;
+    border-color: $accent-color;
+  }
+}
+
+.change_theme[data-theme='onLight'] {
+  display: none;
 }
 
 // TABLET-STYLE
@@ -183,6 +206,11 @@
     justify-content: flex-start;
   }
 
+  .logo-link {
+    display: inline-block;
+    width: 230px;
+  }
+
   .logo__icon {
     width: 40px;
     height: 40px;
@@ -194,31 +222,8 @@
   }
 
   .btn-theme {
-    position: absolute;
     right: 16px;
-    bottom: 16px;
-  }
-
-  .change_theme {
-    fill: #fff;
-    stroke: #fff;
-    cursor: pointer;
-    background-color: #0000;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    box-shadow: 1px 4px 6px #ffffff29;
-    transition: all $transition-timing $timing-function;
-
-    &:hover,
-    &:focus {
-      stroke: $accent-color;
-      fill: $accent-color;
-      border-color: $accent-color;
-    }
-  }
-
-  .change_theme[data-theme='onLight'] {
-    display: none;
+    bottom: 23px;
   }
 }
 
@@ -251,6 +256,10 @@
       font-size: 14px;
       line-height: 1.14;
     }
+  }
+
+  .logo-link {
+    width: 350px;
   }
 
   .logo__icon {
