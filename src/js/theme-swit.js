@@ -1,8 +1,8 @@
 import { saveLocal, loadLocal } from './localStorage';
 
 const refs = {
-  theme: document.querySelectorAll(`.change_theme`),
-  link: document.querySelector(`[title= "theme"]`),
+  theme: document.querySelectorAll('.change_theme'),
+  link: document.querySelector('[data-theme]'),
 };
 
 const Theme = {
