@@ -187,31 +187,35 @@ function getLibraryMovies(data) {
 }
 
 export function addToWatchedToLocalStorage(data) {
-  let localStorageItem = loadLocal('watched') || [];
-  // if (localStorageItem.find(watched => watched.id === id)) return;
-  localStorageItem.push(data.data);
-  saveLocal('watched', localStorageItem);
+  const watchedMovies = loadLocal('watched') || [];
+  const isMovieExists = watchedMovies.some(movie => movie.id === data.data.id);
+  if (!isMovieExists) {
+    watchedMovies.push(data.data)
+  };
+  saveLocal('watched', watchedMovies);
   // renderWatchedMovies();
 }
 
 export function addToQueueToLocalStorage(data) {
-
-  let localStorageItem = loadLocal('queue') || [];
-  // if (localStorageItem.find(queue => queue.id === id)) return;
-  localStorageItem.push(data.data);
-  saveLocal('queue', localStorageItem);
+  const queueMovies = loadLocal('queue') || [];
+  const isMovieExists = queueMovies.some(movie => movie.id === data.data.id);
+  if (!isMovieExists) {
+    queueMovies.push(data.data)
+  };
+  saveLocal('queue', queueMovies);
   // renderQueueMovies();
 }
 
+export function removeFromWatchedFromLocalStorage(data) {
+  const watchedMovies = loadLocal('watched') || [];
+  const updateWatchedMovies = watchedMovies.filter(movie => movie.id !== data.data.id);
+  saveLocal('watched', updateWatchedMovies);
+  // renderWatchedMovies();
+}
 
-// export function removeFromWatchedFromToLocalStorage() {
-//   let localStorageItem = loadLocal('watched');
-//   const movieId = (localStorageItem.find(watched => watched.id === id));
-//   removeLocal('watched', movieId);
-// }
-
-// export function removeFromQueueFromLocalStorage() {
-//   let localStorageItem = loadLocal('queue');
-//   const movieId = (localStorageItem.find(queue => queue.id === id));
-//   removeLocal('queue', movieId);
-// }
+export function removeFromQueueFromLocalStorage(data) {
+  const queueMovies = loadLocal('queue') || [];
+  const updateQueueMovies = queueMovies.filter(movie => movie.id !== data.data.id);
+  saveLocal('queue', updateQueueMovies);
+  // renderQueueMovies();
+}

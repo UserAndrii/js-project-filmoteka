@@ -1,7 +1,7 @@
 import Swiper, { Navigation, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 import axios from 'axios';
-import sprite from '../images/sprite.svg';
+const urlIcon = './images/sprite.svg';
 
 const sliderEl = document.querySelector('.swiper-wrapper');
 
@@ -68,7 +68,7 @@ const renderMarkupSlider = movies => {
                   }" alt="${title}" />
                   <div class="trailer" id="film-id" type="button">
                     <svg class="trailer-icon">
-                      <use href="${sprite}#icon-film"></use>
+                      <use href="${urlIcon}#icon-film"></use>
                     </svg>
                   </div>
                 </a>

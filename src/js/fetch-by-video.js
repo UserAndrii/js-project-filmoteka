@@ -1,70 +1,51 @@
-import axios from 'axios';
-import Notiflix from 'notiflix';
 
-const filmId = 594767;
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
+
+const BASE_URL = 'https://api.themoviedb.org/3';
 const KEY = '58645e23389326a2e8ed75695b9e1b79';
 
-async function fetchTrailer() {
-  const url = `https://api.themoviedb.org/3/movie/${filmId}/videos?api_key=${KEY}&language=en-US`;
-
+ async function fetchTrailerById(trailerId) {
+  const url = `${BASE_URL}/movie/${trailerId}/videos?api_key=${KEY}`;
   try {
     const response = await axios.get(url);
-    const trailers = response.data.results;
-
-    const youtubeTrailer = trailers.find(trailer => trailer.site === 'YouTube');
-
-    if (!youtubeTrailer) {
-      throw Notiflix.Notify.failure('Trailer not found');
-    }
-
-    const youtubeLink = `https://www.youtube.com/watch?v=${youtubeTrailer.key}`;
-
-    return youtubeLink;
+    return response.data.results[0];
   } catch (error) {
-    console.log(error);
-    throw new Error('Failed to fetch trailer');
+    console.error(error);
   }
 }
-
-async function initPlayer() {
-  const API_KEY = 'AIzaSyBWjasHUQ-evzof4liEduGpmLNQv1Y-kOE';
-
-  const trailerLink = await fetchTrailer();
-
-  const container = document.querySelector('#player-container');
-
-  const player = new YT.Player(container, {
-    height: '180',
-    width: '330',
-    videoId: trailerLink.match(/[^v=]+$/)[0],
-    playerVars: {
-      autoplay: 0,
-      controls: 1,
-      modestbranding: 1,
-      rel: 0,
-      showinfo: 0,
-    },
-    events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange,
-    },
+const watchButtons = document.querySelectorAll('[data-modal-button="watch-trailer"]');
+watchButtons.forEach(button => {
+  button.addEventListener('click', async (event) => {
+    const trailerId = button.dataset.modalTrailer;
+    const trailer = await fetchTrailerById(trailerId);
+   addTrailerToModal(trailer);
   });
+});
+export function addTrailerToModal(trailer) {
+  const content = `
+    <div class="modal__trailer">
+      <iframe
+        width="640px"
+        height="360px"
+        src="https://www.youtube.com/embed/${trailer.key}"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  `;
+  const instance = basicLightbox.create(content);
 
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
-
-  function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.ENDED) {
-      player.stopVideo();
+  const closeOnEsc = (event) => {
+    if (event.keyCode === 27) {
+      instance.close();
     }
-  }
+  };
+
+  window.addEventListener('keydown', closeOnEsc);
+  instance.show();
+
+  instance.on('close', () => {
+    window.removeEventListener('keydown', closeOnEsc);
+  });
 }
-
-const tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/iframe_api';
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-window.onYouTubeIframeAPIReady = initPlayer;
-// https://www.youtube.com/watch?v=
