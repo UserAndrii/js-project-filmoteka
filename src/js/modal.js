@@ -3,6 +3,7 @@ import {
   addToQueueToLocalStorage,
 } from './library';
 
+import {alternativePoster} from '../js/main-gallery';
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
 let filmId;
@@ -56,7 +57,7 @@ export function addModalMarcup(data) {
   const content = `
     <img
       class="modal__img"
-      src="https://image.tmdb.org/t/p/w400/${data.data.poster_path}"
+      src="https://image.tmdb.org/t/p/w400/${data.data.poster_path||alternativePoster}"
       alt="${data.data.title}"
       width="375px"
     />

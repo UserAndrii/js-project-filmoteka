@@ -54,18 +54,17 @@ $animation-time: 500ms;
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   transition: transform $animation-time $timing-function;
+  overflow-y: scroll;
 
   @media screen and (max-width: 479px) {
     max-width: 280px;
     height: calc(100vh - 50px);
     padding: 48px 20px 0px 20px;
-    overflow-y: scroll;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     max-width: 460px;
     height: calc(100vh - 50px);
-    padding: 48px 20px 40px 20px;
-    overflow-y: scroll;
+    padding: 48px 20px 0px 20px;
   }
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -74,10 +73,13 @@ $animation-time: 500ms;
   @media screen and (min-width: 1280px) {
     max-width: 806px;
     padding: 40px 12px;
+    overflow-y: visible;
   }
 }
 
 .modal__container {
+  display: block;
+  height: fit-content;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -94,13 +96,14 @@ $animation-time: 500ms;
     height: 357px;
     margin-bottom: 20px;
   }
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    margin: 0 auto;
     width: 264px;
     margin-bottom: 20px;
     object-fit: cover;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px)and (max-width: 1279px) {
     width: 264px;
     height: 374px;
     margin-right: 68px;
@@ -208,6 +211,7 @@ $animation-time: 500ms;
   @media screen and (min-width: 768px) {
     padding: 12px 18px;
     margin-right: 8px;
+    margin-bottom: 20px;
   }
   @media screen and (min-width: 1280px) {
     padding: 14px 32px;
