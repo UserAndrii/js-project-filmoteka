@@ -209,3 +209,81 @@ body {
 .info-message {
   color: #8c8c8c;
 }
+
+// Стилі для пагінації
+
+.tui-pagination .tui-page-btn {
+  color: #8c8c8c;
+  &:hover {
+    background-color: #545454;
+    color: #f7f7f7;
+  }
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  color: #ffffff;
+  background: #b92f2c;
+  border-color: #b92f2c;
+  cursor: default;
+}
+
+.tui-pagination .tui-is-selected:hover {
+  background-color: #b92f2c;
+}
+
+.tui-pagination .tui-first-child.tui-is-selected {
+  border-left: 1px solid #b92f2c;
+}
+
+.tui-pagination .tui-last-child.tui-is-selected {
+  border-right: 1px solid #b92f2c;
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next,
+.tui-pagination .tui-last,
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+  overflow: hidden;
+  border-color: #f7f7f7;
+  border: 1px solid transparent;
+}
+
+.tui-pagination .tui-ico-first,
+.tui-pagination .tui-ico-prev,
+.tui-pagination .tui-ico-next,
+.tui-pagination .tui-ico-last,
+.tui-pagination .tui-ico-ellip {
+  filter: invert(100%);
+}
+
+.tui-pagination .tui-ico-next {
+  background-position: -13px -24px;
+}
+
+.tui-pagination .tui-ico-last {
+  background-position: 0px -12px;
+}
+
+.tui-pagination .tui-is-disabled:hover {
+  background: #1a1818;
+  cursor: default;
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-prev {
+  filter: invert(100%);
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-first {
+  filter: invert(100%);
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-next {
+  filter: invert(100%);
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-last {
+  filter: invert(100%);
+}
