@@ -13,6 +13,7 @@ const refs = {
   heroBtnLibrary: document.querySelector('.hero__btn-library'),
   libraryBtn: document.querySelector('.btn_library'),
   pagination: document.querySelector('#pagination'),
+  emptyPage: document.querySelector('.empty-page'),
 };
 
 refs.home.addEventListener(
@@ -27,14 +28,7 @@ refs.form.addEventListener(
 
 function pressButtonToHome(e) {
   e.preventDefault();
-  refs.heroBtnLibrary.style.display = 'none';
-
-  refs.libraryBtn.style.backgroundColor = '#fff';
-  refs.libraryBtn.style.color = '#000';
-
-  refs.home.style.backgroundColor = '';
-  refs.home.style.color = '';
-
+  homePage();
   movieSearchService.enableLoader();
   fetchPopularFilms(1);
   refs.form.reset();
@@ -43,6 +37,7 @@ function pressButtonToHome(e) {
 
 function handleFormSubmit(e) {
   e.preventDefault();
+  homePage();
   movieSearchService.enableLoader();
   movieSearchService.query = e.currentTarget.elements.search.value.trim();
   fetchBySearch();
@@ -74,4 +69,13 @@ export async function backendDataToRenderedPage(currentPage) {
   }
   getTopMovies(fetch.data.results);
   renderSearchFilmsPagination(fetch.data.total_results, currentPage);
+}
+
+function homePage() {
+  refs.home.style.color = '#fff';
+  refs.home.style.backgroundColor = '#000';
+  refs.libraryBtn.style.backgroundColor = '#fff';
+  refs.libraryBtn.style.color = '#000';
+  refs.emptyPage.style.display = 'none';
+  pagination.style.display = 'block';
 }
