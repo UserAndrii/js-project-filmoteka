@@ -4,6 +4,7 @@ import './js/fetch-by-search';
 
 import './js/theme-switcher';
 import './js/movie-carousel';
+import './js/video-trailer';
 import './js/hide-carousel';
 
 import './js/main-gallery';
