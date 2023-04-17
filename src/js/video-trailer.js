@@ -1,5 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+// import { getFilmData } from './modal';
 
 const sliderEl = document.querySelector('.swiper-wrapper');
 
@@ -29,6 +30,9 @@ export async function onLinkPlayClick(evt) {
   try {
     const { results } = await fetchTrailerById(evt.target.dataset.id);
     const { key } = results[results.length - 1];
+    console.log(evt.target.dataset.id);
+
+    // getFilmData(evt.target.dataset.id);
 
     const closeModal = e => {
       if (e.code === 'Escape') {
