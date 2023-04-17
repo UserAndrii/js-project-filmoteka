@@ -163,7 +163,6 @@ export function addToWatchedToLocalStorage(data) {
     watchedMovies.push(data.data)
   };
   saveLocal('watched', watchedMovies);
-  // renderWatchedMovies();
 }
 
 export function addToQueueToLocalStorage(data) {
@@ -173,7 +172,6 @@ export function addToQueueToLocalStorage(data) {
     queueMovies.push(data.data)
   };
   saveLocal('queue', queueMovies);
-  // renderQueueMovies();
 }
 
 export function removeFromWatchedFromLocalStorage(data) {
