@@ -1,8 +1,11 @@
+import * as basicLightbox from 'basiclightbox';
 import Swiper, { Navigation, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 import axios from 'axios';
+import { classTogle } from './modal';
 
 const sliderEl = document.querySelector('.swiper-wrapper');
+
 const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
 const alternativePoster =
   'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
@@ -60,12 +63,70 @@ const renderMarkupSlider = movies => {
   const markup = movies
     .map(({ id, title, poster_path }) => {
       return `<li class="swiper-slide">
-        <a class="swiper-link" href="#" data-id="${id}"><img src="${
-        poster_path ? API_URL_IMG + poster_path : alternativePoster
-      }" alt="${title}" />
-        </a>
-      </li>`;
+                <a class="swiper-link" href="#" data-id="${id}">
+                  <img src="${
+                    poster_path ? API_URL_IMG + poster_path : alternativePoster
+                  }" alt="${title}" />
+                  <div class="trailer" id="film-id" type="button">
+                    <svg class="trailer-icon">
+                      <use href="./images/icons.svg#icon-film"></use>
+                    </svg>
+                  </div>
+                </a>
+              </li>
+              `;
     })
     .join('');
   sliderEl.insertAdjacentHTML('beforeend', markup);
 };
+
+// пошук відео по id
+
+const BASE_URL = 'https://api.themoviedb.org/3';
+const KEY = '58645e23389326a2e8ed75695b9e1b79';
+
+export async function fetchTrailerById(id) {
+  const url = new URL(`${BASE_URL}/movie/${id}/videos`);
+  url.searchParams.append('api_key', KEY);
+
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+// функція відворення відео
+
+sliderEl.addEventListener('click', onLinkPlayClick);
+
+export async function onLinkPlayClick(evt) {
+  evt.preventDefault();
+
+  if (evt.target.nodeName !== 'A') return;
+
+  try {
+    const { results } = await fetchTrailerById(evt.target.dataset.id);
+    const { key } = results[results.length - 1];
+
+    const closeModal = e => {
+      if (e.code === 'Escape') {
+        instance.close();
+      }
+    };
+
+    const instance = basicLightbox.create(
+      `<iframe class="youtube-frame" width="800" height="400" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+      {
+        onShow: () => {
+          document.addEventListener('keydown', closeModal);
+        },
+        onClose: () => {
+          document.removeEventListener('keydown', closeModal);
+        },
+      }
+    );
+
+    instance.show();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
