@@ -52,6 +52,21 @@ async function getFilmData(filmId) {
   }
 }
 
+const BASE_URL = 'https://api.themoviedb.org/3';
+const KEY = '58645e23389326a2e8ed75695b9e1b79';
+
+async function fetchTrailerById(trailerId) {
+  const url = `${BASE_URL}/movie/${trailerId}/videos?api_key=${KEY}`;
+  try {
+    const response = await axios.get(url);
+    return response.data.results[0];
+  } catch (error) {
+    console.error(error);
+  }
+}
+import urlIcon from '../images/sprite.svg';
+
+import {addTrailerToModal} from './fetch-by-video'
 export function addModalMarcup(data) {
   const content = `
     <img
@@ -106,17 +121,33 @@ export function addModalMarcup(data) {
         >
           add to queue
         </button>
+        <button
+          class="modal__button trailer-button"
+          type="button"
+          data-modal-button="watch-trailer"
+          data-modal-trailer="${data.data.id}"
+        >
+          Watch trailer
+          <svg class="trailer-icons"  width="20" height="20">
+        <use href="${urlIcon}#icon-play"></use>
+      </svg>
+        </button>
       </div>
 
       <div id="player-container"></div>
       <script src="https://www.youtube.com/player_api"></script>
     </div>
-`;
-  setTimeout(addListener, 300);
-  // setTimeout(removeListener, 300);
+  `;
 
-  return refs.modalCont.insertAdjacentHTML('afterbegin', content);
+  refs.modalCont.insertAdjacentHTML('afterbegin', content);
+
+  const watchTrailerButton = document.querySelector('[data-modal-button="watch-trailer"]');
+  watchTrailerButton.addEventListener('click', async () => {
+    const trailer = await fetchTrailerById(data.data.id);
+    addTrailerToModal(trailer);
+  });
 }
+
 
 function addListener() {
   const addToWatchedBtn = document.querySelector('.watched-button');

@@ -1,6 +1,6 @@
 import './js/fetch-popular-films';
 import './js/fetch-by-search';
-// import './js/fetch-by-video';
+import './js/fetch-by-video';
 
 import './js/theme-switcher';
 import './js/movie-carousel';
