@@ -10,11 +10,16 @@ import Natalia from '../images/team/natalia.jpg';
 import Slava from '../images/team/slava.jpg';
 import Oleksandr from '../images/team/oleksandr.jpg';
 import Andriy from '../images/team/andriy.jpg';
+import video from '../images/team/-32298.mp4';
 import svgGit from '../images/gitsvg.svg';
 import svgLinkd from '../images/linkedin.svg';
 
 
-const markup = `<div class="team-wrapper">
+const markup = `<div class="intro">
+      <div class="video">
+        <video class="video__media" src="${video}" autoplay muted loop ></video>
+      </div>
+      <div class="intro__content team-wrapper">
 <div class="team-card">
     <img src="${Nataliia}" alt="Nataliia" class="team-image">
     <p class="team-name">Nataliia</p>
@@ -153,6 +158,7 @@ const markup = `<div class="team-wrapper">
       <use href="${svgLinkd}#icon-linkedin-svg"></use>
     </svg></a>
     </p>
+</div>
 </div>
 </div>`;
 
