@@ -45,7 +45,6 @@ export function addTrailerToModal(trailer) {
   window.addEventListener('keydown', closeOnEsc);
   instance.show();
 
-  // Удаляем обработчик события keydown при закрытии модального окна
   instance.on('close', () => {
     window.removeEventListener('keydown', closeOnEsc);
   });
