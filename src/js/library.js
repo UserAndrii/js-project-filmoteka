@@ -45,17 +45,14 @@ function onLibraryBtnClick() {
   
   // Якщо зайшов перший раз у бібліотеку без ключа watched в localStorage
   if (!localStorage.getItem('watched')) {
-    console.log('Спрацювало');
     localStorage.setItem("watched", '[]');
   };
   
   // Перевірка, чи пустий масив
   if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
-    console.log('Присутні елементи');
     document.querySelector('.empty-page').style.display = 'none';
     return renderWatchedMovies();
   } else {
-    console.log('Масив пустий');
     return document.querySelector('.empty-page').style.display = 'block';
   };
 };
@@ -218,22 +215,3 @@ export function addToQueueToLocalStorage(data) {
 //   const movieId = (localStorageItem.find(queue => queue.id === id));
 //   removeLocal('queue', movieId);
 // }
-
-// libRefs.library.addEventListener('click', (e) => {
-  
-//   if (e.target.nodeName !== 'IMG') { 
-//     return;
-//   }
-
-//   console.log('Цей фільм вже доданий, видаляєм...');
-//   console.log('ID фільму: ', e.target.id);
-  
-//   const films = JSON.parse(localStorage.getItem('watched'));
-//   console.log('film: ', films);
-
-//   const filteredFilms = films.filter(filmEl => filmEl.id !== Number(e.target.id));
-//   console.log('filteredFilm: ', filteredFilms);
-
-//   localStorage.setItem('watched', JSON.stringify(filteredFilms));
-//   renderWatchedMovies();
-// })
