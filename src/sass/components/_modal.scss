@@ -246,16 +246,18 @@ iframe{
  
   align-items: center;
   display: flex;
+  @media screen and (max-width: 479px) {
+    padding: 8px 10px;
+  }
   @media screen and (min-width: 480px) and (max-width: 767px){
     margin-left: 0px;
+    padding: 8px 10px;
   }
   @media screen and (min-width: 768px)and (max-width: 1199px) {
     margin-left: 60px;
     padding: 12px 18px;
-    margin-top: 10px;
     }
     @media screen and (min-width: 1280px) {
-      margin-top: 10px;
       margin-left: 80px;
     }
 }
