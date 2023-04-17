@@ -6,7 +6,7 @@ import {
 } from './library';
 import { loadLocal } from './localStorage';
 
-import {alternativePoster} from '../js/main-gallery';
+import { alternativePoster } from '../js/main-gallery';
 const API_KEY = '58645e23389326a2e8ed75695b9e1b79';
 const axios = require('axios').default;
 let filmId;
@@ -67,12 +67,14 @@ async function fetchTrailerById(trailerId) {
 }
 import urlIcon from '../images/sprite.svg';
 
-import {addTrailerToModal} from './fetch-by-video'
+import { addTrailerToModal } from './fetch-by-video';
 export function addModalMarcup(data) {
   const content = `
     <img
       class="modal__img"
-      src="https://image.tmdb.org/t/p/w400/${data.data.poster_path||alternativePoster}"
+      src="https://image.tmdb.org/t/p/w400/${
+        data.data.poster_path || alternativePoster
+      }"
       alt="${data.data.title}"
       width="375px"
     />
@@ -140,18 +142,6 @@ export function addModalMarcup(data) {
     </div>
   `;
 
-  refs.modalCont.insertAdjacentHTML('afterbegin', content);
-
-  const watchTrailerButton = document.querySelector('[data-modal-button="watch-trailer"]');
-  watchTrailerButton.addEventListener('click', async () => {
-    const trailer = await fetchTrailerById(data.data.id);
-    addTrailerToModal(trailer);
-  });
-}
-
-
-function addListener() {
-
   setTimeout(() => {
     isWatchedMovieExists(data);
   }, 300);
@@ -159,7 +149,27 @@ function addListener() {
   setTimeout(() => {
     isQueueMovieExists(data);
   }, 300);
- 
+
+  refs.modalCont.insertAdjacentHTML('afterbegin', content);
+
+  const watchTrailerButton = document.querySelector(
+    '[data-modal-button="watch-trailer"]'
+  );
+  watchTrailerButton.addEventListener('click', async () => {
+    const trailer = await fetchTrailerById(data.data.id);
+    addTrailerToModal(trailer);
+  });
+}
+
+function addListener() {
+  setTimeout(() => {
+    isWatchedMovieExists(data);
+  }, 300);
+
+  setTimeout(() => {
+    isQueueMovieExists(data);
+  }, 300);
+
   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
 }
 
@@ -167,13 +177,15 @@ function isWatchedMovieExists(data) {
   const addToWatchedButton = document.querySelector('.watched-button');
   const watchedMovies = loadLocal('watched') || [];
   const isMovieWatched = watchedMovies.some(movie => movie.id === data.data.id);
-  addToWatchedButton.textContent = isMovieWatched ? 'Remove watched' : 'Add to watched';
-  if(isMovieWatched) {
+  addToWatchedButton.textContent = isMovieWatched
+    ? 'Remove watched'
+    : 'Add to watched';
+  if (isMovieWatched) {
     removeListener(data);
   }
-  if(!isMovieWatched) {
+  if (!isMovieWatched) {
     addListener(data);
-  } 
+  }
 }
 
 function isQueueMovieExists(data) {
@@ -181,13 +193,13 @@ function isQueueMovieExists(data) {
   const queueMovies = loadLocal('queue') || [];
   const isMovieQueue = queueMovies.some(movie => movie.id === data.data.id);
   addToQueueButton.textContent = isMovieQueue ? 'Remove queue' : 'Add to queue';
-  if(isMovieQueue) {
+  if (isMovieQueue) {
     removeListener(data);
   }
-  if(!isMovieQueue) {
+  if (!isMovieQueue) {
     addListener(data);
-  } 
-};
+  }
+}
 
 function addListener(data) {
   const addToWatchedBtn = document.querySelector('.watched-button');
