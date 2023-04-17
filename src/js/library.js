@@ -42,13 +42,20 @@ function onLibraryBtnClick() {
   libRefs.queueBtn.classList.remove('btn-queue--active');
 
   // Перевірка на наявність доданих фільмів
-
-  console.log(JSON.parse(localStorage.getItem("watched")).length);
-
-  if (JSON.parse(localStorage.getItem("watched"))) {
-    // console.log('Список наповнений у watched');
+  
+  // Якщо зайшов перший раз у бібліотеку без ключа watched в localStorage
+  if (!localStorage.getItem('watched')) {
+    console.log('Спрацювало');
+    localStorage.setItem("watched", '[]');
+  };
+  
+  // Перевірка, чи пустий масив
+  if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
+    console.log('Присутні елементи');
+    document.querySelector('.empty-page').style.display = 'none';
     return renderWatchedMovies();
   } else {
+    console.log('Масив пустий');
     return document.querySelector('.empty-page').style.display = 'block';
   };
 };
@@ -63,33 +70,57 @@ libRefs.watchBtn.addEventListener('click', () => {
   //   класс 'is-active' може буте змінений відповідно до загального css
   libRefs.queueBtn.classList.remove('is-active');
   libRefs.watchBtn.classList.add('is-active');
-  renderWatchedMovies();
+  // renderWatchedMovies();
 
   // Зміна стилів кнопок
 
   libRefs.watchBtn.classList.add('btn-watched--active');
   libRefs.queueBtn.classList.remove('btn-queue--active');
+
+  // Перевірка на наявність доданих фільмів
+
+  // Якщо зайшов перший раз у бібліотеку без ключа watched в localStorage
+
+  if (!localStorage.getItem('watched')) {
+    localStorage.setItem("watched", '[]');
+  };
+  
+  // Перевірка, чи пустий масив
+  if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
+    document.querySelector('.empty-page').style.display = 'none';
+    return renderWatchedMovies();
+  } else {
+    libRefs.library.innerHTML = '';
+    return document.querySelector('.empty-page').style.display = 'block';
+  };
 });
 
 libRefs.queueBtn.addEventListener('click', () => {
   //   класс 'is-active' може буте змінений відповідно до загального css
   libRefs.watchBtn.classList.remove('is-active');
   libRefs.queueBtn.classList.add('is-active');
-  renderQueueMovies();
-
-  // Перевірка на наявність доданих фільмів
-
-  if (JSON.parse(localStorage.getItem("watched")).length >= 0) {
-    // console.log('Список наповнений у queue');
-    renderQueueMovies();
-  } else {
-    document.querySelector('.empty-page').style.display = 'block';
-  };
+  // renderQueueMovies();
 
   // Зміна стилів кнопок
 
   libRefs.watchBtn.classList.remove('btn-watched--active');
   libRefs.queueBtn.classList.add('btn-queue--active');
+
+  // Перевірка на наявність доданих фільмів
+
+  // Якщо зайшов перший раз у бібліотеку без ключа queue в localStorage
+  if (!localStorage.getItem('queue')) {
+    localStorage.setItem("queue", '[]');
+  };
+  
+  // Перевірка, чи пустий масив
+  if (JSON.parse(localStorage.getItem('queue')).length !== 0) {
+    document.querySelector('.empty-page').style.display = 'none';
+    return renderQueueMovies();
+  } else {
+    libRefs.library.innerHTML = '';
+    return document.querySelector('.empty-page').style.display = 'block';
+  };
 });
 
 function renderWatchedMovies() {
@@ -187,3 +218,22 @@ export function addToQueueToLocalStorage(data) {
 //   const movieId = (localStorageItem.find(queue => queue.id === id));
 //   removeLocal('queue', movieId);
 // }
+
+// libRefs.library.addEventListener('click', (e) => {
+  
+//   if (e.target.nodeName !== 'IMG') { 
+//     return;
+//   }
+
+//   console.log('Цей фільм вже доданий, видаляєм...');
+//   console.log('ID фільму: ', e.target.id);
+  
+//   const films = JSON.parse(localStorage.getItem('watched'));
+//   console.log('film: ', films);
+
+//   const filteredFilms = films.filter(filmEl => filmEl.id !== Number(e.target.id));
+//   console.log('filteredFilm: ', filteredFilms);
+
+//   localStorage.setItem('watched', JSON.stringify(filteredFilms));
+//   renderWatchedMovies();
+// })
