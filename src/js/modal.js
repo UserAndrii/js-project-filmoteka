@@ -161,17 +161,17 @@ export function addModalMarcup(data) {
   });
 }
 
-function addListener() {
-  setTimeout(() => {
-    isWatchedMovieExists(data);
-  }, 300);
+// function addListener() {
+//   setTimeout(() => {
+//     isWatchedMovieExists(data);
+//   }, 300);
 
-  setTimeout(() => {
-    isQueueMovieExists(data);
-  }, 300);
+//   setTimeout(() => {
+//     isQueueMovieExists(data);
+//   }, 300);
 
-  return refs.modalCont.insertAdjacentHTML('afterbegin', content);
-}
+//   return refs.modalCont.insertAdjacentHTML('afterbegin', content);
+// }
 
 function isWatchedMovieExists(data) {
   const addToWatchedButton = document.querySelector('.watched-button');
