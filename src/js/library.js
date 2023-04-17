@@ -43,15 +43,17 @@ function onLibraryBtnClick() {
 
   // Перевірка на наявність доданих фільмів
 
-  if (localStorage.getItem("watched")) {
-    // console.log('Список наповнений у watched');
-    renderWatchedMovies();
-  } else {
-    document.querySelector('.empty-page').style.display = 'block';
-  };
-}
+  console.log(JSON.parse(localStorage.getItem("watched")).length);
 
-libRefs.homeBtn.addEventListener('click', clearMyLibMarUp); // допрацювати кнопки watched та queue при натисканні на home btn (O)
+  if (JSON.parse(localStorage.getItem("watched"))) {
+    // console.log('Список наповнений у watched');
+    return renderWatchedMovies();
+  } else {
+    return document.querySelector('.empty-page').style.display = 'block';
+  };
+};
+
+libRefs.homeBtn.addEventListener('click', clearMyLibMarUp);
 
 function clearMyLibMarUp() {
   return document.querySelector('.empty-page').style.display= 'none';
@@ -77,7 +79,7 @@ libRefs.queueBtn.addEventListener('click', () => {
 
   // Перевірка на наявність доданих фільмів
 
-  if (localStorage.getItem("queue")) {
+  if (JSON.parse(localStorage.getItem("watched")).length >= 0) {
     // console.log('Список наповнений у queue');
     renderQueueMovies();
   } else {
