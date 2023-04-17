@@ -1,24 +1,24 @@
 import * as basicLightbox from 'basiclightbox';
 
-import Nataliia from '../images/team/nataliia.jpg';
-import Andrii from '../images/team/andrii.jpg';
-import Yuriy from '../images/team/yuriy.jpg';
-import Galyna from '../images/team/galyna.jpg';
-import Maryna from '../images/team/maryna.jpg';
-import Yura from '../images/team/yura.jpg';
-import Natalia from '../images/team/natalia.jpg';
-import Slava from '../images/team/slava.jpg';
-import Oleksandr from '../images/team/oleksandr.jpg';
-import Andriy from '../images/team/andriy.jpg';
-// import video from '../images/team/-32298.mp4';
-import svgGit from '../images/gitsvg.svg';
-import svgLinkd from '../images/linkedin.svg';
+const Nataliia from '../images/team/nataliia.jpg';
+const Andrii from '../images/team/andrii.jpg';
+const Yuriy from '../images/team/yuriy.jpg';
+const Galyna from '../images/team/galyna.jpg';
+const Maryna from '../images/team/maryna.jpg';
+const Yura from '../images/team/yura.jpg';
+const Natalia from '../images/team/natalia.jpg';
+const Slava from '../images/team/slava.jpg';
+const Oleksandr from '../images/team/oleksandr.jpg';
+const Andriy from '../images/team/andriy.jpg';
+
+const svgGit from '../images/gitsvg.svg';
+const svgLinkd from '../images/linkedin.svg';
 
 
 const markup =
   `<div class="intro">
     <div class="video">
-      <video class="video__media" src="../images/team/-32298.mp4" autoplay muted loop></video>
+      <video class="video__media" src="" autoplay muted loop></video>
     </div>
     <div class="intro__content team-wrapper">
         <div class="team-card">
@@ -92,8 +92,8 @@ const markup =
       </div>
       <div class="team-card">
           <img src="${Yuriy}" alt="Yuriy" class="team-image">
-          <p class="team-name">Yuriy</p>
-          <p class="team-name">Klumenko</p>
+          <p class="team-name">Yurii</p>
+          <p class="team-name">Klymenko</p>
           <p class="team-role">Developer</p>
           <p class="logo__icon-footer">
           <a href="https://github.com/" target="_blank" class="team-git"><svg  width="24" height="24">
@@ -164,7 +164,6 @@ const markup =
 </div>`;
 
 const teamButton = document.querySelector('.js-team-modal');
-
 const body = document.body;
 const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
 
@@ -176,11 +175,14 @@ teamButton.addEventListener('click', openModal);
 const modal = basicLightbox.create(markup);
 
 function openModal(e) {
-  originalOverflow = body.style.overflow;
-  originalMarginRight = body.style.marginRight;
+  originalOverflow = body.style.overflow || '';
+  originalMarginRight = body.style.marginRight || '';
 
   body.style.overflow = 'hidden';
   body.style.marginRight = `${scrollBarWidth}px`;
+
+  const button = document.querySelector('.btn-to-top');
+  button.disabled = true;
 
   modal.show();
 
@@ -194,6 +196,9 @@ function closeModalHandler(e) {
 
     body.style.overflow = originalOverflow;
     body.style.marginRight = originalMarginRight;
+
+    const button = document.querySelector('.btn-to-top');
+    button.disabled = false;
   }
 }
 
