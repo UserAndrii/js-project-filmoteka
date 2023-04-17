@@ -201,7 +201,10 @@ $animation-time: 500ms;
     font-size: 10px;
     padding: 8px 10px;
     margin-right: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    &:last-child{
+      margin-bottom: 20px;
+    }
   }
   @media screen and (min-width: 480px) and (max-width: 767px){
     padding: 10px 12px;
@@ -219,10 +222,52 @@ $animation-time: 500ms;
   }
 }
 
-#player-container {
-  margin-top: -180px;
-  margin-left: auto;
-  margin-right: 50px;
+iframe{
+  
+  @media screen and (max-width: 479px) {
+    width: 200px;
+    height: 180px;
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    width: 320px;
+    height: 240px;
+  }
+  @media screen and (min-width: 768px) {
+  width: 640px;
+  height: 360px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 800px;
+  height: 480px;
+  }
+}
+
+.trailer-button{
+ 
+  align-items: center;
+  display: flex;
+  @media screen and (max-width: 479px) {
+    padding: 8px 10px;
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    margin-left: 0px;
+    padding: 8px 10px;
+  }
+  @media screen and (min-width: 768px)and (max-width: 1199px) {
+    margin-left: 60px;
+    padding: 12px 18px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-left: 80px;
+    }
+}
+
+.trailer-icons{
+  margin-left: 20px;
+  fill: #df1612;
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    margin-left: 5px;
+  }
 }
 
 //     font-size: 10px;
