@@ -2,6 +2,8 @@ import './js/fetch-popular-films';
 import './js/fetch-by-search';
 import './js/fetch-by-video';
 
+import './js/animation-logo';
+
 // import './js/loginform';
 // import './js/loginmodal';
 

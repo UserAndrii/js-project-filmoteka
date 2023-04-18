@@ -14,6 +14,7 @@ const refs = {
   libraryBtn: document.querySelector('.btn_library'),
   pagination: document.querySelector('#pagination'),
   emptyPage: document.querySelector('.empty-page'),
+  audio: document.querySelector('#audio-play'),
 };
 
 refs.home.addEventListener(
@@ -28,6 +29,8 @@ refs.form.addEventListener(
 
 function pressButtonToHome(e) {
   e.preventDefault();
+  refs.audio.pause();
+  refs.audio.currentTime = 0;
   homePage();
   movieSearchService.enableLoader();
   fetchPopularFilms(1);
@@ -72,6 +75,7 @@ export async function backendDataToRenderedPage(currentPage) {
 }
 
 function homePage() {
+  refs.heroBtnLibrary.style.display = 'none';
   refs.home.style.color = '#fff';
   refs.home.style.backgroundColor = '#000';
   refs.libraryBtn.style.backgroundColor = '#fff';
