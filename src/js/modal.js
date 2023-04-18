@@ -1,3 +1,4 @@
+import throttle from 'lodash.throttle';
 import {
   addToWatchedToLocalStorage,
   addToQueueToLocalStorage,
@@ -162,70 +163,90 @@ export function addModalMarcup(data) {
 }
 
 function isWatchedMovieExists(data) {
-  const addToWatchedButton = document.querySelector('.watched-button');
   const watchedMovies = loadLocal('watched') || [];
   const isMovieWatched = watchedMovies.some(movie => movie.id === data.data.id);
-  addToWatchedButton.textContent = isMovieWatched
-    ? 'Remove watched'
-    : 'Add to watched';
+  // btnWatched.textContent = isMovieWatched ? 'Remove watched' : 'Add to watched';
+  const btnWatched = document.querySelector('.watched-button');
+
   if (isMovieWatched) {
-    removeListener(data);
+    btnWatched.textContent = 'Remove watched';
+    btnWatched.setAttribute('data-modal-button', 'remove-from-watched');
+  } else {
+    btnWatched.textContent = 'Add to watched';
+    btnWatched.setAttribute('data-modal-button', 'add-to-watched');
   }
-  if (!isMovieWatched) {
-    addListener(data);
-  }
+
+  btnWatched.addEventListener('click', throttle(function() {
+    if (isMovieWatched) {
+      removeFromWatchedFromLocalStorage(data);
+    } else {
+      addToWatchedToLocalStorage(data);
+    }
+    isWatchedMovieExists(data);
+  }), 300);
 }
 
 function isQueueMovieExists(data) {
-  const addToQueueButton = document.querySelector('.queue-button');
   const queueMovies = loadLocal('queue') || [];
   const isMovieQueue = queueMovies.some(movie => movie.id === data.data.id);
-  addToQueueButton.textContent = isMovieQueue ? 'Remove queue' : 'Add to queue';
+  // addToQueueButton.textContent = isMovieQueue ? 'Remove queue' : 'Add to queue';
+  const btnQueue = document.querySelector('.queue-button');
+
   if (isMovieQueue) {
-    removeListener(data);
+    btnQueue.textContent = 'Remove queue';
+    btnQueue.setAttribute('data-modal-button', 'remove-from-queue');
+  } else {
+    btnQueue.textContent = 'Add to queue';
+    btnQueue.setAttribute('data-modal-button', 'add-to-queue');
   }
-  if (!isMovieQueue) {
-    addListener(data);
-  }
+
+  btnQueue.addEventListener('click', throttle(function() {
+    if (isMovieQueue) {
+      removeFromQueueFromLocalStorage(data);
+    } else {
+      addToQueueToLocalStorage(data);
+    }
+    isQueueMovieExists(data);
+  }), 300);
 }
 
-function addListener(data) {
-  const addToWatchedBtn = document.querySelector('.watched-button');
-  const addToQueueBtn = document.querySelector('.queue-button');
+// function addListener(data) {
+//   const addToWatchedBtn = document.querySelector('.watched-button');
+//   const addToQueueBtn = document.querySelector('.queue-button');
 
-  addToWatchedBtn.addEventListener('click', event => {
-    event.currentTarget.textContent = 'Remove watched';
-    // event.currentTarget.disabled = true;
-    addToWatchedToLocalStorage(data);
-    removeListener(data);
-  });
+//   addToWatchedBtn.addEventListener('click', event => {
+//     event.currentTarget.textContent = 'Remove watched';
+//     // event.currentTarget.disabled = true;
+//     addToWatchedToLocalStorage(data);
+//     removeListener(data);
+//   });
 
-  addToQueueBtn.addEventListener('click', event => {
-    event.currentTarget.textContent = 'Remove queue';
-    // event.currentTarget.disabled = true;
-    addToQueueToLocalStorage(data);
-    removeListener(data);
-  });
-}
+//   addToQueueBtn.addEventListener('click', event => {
+//     event.currentTarget.textContent = 'Remove queue';
+//     // event.currentTarget.disabled = true;
+//     addToQueueToLocalStorage(data);
+//     removeListener(data);
+//   });
+// }
 
-function removeListener(data) {
-  const removeFromWatchedBtn = document.querySelector('.watched-button');
-  const removeFromQueueBtn = document.querySelector('.queue-button');
+// function removeListener(data) {
+//   const removeFromWatchedBtn = document.querySelector('.watched-button');
+//   const removeFromQueueBtn = document.querySelector('.queue-button');
 
-  removeFromWatchedBtn.addEventListener('click', event => {
-    event.currentTarget.textContent = 'Add to watched';
-    // event.currentTarget.disabled = true;
-    removeFromWatchedFromLocalStorage(data);
-    addListener(data);
-  });
+//   removeFromWatchedBtn.addEventListener('click', event => {
+//     event.currentTarget.textContent = 'Add to watched';
+//     // event.currentTarget.disabled = true;
+//     removeFromWatchedFromLocalStorage(data);
+//     addListener(data);
+//   });
 
-  removeFromQueueBtn.addEventListener('click', event => {
-    event.currentTarget.textContent = 'Add to queue';
-    // event.currentTarget.disabled = true;
-    removeFromQueueFromLocalStorage(data);
-    addListener(data);
-  });
-}
+//   removeFromQueueBtn.addEventListener('click', event => {
+//     event.currentTarget.textContent = 'Add to queue';
+//     // event.currentTarget.disabled = true;
+//     removeFromQueueFromLocalStorage(data);
+//     addListener(data);
+//   });
+// }
 
 function clearMarcup(element) {
   element.innerHTML = '';
