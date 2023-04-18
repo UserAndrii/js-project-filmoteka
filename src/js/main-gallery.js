@@ -22,7 +22,7 @@ export async function getTopMovies(data) {
 
         if (title) {
           return `
-          <li class="movie-card" id="${id}"> 
+          <li class="movie-card" data-source="popular" id="${id}"> 
             <img
               class="movie-card__image"
               src="${

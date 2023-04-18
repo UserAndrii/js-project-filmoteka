@@ -177,18 +177,16 @@ function isWatchedMovieExists(data) {
     btnWatched.setAttribute('data-modal-button', 'add-to-watched');
   }
 
-  btnWatched.addEventListener(
-    'click',
-    throttle(function () {
-      if (isMovieWatched) {
-        removeFromWatchedFromLocalStorage(data);
-      } else {
-        addToWatchedToLocalStorage(data);
-      }
-      isWatchedMovieExists(data);
-    }),
-    300
-  );
+  btnWatched.addEventListener('click', throttle(onBtnWatchedClick), 500);
+
+  function onBtnWatchedClick() {
+    if (isMovieWatched) {
+      removeFromWatchedFromLocalStorage(data);
+    } else {
+      addToWatchedToLocalStorage(data);
+    }
+    isWatchedMovieExists(data);
+  }
 }
 
 function isQueueMovieExists(data) {
@@ -205,57 +203,16 @@ function isQueueMovieExists(data) {
     btnQueue.setAttribute('data-modal-button', 'add-to-queue');
   }
 
-  btnQueue.addEventListener(
-    'click',
-    throttle(function () {
-      if (isMovieQueue) {
-        removeFromQueueFromLocalStorage(data);
-      } else {
-        addToQueueToLocalStorage(data);
-      }
-      isQueueMovieExists(data);
-    }),
-    300
-  );
+  btnQueue.addEventListener('click', throttle(onBtnQueueClick), 500);
+  function onBtnQueueClick() {
+    if (isMovieQueue) {
+      removeFromQueueFromLocalStorage(data);
+    } else {
+      addToQueueToLocalStorage(data);
+    }
+    isQueueMovieExists(data);
+  }
 }
-
-// function addListener(data) {
-//   const addToWatchedBtn = document.querySelector('.watched-button');
-//   const addToQueueBtn = document.querySelector('.queue-button');
-
-//   addToWatchedBtn.addEventListener('click', event => {
-//     event.currentTarget.textContent = 'Remove watched';
-//     // event.currentTarget.disabled = true;
-//     addToWatchedToLocalStorage(data);
-//     removeListener(data);
-//   });
-
-//   addToQueueBtn.addEventListener('click', event => {
-//     event.currentTarget.textContent = 'Remove queue';
-//     // event.currentTarget.disabled = true;
-//     addToQueueToLocalStorage(data);
-//     removeListener(data);
-//   });
-// }
-
-// function removeListener(data) {
-//   const removeFromWatchedBtn = document.querySelector('.watched-button');
-//   const removeFromQueueBtn = document.querySelector('.queue-button');
-
-//   removeFromWatchedBtn.addEventListener('click', event => {
-//     event.currentTarget.textContent = 'Add to watched';
-//     // event.currentTarget.disabled = true;
-//     removeFromWatchedFromLocalStorage(data);
-//     addListener(data);
-//   });
-
-//   removeFromQueueBtn.addEventListener('click', event => {
-//     event.currentTarget.textContent = 'Add to queue';
-//     // event.currentTarget.disabled = true;
-//     removeFromQueueFromLocalStorage(data);
-//     addListener(data);
-//   });
-// }
 
 function clearMarcup(element) {
   element.innerHTML = '';

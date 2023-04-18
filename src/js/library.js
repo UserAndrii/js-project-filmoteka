@@ -162,7 +162,7 @@ function getLibraryMovies(data) {
 
       if (title) {
         return `
-          <li class="movie-card" id="${id}">
+          <li class="movie-card" data-source="library" id="${id}">
             <img
               class="movie-card__image"
               src="${
@@ -170,10 +170,10 @@ function getLibraryMovies(data) {
               }"
               alt="${title}"
               width="300"
-              id="${id}"
+              height="574"           
             />
-            <h2 class="movie-card__name" id="${id}">${title}</h2>
-            <p class="movie-card__text" id="${id}">
+            <h2 class="movie-card__name">${title}</h2>
+            <p class="movie-card__text">
               ${genreNames} | ${year}
               <span class="movie-card__box">
                 <span class="movie-card__average">${vote_average.toFixed(
@@ -197,6 +197,12 @@ export function addToWatchedToLocalStorage(data) {
     watchedMovies.push(data.data);
   }
   saveLocal('watched', watchedMovies);
+
+  const modal = document.querySelector('.movie-card');
+  const dataSource = modal.getAttribute('data-source');
+  if (dataSource === 'library') {
+   renderWatchedMovies();
+  } 
 }
 
 export function addToQueueToLocalStorage(data) {
@@ -206,22 +212,35 @@ export function addToQueueToLocalStorage(data) {
     queueMovies.push(data.data);
   }
   saveLocal('queue', queueMovies);
+
+  const modal = document.querySelector('.movie-card');
+  const dataSource = modal.getAttribute('data-source');
+  if (dataSource === 'library') {
+   renderQueueMovies();
+  }
 }
 
 export function removeFromWatchedFromLocalStorage(data) {
-  const watchedMovies = loadLocal('watched') || [];
-  const updateWatchedMovies = watchedMovies.filter(
-    movie => movie.id !== data.data.id
-  );
+  const watchedMovies = loadLocal('watched');
+  const updateWatchedMovies = watchedMovies ? watchedMovies.filter(movie => movie.id !== data.data.id) : [];
   saveLocal('watched', updateWatchedMovies);
-  // renderWatchedMovies();
+
+  
+  const modal = document.querySelector('.movie-card');
+  const dataSource = modal.getAttribute('data-source');
+  if (dataSource === 'library') {
+   renderWatchedMovies();
+  } 
 }
 
 export function removeFromQueueFromLocalStorage(data) {
   const queueMovies = loadLocal('queue') || [];
-  const updateQueueMovies = queueMovies.filter(
-    movie => movie.id !== data.data.id
-  );
+  const updateQueueMovies = queueMovies.filter(movie => movie.id !== data.data.id);
   saveLocal('queue', updateQueueMovies);
-  // renderQueueMovies();
+
+  const modal = document.querySelector('.movie-card');
+  const dataSource = modal.getAttribute('data-source');
+  if (dataSource === 'library') {
+   renderQueueMovies();
+  }
 }
