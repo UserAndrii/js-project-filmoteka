@@ -39,13 +39,10 @@ export function addTrailerToModal(trailer) {
   const closeOnEsc = (event) => {
     if (event.keyCode === 27) {
       instance.close();
+      window.removeEventListener('keydown', closeOnEsc);
     }
   };
 
   window.addEventListener('keydown', closeOnEsc);
   instance.show();
-
-  instance.on('close', () => {
-    window.removeEventListener('keydown', closeOnEsc);
-  });
 }

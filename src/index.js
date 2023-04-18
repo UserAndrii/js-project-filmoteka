@@ -1,8 +1,14 @@
 import './js/fetch-popular-films';
 import './js/fetch-by-search';
 import './js/fetch-by-video';
+
 import './js/animation-logo';
+
+// import './js/loginform';
+// import './js/loginmodal';
+
 import './js/theme-swit';
+
 import './js/movie-carousel';
 import './js/video-trailer';
 import './js/hide-carousel';
