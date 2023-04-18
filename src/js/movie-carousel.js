@@ -66,7 +66,7 @@ const renderMarkupSlider = movies => {
                   <img src="${
                     poster_path ? API_URL_IMG + poster_path : alternativePoster
                   }" alt="${title}" width="145" height="218" />
-                  <div class="trailer" id="film-id" type="button">
+                  <div class="trailer">
                     <svg class="trailer-icon" width="60" height="60">
                       <use href="${urlIcon}#icon-play"></use>
                     </svg>

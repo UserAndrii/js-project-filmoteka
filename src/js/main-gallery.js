@@ -22,7 +22,7 @@ export async function getTopMovies(data) {
 
         if (title) {
           return `
-          <li class="movie-card" id="${id}">
+          <li class="movie-card" id="${id}"> 
             <img
               class="movie-card__image"
               src="${
@@ -31,10 +31,9 @@ export async function getTopMovies(data) {
               alt="${title}"
               width="300"
               height="574"
-              id="${id}"
             />
-            <h2 class="movie-card__name" id="${id}">${title}</h2>
-            <p class="movie-card__text" id="${id}">
+            <h2 class="movie-card__name">${title}</h2>
+            <p class="movie-card__text">
               ${genre} | ${year}
               <span class="movie-card__box">
                 <span class="movie-card__average">${vote_average.toFixed(

@@ -76,7 +76,7 @@ export function addModalMarcup(data) {
         data.data.poster_path || alternativePoster
       }"
       alt="${data.data.title}"
-      width="375px"
+      width="375"
     />
     <div class="modal__content">
       <h2 class="modal__title">${data.data.title}</h2>
@@ -232,8 +232,8 @@ function clearMarcup(element) {
 }
 
 function onModalOpen(event) {
-  // console.log('click galery');
-  filmId = event.target.id;
+  // console.log(event.target.closest('.movie-card').id);
+  filmId = event.target.closest('.movie-card').id;
   if (filmId) {
     getFilmData(filmId);
     classTogle(refs.modalBackdrop);
