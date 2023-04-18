@@ -60,111 +60,6 @@
   margin-left: 10px;
 }
 
-.lds-heart {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: 8px;
-  margin-right: 8px;
-
-  transform: rotate(45deg);
-  transform-origin: 56px -9px;
-}
-.lds-heart div {
-  top: 32px;
-  left: 32px;
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: $accent-color;
-  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.lds-heart div:after,
-.lds-heart div:before {
-  content: ' ';
-  position: absolute;
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: $accent-color;
-}
-.lds-heart div:before {
-  left: -9px;
-  border-radius: 50% 0 0 50%;
-}
-.lds-heart div:after {
-  top: -9px;
-  border-radius: 50% 50% 0 0;
-}
-@keyframes lds-heart {
-  0% {
-    transform: scale(0.95);
-  }
-  5% {
-    transform: scale(1.1);
-  }
-  39% {
-    transform: scale(0.85);
-  }
-  45% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(0.9);
-  }
-}
-
-// .intro{
-//   max-height: 100vh;
-//   overflow: hidden;
-//   position: relative;
-
-//   background: url("/src/images/team/scrin-video.jpg")
-//   center no-repeat;
-//   background-size: cover;
-// }
-
-// .intro::after{
-//   content: "";
-//   display: block;
-//   width: 100%;
-//   height: 100%;
-
-//   background-color: rgba(0, 0, 0, 0.5);
-
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   z-index: 2;
-// }
-
-// .intro__content{
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   z-index: 3;
-
-//   width: 100%;
-//   height: 100%;
-// }
-// .video{
-//   position: relative;
-//   z-index: 1;
-//   padding-bottom: 56.25%;
-// }
-
-// .video__media{
-//   width: 100%;
-//   height: auto;
-
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-// }
 
 .team-modal {
   border: none;
@@ -175,30 +70,30 @@
   color: $footer-text-color;
 }
 
-// .basicLightbox {
-//   overflow: scroll;
-//   display: flex;
-//   width: 100%;
-//   height: 100%;
-//   position: fixed;
-//   left: 0;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   justify-content: center;
-//   align-items: center;
+.basicLightbox {
+  overflow: scroll;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
 
-//   animation: fadeIn ease 0.9s;
+  animation: fadeIn ease 0.9s;
 
-//   @keyframes fadeIn {
-//     0% {
-//       opacity: 0;
-//     }
-//     100% {
-//       opacity: 1;
-//     }
-//   }
-// }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
 
 .team-wrapper {
   display: flex;
