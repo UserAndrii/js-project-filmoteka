@@ -35,7 +35,7 @@ function onLibraryBtnClick() {
   // Перевірка, чи пустий масив
   if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
     document.querySelector('.empty-page').style.display = 'none';
-    // libRefs.audio.play();
+    libRefs.audio.play();
     Notiflix.Notify.failure('Enjoy watching your favorite movies!');
     libRefs.container.append(document.querySelector('#NotiflixNotifyWrap'));
     return renderWatchedMovies();
