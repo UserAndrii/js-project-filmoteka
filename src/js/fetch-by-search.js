@@ -15,6 +15,8 @@ const refs = {
   pagination: document.querySelector('#pagination'),
   emptyPage: document.querySelector('.empty-page'),
   audio: document.querySelector('#audio-play'),
+  watched: document.querySelector('.btn-watched'),
+  queue: document.querySelector('.btn-queue'),
 };
 
 refs.home.addEventListener(
@@ -75,6 +77,8 @@ export async function backendDataToRenderedPage(currentPage) {
 }
 
 function homePage() {
+  refs.watched.removeAttribute('data-watched');
+  refs.queue.removeAttribute('data-queue');
   refs.heroBtnLibrary.style.display = 'none';
   refs.home.style.color = '#fff';
   refs.home.style.backgroundColor = '#000';

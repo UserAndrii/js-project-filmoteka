@@ -4,12 +4,9 @@ import { saveLocal, loadLocal, removeLocal, clearLocal } from './localStorage';
 
 const libRefs = {
   libraryBtn: document.querySelector('.btn_library'),
-  // назва класу gallery--library може бути змінена
-  library: document.querySelector('.gallery'), // -- > клас gallery--library був змінений на gallery
-  // кнопки watchBtn та queueBtn додані та закоментовані в index.html
+  library: document.querySelector('.gallery'),
   watchBtn: document.querySelector('.btn-watched'),
   queueBtn: document.querySelector('.btn-queue'),
-  // для позиціонування кнопок watched та queue  (O)
   heroWrapper: document.querySelector('.hero__wrapper'),
   heroBtnLibrary: document.querySelector('.hero__btn-library'),
   homeBtn: document.querySelector('.btn-home'),
@@ -17,33 +14,18 @@ const libRefs = {
   container: document.querySelector('.notiflix-position'),
 };
 
-// Автоматично створюється клас is hidden (O)
-// libRefs.watchBtn.classList.add('is-hidden');
-// libRefs.queueBtn.classList.add('is-hidden');
-
 libRefs.libraryBtn.addEventListener('click', onLibraryBtnClick);
 
 function onLibraryBtnClick() {
+  libRefs.watchBtn.setAttribute('data-watched', 'active');
   libRefs.library.innerHTML = '';
-  // libRefs.watchBtn.classList.remove('is-hidden');
-  // libRefs.queueBtn.classList.remove('is-hidden');
-
-  // Робить кнопку home білою
   libRefs.homeBtn.style.backgroundColor = '#fff';
   libRefs.homeBtn.style.color = '#000';
-
-  // Робить кнопку library чорною
   libRefs.libraryBtn.style.backgroundColor = '#000';
   libRefs.libraryBtn.style.color = '#fff';
-
-  // Реалізує появу кнопок watched та queue
   libRefs.heroBtnLibrary.style.display = 'block';
-
-  // Надає кнопкам watched та queue стилі
   libRefs.watchBtn.classList.add('btn-watched--active');
   libRefs.queueBtn.classList.remove('btn-queue--active');
-
-  // Перевірка на наявність доданих фільмів
 
   // Якщо зайшов перший раз у бібліотеку без ключа watched в localStorage
   if (!localStorage.getItem('watched')) {
@@ -53,7 +35,7 @@ function onLibraryBtnClick() {
   // Перевірка, чи пустий масив
   if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
     document.querySelector('.empty-page').style.display = 'none';
-    libRefs.audio.play();
+    // libRefs.audio.play();
     Notiflix.Notify.failure('Enjoy watching your favorite movies!');
     libRefs.container.append(document.querySelector('#NotiflixNotifyWrap'));
     return renderWatchedMovies();
@@ -69,19 +51,11 @@ function clearMyLibMarUp() {
 }
 
 libRefs.watchBtn.addEventListener('click', () => {
-  //   класс 'is-active' може буте змінений відповідно до загального css
   libRefs.queueBtn.classList.remove('is-active');
   libRefs.watchBtn.classList.add('is-active');
-  // renderWatchedMovies();
-
-  // Зміна стилів кнопок
-
+  libRefs.queueBtn.removeAttribute('data-queue');
   libRefs.watchBtn.classList.add('btn-watched--active');
   libRefs.queueBtn.classList.remove('btn-queue--active');
-
-  // Перевірка на наявність доданих фільмів
-
-  // Якщо зайшов перший раз у бібліотеку без ключа watched в localStorage
 
   if (!localStorage.getItem('watched')) {
     localStorage.setItem('watched', '[]');
@@ -98,19 +72,14 @@ libRefs.watchBtn.addEventListener('click', () => {
 });
 
 libRefs.queueBtn.addEventListener('click', () => {
-  //   класс 'is-active' може буте змінений відповідно до загального css
+  libRefs.queueBtn.setAttribute('data-queue', 'active');
+  libRefs.watchBtn.removeAttribute('data-watched');
   libRefs.watchBtn.classList.remove('is-active');
   libRefs.queueBtn.classList.add('is-active');
-  // renderQueueMovies();
-
-  // Зміна стилів кнопок
 
   libRefs.watchBtn.classList.remove('btn-watched--active');
   libRefs.queueBtn.classList.add('btn-queue--active');
 
-  // Перевірка на наявність доданих фільмів
-
-  // Якщо зайшов перший раз у бібліотеку без ключа queue в localStorage
   if (!localStorage.getItem('queue')) {
     localStorage.setItem('queue', '[]');
   }
@@ -198,11 +167,13 @@ export function addToWatchedToLocalStorage(data) {
   }
   saveLocal('watched', watchedMovies);
 
-  const modal = document.querySelector('.movie-card');
-  const dataSource = modal.getAttribute('data-source');
-  if (dataSource === 'library') {
-   renderWatchedMovies();
-  } 
+  const watched = libRefs.watchBtn.hasAttribute('data-watched');
+  if (watched) {
+    renderWatchedMovies();
+  }
+  if (isMovieExists.length !== 0) {
+    document.querySelector('.empty-page').style.display = 'none';
+  }
 }
 
 export function addToQueueToLocalStorage(data) {
@@ -213,34 +184,43 @@ export function addToQueueToLocalStorage(data) {
   }
   saveLocal('queue', queueMovies);
 
-  const modal = document.querySelector('.movie-card');
-  const dataSource = modal.getAttribute('data-source');
-  if (dataSource === 'library') {
-   renderQueueMovies();
+  const queue = libRefs.queueBtn.hasAttribute('data-queue');
+  if (queue) {
+    renderQueueMovies();
+  }
+  if (isMovieExists.length !== 0) {
+    document.querySelector('.empty-page').style.display = 'none';
   }
 }
 
 export function removeFromWatchedFromLocalStorage(data) {
   const watchedMovies = loadLocal('watched');
-  const updateWatchedMovies = watchedMovies ? watchedMovies.filter(movie => movie.id !== data.data.id) : [];
+  const updateWatchedMovies = watchedMovies
+    ? watchedMovies.filter(movie => movie.id !== data.data.id)
+    : [];
   saveLocal('watched', updateWatchedMovies);
 
-  
-  const modal = document.querySelector('.movie-card');
-  const dataSource = modal.getAttribute('data-source');
-  if (dataSource === 'library') {
-   renderWatchedMovies();
-  } 
+  const watched = libRefs.watchBtn.hasAttribute('data-watched');
+  if (watched) {
+    renderWatchedMovies();
+  }
+  if (updateWatchedMovies.length === 0) {
+    document.querySelector('.empty-page').style.display = 'block';
+  }
 }
 
 export function removeFromQueueFromLocalStorage(data) {
   const queueMovies = loadLocal('queue') || [];
-  const updateQueueMovies = queueMovies.filter(movie => movie.id !== data.data.id);
+  const updateQueueMovies = queueMovies.filter(
+    movie => movie.id !== data.data.id
+  );
   saveLocal('queue', updateQueueMovies);
 
-  const modal = document.querySelector('.movie-card');
-  const dataSource = modal.getAttribute('data-source');
-  if (dataSource === 'library') {
-   renderQueueMovies();
+  const queue = libRefs.queueBtn.hasAttribute('data-queue');
+  if (queue) {
+    renderQueueMovies();
+  }
+  if (updateQueueMovies.length === 0) {
+    document.querySelector('.empty-page').style.display = 'block';
   }
 }
