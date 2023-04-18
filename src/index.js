@@ -13,6 +13,6 @@ import './js/library';
 import './js/scroll-to-top';
 
 import './js/modal';
-// import './js/team-modal';
+import './js/team-modal';
 
 import './js/pagination-main-page';
