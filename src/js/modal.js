@@ -40,6 +40,7 @@ export function classTogle(element) {
   } else {
     element.classList.add('backdrop_is-hidden');
     document.body.classList.remove('modal-open');
+    document.querySelector('.btn-to-top').style.display = 'block';
   }
 }
 
@@ -176,14 +177,18 @@ function isWatchedMovieExists(data) {
     btnWatched.setAttribute('data-modal-button', 'add-to-watched');
   }
 
-  btnWatched.addEventListener('click', throttle(function() {
-    if (isMovieWatched) {
-      removeFromWatchedFromLocalStorage(data);
-    } else {
-      addToWatchedToLocalStorage(data);
-    }
-    isWatchedMovieExists(data);
-  }), 300);
+  btnWatched.addEventListener(
+    'click',
+    throttle(function () {
+      if (isMovieWatched) {
+        removeFromWatchedFromLocalStorage(data);
+      } else {
+        addToWatchedToLocalStorage(data);
+      }
+      isWatchedMovieExists(data);
+    }),
+    300
+  );
 }
 
 function isQueueMovieExists(data) {
@@ -200,14 +205,18 @@ function isQueueMovieExists(data) {
     btnQueue.setAttribute('data-modal-button', 'add-to-queue');
   }
 
-  btnQueue.addEventListener('click', throttle(function() {
-    if (isMovieQueue) {
-      removeFromQueueFromLocalStorage(data);
-    } else {
-      addToQueueToLocalStorage(data);
-    }
-    isQueueMovieExists(data);
-  }), 300);
+  btnQueue.addEventListener(
+    'click',
+    throttle(function () {
+      if (isMovieQueue) {
+        removeFromQueueFromLocalStorage(data);
+      } else {
+        addToQueueToLocalStorage(data);
+      }
+      isQueueMovieExists(data);
+    }),
+    300
+  );
 }
 
 // function addListener(data) {
@@ -259,6 +268,7 @@ function onModalOpen(event) {
     getFilmData(filmId);
     classTogle(refs.modalBackdrop);
     document.addEventListener('keydown', escEvt);
+    document.querySelector('.btn-to-top').style.display = 'none';
   }
 }
 // Округлення чисел
