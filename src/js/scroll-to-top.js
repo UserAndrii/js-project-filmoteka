@@ -1,6 +1,8 @@
+import throttle from "lodash.throttle"
+
 const btnToTop = document.querySelector('.btn-to-top');
 
-window.addEventListener('scroll', onScroll);
+window.addEventListener('scroll', throttle(onScroll, 250));
 if (btnToTop) {
   btnToTop.addEventListener('click', onToTopBtn);
 }
