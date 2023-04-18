@@ -13,7 +13,6 @@ import andriyUrl from '../images/team/andriy.jpg';
 import svgGitUrl from '../images/gitsvg.svg';
 import svgLinkdUrl from '../images/linkedin.svg';
 
-
 const markup = `<div class="team-wrapper">
           <div class="team-card">
             <img src="${nataliiaUrl}" alt="Nataliia" class="team-image">
@@ -164,18 +163,25 @@ function openModal(e) {
   const button = document.querySelector('.btn-to-top');
   button.disabled = true;
   const closeModalHandler = e => {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      e.preventDefault();
+    }
+
     if (e.code === 'Escape') {
       modal.close();
       button.disabled = false;
     }
   };
+
   const modal = basicLightbox.create(markup, {
     onShow: () => {
       document.body.classList.add('modal-open');
+      document.querySelector('.btn-to-top').style.display = 'none';
     },
     onClose: () => {
       document.removeEventListener('keydown', closeModalHandler);
       document.body.classList.remove('modal-open');
+      document.querySelector('.btn-to-top').style.display = 'block';
     },
   });
   modal.show();
