@@ -4,10 +4,10 @@ import MovieSearchService from './movie-search-service';
 export const API_URL_IMG = `https://image.tmdb.org/t/p/original`;
 
 const moviesGallery = document.querySelector('.gallery');
-export const alternativePoster = 'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
+export const alternativePoster =
+  'https://image.tmdb.org/t/p/original/fFRRlpqnYKtch1z72Yd45say5Rg.jpg';
 
 const movieSearchService = new MovieSearchService();
-
 
 // функція видображення фільмів
 export async function getTopMovies(data) {
@@ -30,6 +30,7 @@ export async function getTopMovies(data) {
               }"
               alt="${title}"
               width="300"
+              height="574"
               id="${id}"
             />
             <h2 class="movie-card__name" id="${id}">${title}</h2>

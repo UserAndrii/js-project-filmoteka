@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { getTopMovies } from './main-gallery';
 import { renderPopularFilmsPagination } from './pagination-main-page';
-import { saveLocal } from './localStorage';
 
 const searchPopularFilms = axios.create({
   baseURL: 'https://api.themoviedb.org/3/trending/movie/day',
 });
-
-saveLocal('theme', 'onLight');
 
 let currentPage = 1;
 fetchPopularFilms(currentPage);
