@@ -3,6 +3,7 @@ body {
   color: $title-color;
 
   font-family: $primary-font;
+  min-height: 100vh;
 
   &.modal-open {
     overflow: hidden;

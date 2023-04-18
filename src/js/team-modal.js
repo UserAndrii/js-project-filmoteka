@@ -1,21 +1,21 @@
 import * as basicLightbox from 'basiclightbox';
 
-import nataliiaUrl from '../images/team/nataliia.jpg';
-import andriiUrl from '../images/team/andrii.jpg';
-import yuriyUrl from '../images/team/yuriy.jpg';
-import galynaUrl from '../images/team/galyna.jpg';
-import marynaUrl from '../images/team/maryna.jpg';
-import yuraUrl from '../images/team/yura.jpg';
-import nataliaUrl from '../images/team/natalia.jpg';
-import slavaUrl from '../images/team/slava.jpg';
-import oleksandrUrl from '../images/team/oleksandr.jpg';
-import andriyUrl from '../images/team/andriy.jpg';
+import nataliiaUrl from '../images/team/nataliia.webp';
+import andriiUrl from '../images/team/andrii.webp';
+import yuriyUrl from '../images/team/yuriy.webp';
+import galynaUrl from '../images/team/galyna.webp';
+import marynaUrl from '../images/team/maryna.webp';
+import yuraUrl from '../images/team/yura.webp';
+import nataliaUrl from '../images/team/natalia.webp';
+import slavaUrl from '../images/team/slava.webp';
+import oleksandrUrl from '../images/team/oleksandr.webp';
+import andriyUrl from '../images/team/andriy.webp';
 import svgGitUrl from '../images/gitsvg.svg';
 import svgLinkdUrl from '../images/linkedin.svg';
 
 const markup = `<div class="team-wrapper">
           <div class="team-card">
-            <img src="${nataliiaUrl}" alt="Nataliia" class="team-image">
+            <img src="${nataliiaUrl}" alt="Nataliia" class="team-image" loading="lazy">
             <p class="team-name">Nataliia</p>
             <p class="team-name">Valko</p>
             <p class="team-role">Mentor JS</p>
@@ -28,7 +28,7 @@ const markup = `<div class="team-wrapper">
             </p>
           </div>
           <div class="team-card">
-            <img src="${andriiUrl}" alt="Andrii" class="team-image">
+            <img src="${andriiUrl}" alt="Andrii" class="team-image" loading="lazy">
             <p class="team-name">Andrii</p>
             <p class="team-name">Gadar</p>
             <p class="team-role">Team Lead</p>
@@ -42,7 +42,7 @@ const markup = `<div class="team-wrapper">
             </p>
           </div>
           <div class="team-card">
-            <img src="${yuraUrl}" alt="" class="team-image">
+            <img src="${yuraUrl}" alt="" class="team-image" loading="lazy">
             <p class="team-name">Yurii</p>
             <p class="team-name">Kahadii</p>
             <p class="team-role">Scrum Master</p>
@@ -56,7 +56,7 @@ const markup = `<div class="team-wrapper">
             </p>
           </div>
           <div class="team-card">
-              <img src="${galynaUrl}" alt="Galyna" class="team-image">
+              <img src="${galynaUrl}" alt="Galyna" class="team-image" loading="lazy">
               <p class="team-name">Galyna</p>
               <p class="team-name">Karpinska</p>
               <p class="team-role">Developer</p>
@@ -70,7 +70,7 @@ const markup = `<div class="team-wrapper">
               </p>
           </div>
           <div class="team-card">
-              <img src="${marynaUrl}" alt="Matyna" class="team-image">
+              <img src="${marynaUrl}" alt="Matyna" class="team-image" loading="lazy">
               <p class="team-name">Maryna</p>
               <p class="team-name">Khmarska</p>
               <p class="team-role">Developer</p>
@@ -84,7 +84,7 @@ const markup = `<div class="team-wrapper">
               </p>
           </div>
           <div class="team-card">
-              <img src="${yuriyUrl}" alt="Yuriy" class="team-image">
+              <img src="${yuriyUrl}" alt="Yuriy" class="team-image" loading="lazy">
               <p class="team-name">Yurii</p>
               <p class="team-name">Klymenko</p>
               <p class="team-role">Developer</p>
@@ -98,7 +98,7 @@ const markup = `<div class="team-wrapper">
               </p>
           </div>
           <div class="team-card">
-              <img src="${nataliaUrl}" alt="Natalia" class="team-image">
+              <img src="${nataliaUrl}" alt="Natalia" class="team-image" loading="lazy">
               <p class="team-name">Natalia</p>
               <p class="team-name">Kuksa</p>
               <p class="team-role">Developer</p>
@@ -112,7 +112,7 @@ const markup = `<div class="team-wrapper">
               </p>
           </div>
           <div class="team-card">
-              <img src="${oleksandrUrl}" alt="" class="team-image">
+              <img src="${oleksandrUrl}" alt="" class="team-image" loading="lazy">
               <p class="team-name">Oleksandr</p>
               <p class="team-name">Deren</p>
               <p class="team-role">Developer</p>
@@ -126,7 +126,7 @@ const markup = `<div class="team-wrapper">
               </p>
           </div>
           <div class="team-card">
-              <img src="${slavaUrl}" alt="Slava" class="team-image">
+              <img src="${slavaUrl}" alt="Slava" class="team-image" loading="lazy">
               <p class="team-name">Slava</p>
               <p class="team-name">Kholod</p>
               <p class="team-role">Developer</p>
@@ -140,7 +140,7 @@ const markup = `<div class="team-wrapper">
               </p>
           </div>
           <div class="team-card">
-              <img src="${andriyUrl}" alt="Andriy" class="team-image">
+              <img src="${andriyUrl}" alt="Andriy" class="team-image" loading="lazy">
               <p class="team-name">Andriy</p>
               <p class="team-name">Hanzel</p>
               <p class="team-role">Developer</p>
