@@ -117,6 +117,10 @@
 
 .logo-link {
   text-decoration: none;
+
+  &:hover .logo__title {
+    text-shadow: 0 0 15px #fff;
+  }
 }
 
 .logo__icon {
@@ -128,6 +132,7 @@
   font-size: 32px;
   line-height: 1.19;
   color: $primary-title-color;
+  transition: all $transition-timing $timing-function;
 }
 
 .btn-theme {

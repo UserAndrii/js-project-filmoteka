@@ -10,6 +10,7 @@
     <title>Filmoteka</title>
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link disabled rel="stylesheet" href="./sass/dark-theme.css" data-theme />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
@@ -76,6 +77,7 @@
             </div>
           </div>
         </div>
+        <!-- <include src="./partials/loginform.html"></include> -->
       </div>
     </header>
     <!--modal-hero-->
@@ -92,21 +94,24 @@
         <div id="pagination" class="tui-pagination"></div>
       </div>
     </main>
+
     <footer class="footer">
       <!-- <div id="player-container"></div>
       <script src="https://www.youtube.com/player_api"></script> -->
-      <span class="footer-text copyright"
-        >&copy; 2023 | All Rights Reserved |&nbsp;</span
-      >
-      <span class="footer-text"
-        >Developed with
-        <svg class="footer-svg" width="14" height="14">
-          <use href="./images/icons.svg#icon-heart-group"></use></svg
-        >by&nbsp;
+      <div class="footer-text copyright">
+        &copy; 2023 | All Rights Reserved |&nbsp;
+      </div>
+      <div class="footer-text">
+        Developed with
+        <!-- <svg class="footer-svg" width="14" height="14">
+          <use href="./images/icons.svg#icon-heart-group"></use>
+        </svg> -->
+        <div class="lds-heart"><div></div></div>
+        by&nbsp;
         <button class="team-modal js-team-modal" type="button">
           GoIT Students
         </button>
-      </span>
+      </div>
     </footer>
 
     <div class="btn-to-top">
@@ -114,7 +119,7 @@
         <use href="./images/icons.svg#icon-circle-up"></use>
       </svg>
     </div>
-
     <include src="./partials/modal.html"></include>
+    <audio id="audio-play" src="./sound/audio-play.mp3" preload="auto"></audio>
   </body>
 </html>

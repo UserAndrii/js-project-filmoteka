@@ -90,20 +90,19 @@ $animation-time: 500ms;
   box-shadow: 5px -3px 15px 1px rgba(100, 92, 92, 0.75);
   object-fit: cover;
 
-
   @media screen and (max-width: 479px) {
     width: 240px;
     height: 357px;
     margin-bottom: 20px;
   }
-  @media screen and (min-width: 480px) and (max-width: 767px){
+  @media screen and (min-width: 480px) and (max-width: 767px) {
     margin: 0 auto;
     width: 264px;
     margin-bottom: 20px;
     object-fit: cover;
   }
 
-  @media screen and (min-width: 768px)and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 264px;
     height: 374px;
     margin-right: 68px;
@@ -202,11 +201,11 @@ $animation-time: 500ms;
     padding: 8px 10px;
     margin-right: 4px;
     margin-bottom: 10px;
-    &:last-child{
+    &:last-child {
       margin-bottom: 20px;
     }
   }
-  @media screen and (min-width: 480px) and (max-width: 767px){
+  @media screen and (min-width: 480px) and (max-width: 767px) {
     padding: 10px 12px;
     margin-right: 4px;
     margin-bottom: 20px;
@@ -222,50 +221,48 @@ $animation-time: 500ms;
   }
 }
 
-iframe{
-  
+iframe {
   @media screen and (max-width: 479px) {
-    width: 200px;
+    width: 280px;
     height: 180px;
   }
-  @media screen and (min-width: 480px) and (max-width: 767px){
+  @media screen and (min-width: 480px) and (max-width: 767px) {
     width: 320px;
     height: 240px;
   }
   @media screen and (min-width: 768px) {
-  width: 640px;
-  height: 360px;
+    width: 640px;
+    height: 360px;
   }
   @media screen and (min-width: 1280px) {
     width: 800px;
-  height: 480px;
+    height: 480px;
   }
 }
 
-.trailer-button{
- 
+.trailer-button {
   align-items: center;
   display: flex;
   @media screen and (max-width: 479px) {
     padding: 8px 10px;
   }
-  @media screen and (min-width: 480px) and (max-width: 767px){
+  @media screen and (min-width: 480px) and (max-width: 767px) {
     margin-left: 0px;
     padding: 8px 10px;
   }
-  @media screen and (min-width: 768px)and (max-width: 1199px) {
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
     margin-left: 60px;
     padding: 12px 18px;
-    }
-    @media screen and (min-width: 1280px) {
-      margin-left: 80px;
-    }
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 80px;
+  }
 }
 
-.trailer-icons{
+.trailer-icons {
   margin-left: 20px;
   fill: #df1612;
-  @media screen and (min-width: 480px) and (max-width: 767px){
+  @media screen and (min-width: 480px) and (max-width: 767px) {
     margin-left: 5px;
   }
 }

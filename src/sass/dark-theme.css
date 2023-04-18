@@ -1,235 +1,208 @@
-// Тёмная тема спиннера
-
 /* Стиль кнопки (перемикача)*/
 .change_theme {
   border: 1px solid #b92f2c;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: 1px 4px 6px 0px rgb(255 255 255 / 16%);
+  box-shadow: 1px 4px 6px 0px #000;
   fill: #b92f2c;
   background-color: transparent;
   stroke: #b92f2c;
-
-  &:hover,
-  &:focus {
-    stroke: #fff;
-    fill: #fff;
-    border-color: #fff;
-  }
 }
+.change_theme:hover,
+.change_theme:focus {
+  stroke: #fff;
+  fill: #fff;
+  border-color: #fff;
+}
+
+/* зміна кольору кнопки */
 
 button.change_theme[data-theme='onLight'] {
   display: block;
 }
-
 button.change_theme[data-theme='onDark'] {
   display: none;
 }
-
 body {
   background-color: #1d1917;
 }
 
-// стилі для галиреї фільмів
+/* картка фільму */
 
 .movie-card {
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    box-shadow: 0 5px 9px 4px #8c8c8c;
-  }
 }
-
+.movie-card:hover,
+.movie-card:focus {
+  box-shadow: 0 5px 9px 4px #8c8c8c;
+}
 .movie-card__name {
   color: #fff;
 }
-
 .movie-card__text {
-  color: #ff0000;
+  color: #f00;
 }
 
+/* кнопка скролу */
 
-// стилі для футера
+.icon-to-top {
+  fill: #b92f2c;
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-to-top:hover .icon-to-top {
+  fill: #fff;
+}
+
+/* стилі для футера */
 
 .footer {
   background-color: #545454;
 }
-
 .footer-text {
   color: #f7f7f7;
 }
-
-.team-modal {
-  color: #f7f7f7;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    color: #b92f2c;
-  }
-}
-
-// стилі для модального вікна
-
-.backdrop {
-  background-color: rgba(29, 25, 23, 0.8);
-}
-
-.modal {
-  background-color: #1a1818;
-}
-
-.close-btn {
-  stroke: #fff;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus .btn-close__icon {
-    stroke: #b92f2c;
-  }
-}
-
-.modal__title {
-  color: #fff;
-}
-
-.charact__name {
-  color: #fff;
-}
-
-.charact__value {
-  color: #f7f7f7;
-}
-
-.charact__value > span {
-  color: #b92f2c;
-}
-
-.modal__about {
-  color: #f7f7f7;
-}
-
-.modal__button {
-  color: #f7f7f7;
-  border: 1px solid #b92f2c;
-}
-
-// стилі для командної модалки
-
-.team-wrapper {
-  background-color: #545454;
-}
-
-.team-name {
-  color: #fff;
-}
-
-.team-role {
-  color: #f7f7f7;
-}
-
-// стилі при кліку на My Library Button
-
-.empty-page__text {
-  color: #fff;
-}
-
-.movie__info .movie__title {
-  color: white;
-}
-
-.tui-page-btn {
-  color: white;
-}
-
-.loader.loader-black {
-  background-color: #222222;
-}
-
-/*Модальне вікно фільмів при dark theme*/
-.modal__container {
-  background-color: #1a1818;
-  .image {
-    box-shadow: 1px -1px 15px -3px #f8ececbf;
-  }
-  .film__title {
-    color: #ff6b08;
-  }
-  .film__details {
-    color: #ffffff;
-  }
-  .film__rating--orange {
-    color: #000000;
-    font-weight: 900;
-  }
-  .film__info--uper,
-  .film__about__title,
-  .film__about__text,
-  .film__info {
-    color: #8c8c8c;
-  }
-  .film__details ~ p {
-    color: #8c8c8c;
-  }
-  .modal__close-btn {
-    fill: #8c8c8c;
-    background-color: #1a1818;
-    border-color: #8c8c8c;
-    &:hover,
-    &:focus {
-      fill: #ff6b08;
-      border-color: #ff6b08;
-    }
-  }
-  .closeModal::before,
-  .closeModal::after {
-    background-color: #ffffff;
-  }
-}
-
 .footer__modal {
   background-color: #1a1818;
   color: #8c8c8c;
 }
-
 .line {
   background-color: #8c8c8c;
 }
-
 .info-message {
   color: #8c8c8c;
 }
 
-// Стилі для пагінації
+/* стилі для модалки команди */
 
-.tui-pagination .tui-page-btn {
-  color: #8c8c8c;
-  &:hover {
-    background-color: #545454;
-    color: #f7f7f7;
-  }
+.team-modal {
+  color: #f7f7f7;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.team-modal:hover {
+  color: #b92f2c;
+}
+.team-wrapper {
+  background-color: #545454;
+}
+.team-name {
+  color: #fff;
+}
+.team-role {
+  color: #f7f7f7;
 }
 
+/* стилі для модалки - більше про фільм */
+
+.backdrop {
+  background-color: rgba(29, 25, 23, 0.8);
+}
+.modal {
+  background-color: #1a1818;
+}
+.close-btn {
+  stroke: #fff;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-btn:hover,
+.close-btn:focus .btn-close__icon {
+  stroke: #b92f2c;
+}
+.modal__title {
+  color: #fff;
+}
+.charact__name {
+  color: #fff;
+}
+.charact__value {
+  color: #f7f7f7;
+}
+.charact__value > span {
+  color: #b92f2c;
+}
+.modal__about {
+  color: #f7f7f7;
+}
+.modal__button {
+  color: #f7f7f7;
+  border: 1px solid #b92f2c;
+}
+.empty-page__text {
+  color: #fff;
+}
+.movie__info .movie__title {
+  color: white;
+}
+.modal__container {
+  background-color: #1a1818;
+}
+.modal__container .image {
+  box-shadow: 1px -1px 15px -3px #f8ecec bf;
+}
+.modal__container .film__title {
+  color: #ff6b08;
+}
+.modal__container .film__details {
+  color: #fff;
+}
+.modal__container .film__rating--orange {
+  color: #000;
+  font-weight: 900;
+}
+.modal__container .film__info--uper,
+.modal__container .film__about__title,
+.modal__container .film__about__text,
+.modal__container .film__info {
+  color: #8c8c8c;
+}
+.modal__container .film__details ~ p {
+  color: #8c8c8c;
+}
+.modal__container .modal__close-btn {
+  fill: #8c8c8c;
+  background-color: #1a1818;
+  border-color: #8c8c8c;
+}
+.modal__container .modal__close-btn:hover,
+.modal__container .modal__close-btn:focus {
+  fill: #ff6b08;
+  border-color: #ff6b08;
+}
+.modal__container .closeModal::before,
+.modal__container .closeModal::after {
+  background-color: #fff;
+}
+
+/* стилі для пагінації */
+
+.tui-page-btn {
+  color: white;
+}
+.loader.loader-black {
+  background-color: #222;
+}
+.tui-pagination .tui-page-btn {
+  color: #8c8c8c;
+}
+.tui-pagination .tui-page-btn:hover {
+  background-color: #545454;
+  color: #f7f7f7;
+}
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
-  color: #ffffff;
+  color: #fff;
   background: #b92f2c;
   border-color: #b92f2c;
   cursor: default;
 }
-
 .tui-pagination .tui-is-selected:hover {
   background-color: #b92f2c;
 }
-
 .tui-pagination .tui-first-child.tui-is-selected {
   border-left: 1px solid #b92f2c;
 }
-
 .tui-pagination .tui-last-child.tui-is-selected {
   border-right: 1px solid #b92f2c;
 }
-
 .tui-pagination .tui-first,
 .tui-pagination .tui-prev,
 .tui-pagination .tui-next,
@@ -240,7 +213,6 @@ body {
   border-color: #f7f7f7;
   border: 1px solid transparent;
 }
-
 .tui-pagination .tui-ico-first,
 .tui-pagination .tui-ico-prev,
 .tui-pagination .tui-ico-next,
@@ -248,32 +220,25 @@ body {
 .tui-pagination .tui-ico-ellip {
   filter: invert(100%);
 }
-
 .tui-pagination .tui-ico-next {
   background-position: -13px -24px;
 }
-
 .tui-pagination .tui-ico-last {
   background-position: 0px -12px;
 }
-
 .tui-pagination .tui-is-disabled:hover {
   background: #1a1818;
   cursor: default;
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-prev {
   filter: invert(100%);
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-first {
   filter: invert(100%);
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-next {
   filter: invert(100%);
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-last {
   filter: invert(100%);
 }
