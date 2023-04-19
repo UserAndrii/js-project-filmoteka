@@ -1,4 +1,3 @@
-// ---- ---- ---- ---- ---- //
 const modal = document.querySelector('.box'),
   overlay = document.querySelector('.login-overlay'),
   modalBtn = document.querySelector('.login-btn-modal'),

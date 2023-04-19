@@ -1,10 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-// import { getFilmData } from './modal';
 
 const sliderEl = document.querySelector('.swiper-wrapper');
-
-// пошук відео по id
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const KEY = '58645e23389326a2e8ed75695b9e1b79';
@@ -18,8 +15,6 @@ export async function fetchTrailerById(id) {
   return data;
 }
 
-// функція відворення відео
-
 sliderEl.addEventListener('click', onLinkPlayClick);
 
 export async function onLinkPlayClick(evt) {
@@ -31,8 +26,6 @@ export async function onLinkPlayClick(evt) {
     const { results } = await fetchTrailerById(evt.target.dataset.id);
     const { key } = results[results.length - 1];
     console.log(evt.target.dataset.id);
-
-    // getFilmData(evt.target.dataset.id);
 
     const closeModal = e => {
       if (e.code === 'Escape') {

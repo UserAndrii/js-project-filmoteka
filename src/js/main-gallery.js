@@ -9,11 +9,8 @@ export const alternativePoster =
 
 const movieSearchService = new MovieSearchService();
 
-// функція видображення фільмів
 export async function getTopMovies(data) {
-  // очищує контейнер
   moviesGallery.innerHTML = '';
-  //рендер галереї фільмів
   const markup = data
     .map(
       ({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
@@ -49,9 +46,7 @@ export async function getTopMovies(data) {
     )
     .join('');
 
-  // додає фільми у галерею
   moviesGallery.innerHTML = markup;
-  // відключає loader
   setTimeout(movieSearchService.disableLoader, 300);
 }
 
