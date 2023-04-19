@@ -57,7 +57,6 @@ export async function fetchPopularFilms() {
   }
 }
 
-//функція рендера слайдера
 const renderMarkupSlider = movies => {
   const markup = movies
     .map(({ id, title, poster_path }) => {

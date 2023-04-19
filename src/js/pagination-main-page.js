@@ -12,7 +12,6 @@ clickMyLibrary.addEventListener('click', e => {
 export function renderPopularFilmsPagination(totalPages, currentPage) {
   const container = document.querySelector('#pagination');
 
-  // Опції для пагінації
   const options = {
     totalItems: totalPages,
     itemsPerPage: 20,
@@ -40,10 +39,8 @@ export function renderPopularFilmsPagination(totalPages, currentPage) {
     },
   };
 
-  // Ініціалізація пагінації
   const pagination = new Pagination(container, options);
 
-  // // Обробник події при зміні сторінки
   pagination.on('afterMove', event => {
     const currentPage = event.page;
     fetchPopularFilms(currentPage);
@@ -54,7 +51,6 @@ export function renderPopularFilmsPagination(totalPages, currentPage) {
 export function renderSearchFilmsPagination(totalPages, currentPage) {
   const container = document.querySelector('#pagination');
 
-  // Опції для пагінації
   const options = {
     totalItems: totalPages,
     itemsPerPage: 20,
@@ -82,10 +78,8 @@ export function renderSearchFilmsPagination(totalPages, currentPage) {
     },
   };
 
-  // Ініціалізація пагінації
   const pagination = new Pagination(container, options);
 
-  // // Обробник події при зміні сторінки
   pagination.on('afterMove', event => {
     const currentPage = event.page;
     backendDataToRenderedPage(currentPage);

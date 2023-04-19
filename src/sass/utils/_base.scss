@@ -1,8 +1,10 @@
 body {
   background-color: $bg-primary-color;
   color: $title-color;
-
   font-family: $primary-font;
+
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 
   &.modal-open {
@@ -29,6 +31,10 @@ body {
       background: #b92f2c;
     }
   }
+}
+
+main {
+  flex-grow: 1;
 }
 
 h1,

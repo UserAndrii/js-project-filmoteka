@@ -27,12 +27,10 @@ function onLibraryBtnClick() {
   libRefs.watchBtn.classList.add('btn-watched--active');
   libRefs.queueBtn.classList.remove('btn-queue--active');
 
-  // Якщо зайшов перший раз у бібліотеку без ключа watched в localStorage
   if (!localStorage.getItem('watched')) {
     localStorage.setItem('watched', '[]');
   }
 
-  // Перевірка, чи пустий масив
   if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
     document.querySelector('.empty-page').style.display = 'none';
     libRefs.audio.play();
@@ -61,7 +59,6 @@ libRefs.watchBtn.addEventListener('click', () => {
     localStorage.setItem('watched', '[]');
   }
 
-  // Перевірка, чи пустий масив
   if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
     document.querySelector('.empty-page').style.display = 'none';
     return renderWatchedMovies();
@@ -84,7 +81,6 @@ libRefs.queueBtn.addEventListener('click', () => {
     localStorage.setItem('queue', '[]');
   }
 
-  // Перевірка, чи пустий масив
   if (JSON.parse(localStorage.getItem('queue')).length !== 0) {
     document.querySelector('.empty-page').style.display = 'none';
     return renderQueueMovies();
@@ -116,9 +112,7 @@ function renderQueueMovies() {
 }
 
 function getLibraryMovies(data) {
-  // очищує контейнер
   libRefs.library.innerHTML = '';
-  //рендер галереї фільмів
   const markup = data
     .map(({ id, poster_path, title, genres, release_date, vote_average }) => {
       let year = release_date.substring(0, 4);
@@ -131,7 +125,7 @@ function getLibraryMovies(data) {
 
       if (title) {
         return `
-          <li class="movie-card" data-source="library" id="${id}">
+          <li class="movie-card" id="${id}">
             <img
               class="movie-card__image"
               src="${
@@ -170,9 +164,9 @@ export function addToWatchedToLocalStorage(data) {
   const watched = libRefs.watchBtn.hasAttribute('data-watched');
   if (watched) {
     renderWatchedMovies();
-  }
-  if (isMovieExists.length !== 0) {
-    document.querySelector('.empty-page').style.display = 'none';
+    if (isMovieExists.length !== 0) {
+      document.querySelector('.empty-page').style.display = 'none';
+    }
   }
 }
 
@@ -187,9 +181,9 @@ export function addToQueueToLocalStorage(data) {
   const queue = libRefs.queueBtn.hasAttribute('data-queue');
   if (queue) {
     renderQueueMovies();
-  }
-  if (isMovieExists.length !== 0) {
-    document.querySelector('.empty-page').style.display = 'none';
+    if (isMovieExists.length !== 0) {
+      document.querySelector('.empty-page').style.display = 'none';
+    }
   }
 }
 
@@ -203,9 +197,9 @@ export function removeFromWatchedFromLocalStorage(data) {
   const watched = libRefs.watchBtn.hasAttribute('data-watched');
   if (watched) {
     renderWatchedMovies();
-  }
-  if (updateWatchedMovies.length === 0) {
-    document.querySelector('.empty-page').style.display = 'block';
+    if (updateWatchedMovies.length === 0) {
+      document.querySelector('.empty-page').style.display = 'block';
+    }
   }
 }
 
@@ -219,8 +213,8 @@ export function removeFromQueueFromLocalStorage(data) {
   const queue = libRefs.queueBtn.hasAttribute('data-queue');
   if (queue) {
     renderQueueMovies();
-  }
-  if (updateQueueMovies.length === 0) {
-    document.querySelector('.empty-page').style.display = 'block';
+    if (updateQueueMovies.length === 0) {
+      document.querySelector('.empty-page').style.display = 'block';
+    }
   }
 }

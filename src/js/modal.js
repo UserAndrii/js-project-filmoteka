@@ -24,12 +24,10 @@ refs.galleryEl.addEventListener('click', onModalOpen);
 
 refs.btnModalClose.addEventListener('click', function () {
   classTogle(refs.modalBackdrop);
-  // console.log('click btn');
 });
 refs.modalBackdrop.addEventListener('click', function (evt) {
   if (evt.target === refs.modalBackdrop) {
     classTogle(refs.modalBackdrop);
-    // console.log('click backdrop');
   }
 });
 
@@ -166,7 +164,6 @@ export function addModalMarcup(data) {
 function isWatchedMovieExists(data) {
   const watchedMovies = loadLocal('watched') || [];
   const isMovieWatched = watchedMovies.some(movie => movie.id === data.data.id);
-  // btnWatched.textContent = isMovieWatched ? 'Remove watched' : 'Add to watched';
   const btnWatched = document.querySelector('.watched-button');
 
   if (isMovieWatched) {
@@ -192,7 +189,6 @@ function isWatchedMovieExists(data) {
 function isQueueMovieExists(data) {
   const queueMovies = loadLocal('queue') || [];
   const isMovieQueue = queueMovies.some(movie => movie.id === data.data.id);
-  // addToQueueButton.textContent = isMovieQueue ? 'Remove queue' : 'Add to queue';
   const btnQueue = document.querySelector('.queue-button');
 
   if (isMovieQueue) {
@@ -219,7 +215,6 @@ function clearMarcup(element) {
 }
 
 function onModalOpen(event) {
-  // console.log(event.target.closest('.movie-card').id);
   filmId = event.target.closest('.movie-card').id;
   if (filmId) {
     getFilmData(filmId);
@@ -228,7 +223,6 @@ function onModalOpen(event) {
     document.querySelector('.btn-to-top').style.display = 'none';
   }
 }
-// Округлення чисел
 
 function decimalAdjust(type, value, exp) {
   if (typeof exp === 'undefined' || +exp === 0) {
@@ -291,7 +285,6 @@ function escEvt(evt) {
   evt.preventDefault();
   if (evt.keyCode == 27 && refs.modal != null) {
     classTogle(refs.modalBackdrop);
-    // console.log('Esc');
   }
   document.removeEventListener('keydown', escEvt);
 }
