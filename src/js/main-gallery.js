@@ -31,6 +31,7 @@ export async function getTopMovies(data) {
               alt="${title}"
               width="300"
               height="574"
+              loading="lazy"
             />
             <h2 class="movie-card__name">${title}</h2>
             <p class="movie-card__text">

@@ -65,7 +65,7 @@ const renderMarkupSlider = movies => {
                 <a class="swiper-link" href="#" data-id="${id}">
                   <img src="${
                     poster_path ? API_URL_IMG + poster_path : alternativePoster
-                  }" alt="${title}" width="145" height="218" />
+                  }" alt="${title}" width="145" height="218" loading="lazy"/>
                   <div class="trailer">
                     <svg class="trailer-icon" width="60" height="60">
                       <use href="${urlIcon}#icon-play"></use>
