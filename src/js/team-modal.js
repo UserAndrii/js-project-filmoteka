@@ -47,7 +47,7 @@ const markup = `<div class="team-wrapper">
             <p class="team-name">Kahadii</p>
             <p class="team-role">Scrum Master</p>
             <p class="logo__icon-footer">
-            <a href="https://github.com/" target="_blank" class="team-git"><svg  width="24" height="24">
+            <a href="https://github.com/YurionStyle" target="_blank" class="team-git"><svg  width="24" height="24">
               <use href="${svgGitUrl}#icon-github-svgr"></use>
             </svg></a>
             <a href="https://www.linkedin.com/in/yurii-kahadii-79405a272/" target="_blank" class="team-linkd"><svg  width="24" height="24">
@@ -89,10 +89,10 @@ const markup = `<div class="team-wrapper">
               <p class="team-name">Klymenko</p>
               <p class="team-role">Developer</p>
               <p class="logo__icon-footer">
-              <a href="https://github.com/" target="_blank" class="team-git"><svg  width="24" height="24">
+              <a href="https://github.com/Klimch1k" target="_blank" class="team-git"><svg  width="24" height="24">
                 <use href="${svgGitUrl}#icon-github-svgr"></use>
               </svg></a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="team-linkd"><svg width="24" height="24">
+              <a href="https://www.linkedin.com/" target="_blank" class="team-linkd"><svg width="24" height="24">
                 <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
               </svg></a>
               </p>
@@ -103,10 +103,10 @@ const markup = `<div class="team-wrapper">
               <p class="team-name">Kuksa</p>
               <p class="team-role">Developer</p>
               <p class="logo__icon-footer">
-              <a href="https://github.com/" target="_blank" class="team-git"><svg width="24" height="24">
+              <a href="https://github.com/koksich" target="_blank" class="team-git"><svg width="24" height="24">
                 <use href="${svgGitUrl}#icon-github-svgr"></use>
               </svg></a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="team-linkd"><svg  width="24" height="24">
+              <a href="https://www.linkedin.com/in/nataliia-kuksa-5a9037273/" target="_blank" class="team-linkd"><svg  width="24" height="24">
                 <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
               </svg></a>
               </p>
@@ -117,10 +117,10 @@ const markup = `<div class="team-wrapper">
               <p class="team-name">Deren</p>
               <p class="team-role">Developer</p>
               <p class="logo__icon-footer">
-              <a href="hhttps://github.com/Oderen?tab=repositories" target="_blank" class="team-git"><svg  width="24" height="24">
+              <a href="https://github.com/Oderen" target="_blank" class="team-git"><svg  width="24" height="24">
                 <use href="${svgGitUrl}#icon-github-svgr"></use>
               </svg></a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="team-linkd"><svg width="24" height="24">
+              <a href="https://www.linkedin.com/" target="_blank" class="team-linkd"><svg width="24" height="24">
                 <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
               </svg></a>
               </p>
@@ -131,10 +131,10 @@ const markup = `<div class="team-wrapper">
               <p class="team-name">Kholod</p>
               <p class="team-role">Developer</p>
               <p class="logo__icon-footer">
-              <a href="https://github.com/" target="_blank" class="team-git"><svg  width="24" height="24">
+              <a href="https://github.com/SlavaKholod" target="_blank" class="team-git"><svg  width="24" height="24">
                 <use href="${svgGitUrl}#icon-github-svgr"></use>
               </svg></a>
-              <a href="linkedin.com/in/slava-kholod-dev" target="_blank" class="team-linkd"><svg  width="24" height="24">
+              <a href="https://www.linkedin.com/in/slava-kholod/" target="_blank" class="team-linkd"><svg  width="24" height="24">
                 <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
               </svg></a>
               </p>
@@ -148,7 +148,7 @@ const markup = `<div class="team-wrapper">
               <a href="https://github.com/andriy-h80" target="_blank" class="team-git"><svg width="24" height="24">
                 <use href="${svgGitUrl}#icon-github-svgr"></use>
               </svg></a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="team-linkd"><svg  width="24" height="24">
+              <a href="https://www.linkedin.com/in/andriy-hanzel/" target="_blank" class="team-linkd"><svg  width="24" height="24">
                 <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
               </svg></a>
               </p>
