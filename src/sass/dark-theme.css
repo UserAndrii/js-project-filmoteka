@@ -40,13 +40,13 @@ body {
   color: #fff;
 }
 .movie-card__text {
-  color: #f00;
+  color: #ff8080;
 }
 
 /* кнопка скролу */
 
 .icon-to-top {
-  fill: #b92f2c;
+  fill: #ff8080;
   transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-to-top:hover .icon-to-top {
@@ -77,6 +77,10 @@ body {
 .team-modal {
   color: #f7f7f7;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.team-modal:hover,
+.team-modal:focus {
+  color: #ff8080;
 }
 .team-wrapper {
   background-color: #545454;
@@ -187,18 +191,18 @@ body {
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
   color: #fff;
-  background: #b92f2c;
-  border-color: #b92f2c;
+  background: #ff8080;
+  border-color: #ff8080;
   cursor: default;
 }
 .tui-pagination .tui-is-selected:hover {
-  background-color: #b92f2c;
+  background-color: #ff8080;
 }
 .tui-pagination .tui-first-child.tui-is-selected {
-  border-left: 1px solid #b92f2c;
+  border-left: 1px solid #ff8080;
 }
 .tui-pagination .tui-last-child.tui-is-selected {
-  border-right: 1px solid #b92f2c;
+  border-right: 1px solid #ff8080;
 }
 .tui-pagination .tui-first,
 .tui-pagination .tui-prev,
@@ -238,4 +242,13 @@ body {
 }
 .tui-pagination .tui-is-disabled .tui-ico-last {
   filter: invert(100%);
+}
+
+/* стилізація сердця */
+.lds-heart div {
+  background: #ff8080;
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  background: #ff8080;
 }
