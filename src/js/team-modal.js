@@ -120,7 +120,7 @@ const markup = `<div class="team-wrapper">
               <a href="https://github.com/Oderen" target="_blank" class="team-git"><svg  width="24" height="24">
                 <use href="${svgGitUrl}#icon-github-svgr"></use>
               </svg></a>
-              <a href="https://www.linkedin.com/" target="_blank" class="team-linkd"><svg width="24" height="24">
+              <a href="https://www.linkedin.com/in/oleksandr-deren-504814272/" target="_blank" class="team-linkd"><svg width="24" height="24">
                 <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
               </svg></a>
               </p>
