@@ -10,7 +10,6 @@ const libRefs = {
   heroWrapper: document.querySelector('.hero__wrapper'),
   heroBtnLibrary: document.querySelector('.hero__btn-library'),
   homeBtn: document.querySelector('.btn-home'),
-  audio: document.querySelector('#audio-play'),
   container: document.querySelector('.notiflix-position'),
 };
 
@@ -33,7 +32,6 @@ function onLibraryBtnClick() {
 
   if (JSON.parse(localStorage.getItem('watched')).length !== 0) {
     document.querySelector('.empty-page').style.display = 'none';
-    libRefs.audio.play();
     Notiflix.Notify.failure('Enjoy watching your favorite movies!');
     libRefs.container.append(document.querySelector('#NotiflixNotifyWrap'));
     return renderWatchedMovies();
